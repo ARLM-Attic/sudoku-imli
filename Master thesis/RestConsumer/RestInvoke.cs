@@ -27,7 +27,7 @@ namespace RestConsumer
                    // Console.WriteLine(stream.ReadToEnd());
              XmlDocument xmlDoc = new XmlDocument();
              xmlDoc.LoadXml(stream.ReadToEnd());
-             //Console.WriteLine(xmlDoc.FirstChild);
+            
              XmlNode nod = xmlDoc.FirstChild;
              Console.WriteLine(nod.OuterXml);
                     string test = stream.ReadToEnd();
