@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor network 2", "Sensor network 2\Sensor network 2.csproj", "{426A7F09-FF2F-4ABD-BA52-019E014F1E0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorNetwork", "Sensor network 2\SensorNetwork.csproj", "{426A7F09-FF2F-4ABD-BA52-019E014F1E0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor network 1", "Sensor network 1\Sensor network 1.csproj", "{4EFE351E-31E4-46D4-B054-E1FBBBD4221B}"
 EndProject
@@ -19,7 +19,7 @@ Global
 		SccProjectUniqueName2 = Sensor\u0020network\u00201\\Sensor\u0020network\u00201.csproj
 		SccProjectName2 = Sensor\u0020network\u00201
 		SccLocalPath2 = Sensor\u0020network\u00201
-		SccProjectUniqueName3 = Sensor\u0020network\u00202\\Sensor\u0020network\u00202.csproj
+		SccProjectUniqueName3 = Sensor\u0020network\u00202\\SensorNetwork.csproj
 		SccProjectName3 = Sensor\u0020network\u00202
 		SccLocalPath3 = Sensor\u0020network\u00202
 	EndGlobalSection

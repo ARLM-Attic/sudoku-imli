@@ -4,7 +4,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 
-namespace Sensor_network_2
+namespace SensorNetwork
 {
     // Deploying the service: Publish it to the inetput/wwwroot directory. in IIS admin set it as application and set it as .net 4 app.
     [ServiceContract]
@@ -15,10 +15,17 @@ namespace Sensor_network_2
     {
         List<Node> _nodeList = new List<Node>();
         
+        //default constructor
+        //constructing sensor network with 10 nodes
         public SensorNetwork()
         {
-            Node a = new Node(0);
-            _nodeList.Add(a);
+            for (int i = 0; i < 10; i++)
+            {
+                Node initialNode = new Node(i,0);
+                _nodeList.Add(initialNode);
+            }
+            Node crossNode = new Node(10, 0, 0, 0, 0, "test");
+            _nodeList.Add(crossNode);
         }
 
         /// <summary>
@@ -35,7 +42,6 @@ namespace Sensor_network_2
                 return _nodeList;
             }
             else throw zeroSize;
-            
         }
 
         /// <summary>
@@ -49,9 +55,9 @@ namespace Sensor_network_2
 
             if (_nodeList.Count < NetworkVariables.MaxNodeCount)
             {
-                Node sensorNode = new Node(_nodeList.Count + 1);
+                Node sensorNode = new Node(_nodeList.Count + 1,0);
                 _nodeList.Add(sensorNode);
-                return sensorNode.Id;
+                return sensorNode.ID;
             }
             else throw nodeCount;
 
@@ -73,9 +79,9 @@ namespace Sensor_network_2
                 {
                     if (_nodeList.Count < NetworkVariables.MaxNodeCount)
                     {
-                        Node sensorNode = new Node(_nodeList.Count + 1);
+                        Node sensorNode = new Node(_nodeList.Count + 1,0);
                         _nodeList.Add(sensorNode);
-                        array[i] = sensorNode.Id;
+                        array[i] = sensorNode.ID;
                     }
                     else throw nodeCount;
                 }
@@ -83,7 +89,7 @@ namespace Sensor_network_2
             }
             catch(Exception excp)
             {
-                //add exception handling
+                Console.WriteLine(excp);
             }
 
             return null;
@@ -96,23 +102,22 @@ namespace Sensor_network_2
         /// <param name="id"></param>
         /// <returns></returns>
         [WebGet(UriTemplate = "{id}")]
-        public string GetNode(string id)
+        public Node GetNode(string id)
         {
             try
             {
-                int identification = Int32.Parse(id) - 1;
+                int identification = Int32.Parse(id);
                 
                 _nodeList[identification].ChangePosition();
-                string tempString = Math.Round(_nodeList[identification].XPos,2) + ";" + Math.Round(_nodeList[identification].YPos,2);
+               // string tempString = Math.Round(_nodeList[identification].XPos,2) + ";" + Math.Round(_nodeList[identification].YPos,2);
 
-                return tempString;
+                return _nodeList[identification];
             }
             catch (Exception except)
             {
-                return except.ToString();
-                //throw except;
+                Console.WriteLine(except);
+                return null;
             }
-           // return "aa";
 
         }
 

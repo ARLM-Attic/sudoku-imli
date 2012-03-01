@@ -62,9 +62,9 @@ namespace Sensor_network_1
                     YPos *= -1;
                 }
             }
-            catch (Exception exp) //in case of wrong coordinates we set default ones.
+            catch (Exception excp) //in case of wrong coordinates we set default ones.
             {
-                throw constructFailure;
+                Console.WriteLine(excp);
             }
 
         }

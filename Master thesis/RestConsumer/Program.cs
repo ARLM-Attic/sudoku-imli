@@ -34,11 +34,15 @@ namespace RestConsumer
 
         private static void InitalizeRestService(int firstNodesCount, int secondNodesCount)
         {
-            RestInvoke initalize = new RestInvoke();
+            RestConsume initalize = new RestConsume();
+            List<SensorNetwork.Node> nodeList1 = new List<SensorNetwork.Node>();
+            nodeList1 = initalize.httpGetCollection("http://localhost/SensorNetwork/SensorNetwork/");
 
-            Console.WriteLine(initalize.httpGet("http://localhost/SensorNetwork/SensorNetwork/"));
-
-
+            foreach(var node in nodeList1)
+            {
+                Console.WriteLine(node.ID + node.XPos + node.gpsPosition);
+            }
+            Console.Read();
         }
     }
 
