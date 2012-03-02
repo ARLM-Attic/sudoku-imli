@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
@@ -19,7 +20,9 @@ namespace SensorNetwork
         //constructing sensor network with 10 nodes
         public SensorNetwork()
         {
-            for (int i = 0; i < 10; i++)
+            var values = new NetworkVariables();
+
+            for (int i = 0; i < values.InitialNodeCount ; i++)
             {
                 Node initialNode = new Node(i,0);
                 _nodeList.Add(initialNode);
@@ -52,8 +55,9 @@ namespace SensorNetwork
         public int AddNode()
         {
             Exception nodeCount = new Exception("Too many nodes in network");
+            var values = new NetworkVariables();
 
-            if (_nodeList.Count < NetworkVariables.MaxNodeCount)
+            if (_nodeList.Count < values.MaxNodeCount)
             {
                 Node sensorNode = new Node(_nodeList.Count + 1,0);
                 _nodeList.Add(sensorNode);
@@ -70,6 +74,8 @@ namespace SensorNetwork
         [WebInvoke(Method = "POST",UriTemplate = "{addNumber}")]
         public int[] AddNodes(string addNumber)
         {
+
+            var values = new NetworkVariables();
             try
             {
                 int count = Int32.Parse(addNumber);
@@ -77,7 +83,7 @@ namespace SensorNetwork
                 Exception nodeCount = new Exception("Too many nodes in network");
                 for (int i = 0; i < count; i++)
                 {
-                    if (_nodeList.Count < NetworkVariables.MaxNodeCount)
+                    if (_nodeList.Count < values.MaxNodeCount)
                     {
                         Node sensorNode = new Node(_nodeList.Count + 1,0);
                         _nodeList.Add(sensorNode);
@@ -107,10 +113,7 @@ namespace SensorNetwork
             try
             {
                 int identification = Int32.Parse(id);
-                
                 _nodeList[identification].ChangePosition();
-               // string tempString = Math.Round(_nodeList[identification].XPos,2) + ";" + Math.Round(_nodeList[identification].YPos,2);
-
                 return _nodeList[identification];
             }
             catch (Exception except)
@@ -143,5 +146,40 @@ namespace SensorNetwork
             }
         }
 
+
+
+    }
+    public class NetworkVariables
+    {
+        //Default settings
+        public int NetworkAreaSize = 64;
+        public int MaxNodeCount = 64;
+        public int NetworkID;
+        public int InitialNodeCount = 10;
+
+        public NetworkVariables()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader("App_Data/ServiceSettings");
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains("NetworkAreaSize"))
+                        NetworkAreaSize = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
+                    if (line.Contains("NetworkMaxNodeCount"))
+                        MaxNodeCount = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
+                    if (line.Contains("NetworkID"))
+                        NetworkID = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
+                    if (line.Contains("InitialNodeCount"))
+                        InitialNodeCount = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
+                }
+            }
+            catch (Exception except)
+            {
+                Console.WriteLine(except);
+            }
+
+        }
     }
 }

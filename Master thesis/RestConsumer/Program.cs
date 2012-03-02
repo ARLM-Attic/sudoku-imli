@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net.Http;
+using SensorNetwork;
 
 namespace RestConsumer
 {
     class Program
     {
-        private static string firstService;
-        private static string secondService;
+        private static List<SensorNetwork.Node> _nodeList1 = new List<Node>();
+        private static List<SensorNetwork.Node> _nodeList2 = new List<Node>();
         static void Main(string[] args)
         {
             /*
@@ -28,17 +29,18 @@ namespace RestConsumer
             Console.WriteLine("Enter number of nodes in second service");
             secondNodesCount = Int32.Parse(Console.ReadLine());
             */
-            InitalizeRestService(0, 0);
+            getNodes();
             
         }
 
-        private static void InitalizeRestService(int firstNodesCount, int secondNodesCount)
+        private static void getNodes()
         {
-            RestConsume initalize = new RestConsume();
-            List<SensorNetwork.Node> nodeList1 = new List<SensorNetwork.Node>();
-            nodeList1 = initalize.httpGetCollection("http://localhost/SensorNetwork/SensorNetwork/");
+            RestConsume consume = new RestConsume();
+            _nodeList1 = consume.httpGetNodeCollection("http://localhost/SensorNetwork/SensorNetwork/");
 
-            foreach(var node in nodeList1)
+            _nodeList2 = consume.httpGetNodeCollection("http://localhost/SensorNetwork2/SensorNetwork/");
+
+            foreach(var node in _nodeList1)
             {
                 Console.WriteLine(node.ID + node.XPos + node.gpsPosition);
             }

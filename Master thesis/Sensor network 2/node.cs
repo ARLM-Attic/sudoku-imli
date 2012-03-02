@@ -12,7 +12,7 @@ namespace SensorNetwork
         [DataMemberAttribute]
         public int ID { get;  set;}
         [DataMemberAttribute]
-        public int sensorNetworkID { get;  set; }
+        public int SensorNetworkID { get;  set; }
         [DataMemberAttribute]   
         public double XPos {get;  set;}
         [DataMemberAttribute]
@@ -32,32 +32,35 @@ namespace SensorNetwork
 
         //constructors
         public Node(int identification, int networkID)
-        { 
+        {
+            var values = new NetworkVariables();
+
             Random rand = new Random();
             ID = identification;
-            sensorNetworkID = networkID;
+            SensorNetworkID = networkID;
 
-            XPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            YPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            ZPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
+            XPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            YPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            ZPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
 
             XPosSecondary = 0;
             YPosSecondary = 0;
             ZPosSecondary = 0;
 
             gpsPosition = "";
-            roundNumbers(); //rounding up numbers to two digits precision
+            RoundNumbers(); //rounding up numbers to two digits precision
         }
 
         public Node(int identification,int networkID, double x, double y,double z)
         {
             Random rand = new Random();
             ID = identification;
-            sensorNetworkID = networkID;
+            SensorNetworkID = networkID;
+            var values = new NetworkVariables();
 
-            XPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            YPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            ZPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
+            XPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            YPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            ZPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
 
            
             XPosSecondary = x;
@@ -65,23 +68,24 @@ namespace SensorNetwork
             ZPosSecondary = z;
 
             gpsPosition = "";
-            roundNumbers();
+            RoundNumbers();
         }
 
         public Node(int identification,int networkID, double x, double y,double z, string gps)
         {
             Random rand = new Random();
             ID = identification;
-            sensorNetworkID = networkID;
+            SensorNetworkID = networkID;
+            var values = new NetworkVariables();
 
-            XPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            YPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
-            ZPos = rand.Next(NetworkVariables.NetworkAreaSize) * rand.NextDouble();
+            XPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            YPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
+            ZPos = rand.Next(values.NetworkAreaSize) * rand.NextDouble();
 
             XPosSecondary = x;
             YPosSecondary = y;
             ZPosSecondary = z;
-            roundNumbers();
+            RoundNumbers();
 
             gpsPosition = gps;
         }
@@ -89,23 +93,24 @@ namespace SensorNetwork
         public void ChangePosition()
         { //simulation of node movement inside of the network
             Random rand = new Random();
+            var values = new NetworkVariables();
 
-            if (rand.NextDouble() < 0.5 && XPos < NetworkVariables.NetworkAreaSize - 1)
+            if (rand.NextDouble() < 0.5 && XPos < values.NetworkAreaSize - 1)
                 XPos = XPos + rand.NextDouble();
             else if (XPos > 1) XPos = XPos - rand.NextDouble();
             else XPos = XPos + rand.NextDouble();
 
-            if (rand.NextDouble() < 0.5 && YPos < NetworkVariables.NetworkAreaSize - 1)
+            if (rand.NextDouble() < 0.5 && YPos < values.NetworkAreaSize - 1)
                 YPos = YPos + rand.NextDouble();
             else if (YPos > 1) YPos = YPos - rand.NextDouble();
             else YPos = YPos + rand.NextDouble();
 
-            if (rand.NextDouble() < 0.5 && ZPos < NetworkVariables.NetworkAreaSize - 1)
+            if (rand.NextDouble() < 0.5 && ZPos < values.NetworkAreaSize - 1)
                 ZPos = ZPos + rand.NextDouble();
             else if (ZPos > 1) ZPos = ZPos - rand.NextDouble();
             else ZPos = ZPos + rand.NextDouble();
 
-            roundNumbers();
+            RoundNumbers();
         }
 
         public void ChangePosition(double XSecond,double YSecond, double ZSecond)
@@ -113,10 +118,11 @@ namespace SensorNetwork
             //changing position
             Random rand = new Random();
             double temp;
+            var values = new NetworkVariables();
 
             temp = rand.NextDouble();//increment/decrement for xPos
 
-            if (rand.NextDouble() < 0.5 && XPos < NetworkVariables.NetworkAreaSize - 1) //deciding whether to increment or decrement xPos
+            if (rand.NextDouble() < 0.5 && XPos < values.NetworkAreaSize - 1) //deciding whether to increment or decrement xPos
                 XPos = XPos + rand.NextDouble();
             else if (XPos > 1)
             {
@@ -131,7 +137,7 @@ namespace SensorNetwork
 
             temp = rand.NextDouble(); //increment/decrement for yPos
 
-            if (rand.NextDouble() < 0.5 && YPos < NetworkVariables.NetworkAreaSize - 1)//deciding whether to increment or decrement YPos
+            if (rand.NextDouble() < 0.5 && YPos < values.NetworkAreaSize - 1)//deciding whether to increment or decrement YPos
                 YPos = YPos + rand.NextDouble();
             else if (YPos > 1)
             {
@@ -147,7 +153,7 @@ namespace SensorNetwork
 
             temp = rand.NextDouble(); //increment/decrement for ZPos
 
-            if (rand.NextDouble() < 0.5 && ZPos < NetworkVariables.NetworkAreaSize - 1)//deciding whether to increment or decrement YPos
+            if (rand.NextDouble() < 0.5 && ZPos < values.NetworkAreaSize - 1)//deciding whether to increment or decrement YPos
                 ZPos = ZPos + rand.NextDouble();
             else if (ZPos > 1)
             {
@@ -160,13 +166,13 @@ namespace SensorNetwork
                 ZPosSecondary = ZSecond + temp;
             }
 
-            roundNumbers();
+            RoundNumbers();
         }
 
         /// <summary>
         /// Rounding up double numbers to two digits precision
         /// </summary>
-        public void roundNumbers()
+        public void RoundNumbers()
         {
             XPos = Math.Round(XPos, 2);
             YPos = Math.Round(YPos, 2);
@@ -179,9 +185,5 @@ namespace SensorNetwork
 
     }
 
-    public class NetworkVariables
-    {
-        public static int NetworkAreaSize = 64; 
-        public static int MaxNodeCount = 64;
-    }
+
 }

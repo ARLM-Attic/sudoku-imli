@@ -11,7 +11,7 @@ namespace RestConsumer
 {
     class RestConsume
     {
-        public List<SensorNetwork.Node> httpGetCollection(string URI)
+        public List<SensorNetwork.Node> httpGetNodeCollection(string URI)
         {
             var _nodeList = new List<SensorNetwork.Node>();
             
@@ -27,7 +27,7 @@ namespace RestConsumer
 
             //parsing XML response into node objects
             XmlNodeList IDlist = xmlDoc.GetElementsByTagName("ID");
-            XmlNodeList SensorIDList = xmlDoc.GetElementsByTagName("sensorNetworkID");
+            XmlNodeList SensorIDList = xmlDoc.GetElementsByTagName("SensorNetworkID");
             XmlNodeList XPosList = xmlDoc.GetElementsByTagName("XPos");
             XmlNodeList YPosList = xmlDoc.GetElementsByTagName("YPos");
             XmlNodeList ZPosList = xmlDoc.GetElementsByTagName("ZPos");
