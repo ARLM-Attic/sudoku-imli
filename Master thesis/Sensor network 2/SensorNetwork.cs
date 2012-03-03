@@ -44,7 +44,11 @@ namespace SensorNetwork
             {
                 return _nodeList;
             }
-            else throw zeroSize;
+            else
+            {
+                var log = new Log(zeroSize.ToString()); //writing exception to log file
+                return null;
+            }
         }
 
         /// <summary>
@@ -59,12 +63,15 @@ namespace SensorNetwork
 
             if (_nodeList.Count < values.MaxNodeCount)
             {
-                Node sensorNode = new Node(_nodeList.Count + 1,0);
+                Node sensorNode = new Node(_nodeList.Count + 1, 0);
                 _nodeList.Add(sensorNode);
                 return sensorNode.ID;
             }
-            else throw nodeCount;
-
+            else
+            {
+                Log log = new Log(nodeCount.ToString()); //writing exception to log file
+                return -1;
+            }
         }
 
         /// <summary>
@@ -93,9 +100,9 @@ namespace SensorNetwork
                 }
                 return array;
             }
-            catch(Exception excp)
+            catch(Exception except)
             {
-                Console.WriteLine(excp);
+                var log = new Log(except.ToString()); //writing exception to log file
             }
 
             return null;
@@ -118,7 +125,7 @@ namespace SensorNetwork
             }
             catch (Exception except)
             {
-                Console.WriteLine(except);
+                var log = new Log(except.ToString()); //writing exception to log file
                 return null;
             }
 
@@ -140,9 +147,9 @@ namespace SensorNetwork
                 _nodeList.RemoveAt(_nodeList.Count - 1);
 
             }
-            catch(Exception)
+            catch(Exception except)
             {
-                throw zeroSize;
+                var log = new Log(except.ToString()); //writing exception to log file
             }
         }
 
@@ -173,11 +180,12 @@ namespace SensorNetwork
                         NetworkID = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
                     if (line.Contains("InitialNodeCount"))
                         InitialNodeCount = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
+                    var log = new Log("jsem tu");
                 }
             }
             catch (Exception except)
             {
-                Console.WriteLine(except);
+                var log = new Log(except.ToString()); //writing exception to log file
             }
 
         }

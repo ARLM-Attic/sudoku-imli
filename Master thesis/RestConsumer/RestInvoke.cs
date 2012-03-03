@@ -14,8 +14,7 @@ namespace RestConsumer
         public List<SensorNetwork.Node> httpGetNodeCollection(string URI)
         {
             var _nodeList = new List<SensorNetwork.Node>();
-            
-            string respond = "" ;
+           
             WebRequest request = WebRequest.Create(URI);
             request.Method = "GET";
             WebResponse response = request.GetResponse();

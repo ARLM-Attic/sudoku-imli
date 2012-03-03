@@ -87,6 +87,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logging.cs" />
     <Compile Include="SensorNetwork.cs" />
     <Compile Include="node.cs" />
     <Compile Include="Global.asax.cs">
