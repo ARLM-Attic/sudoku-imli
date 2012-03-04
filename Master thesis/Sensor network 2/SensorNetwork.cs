@@ -15,16 +15,17 @@ namespace SensorNetwork
     public class SensorNetwork
     {
         List<Node> _nodeList = new List<Node>();
+        Settings values = new Settings();
         
         //default constructor
         //constructing sensor network with 10 nodes
         public SensorNetwork()
         {
-            var values = new NetworkVariables();
-
-            for (int i = 0; i < values.InitialNodeCount ; i++)
+            int NodeCount = values.GetInitialNodeCount();
+            int networkID = values.GetNetworkID();
+            for (int i = 0; i < NodeCount ; i++)
             {
-                Node initialNode = new Node(i,0);
+                Node initialNode = new Node(i,networkID);
                 _nodeList.Add(initialNode);
             }
             Node crossNode = new Node(10, 0, 0, 0, 0, "test");
@@ -46,7 +47,7 @@ namespace SensorNetwork
             }
             else
             {
-                var log = new Log(zeroSize.ToString()); //writing exception to log file
+                var log = new Log(zeroSize.ToString(),values.GetLogPath()); //writing exception to log file
                 return null;
             }
         }
@@ -59,9 +60,8 @@ namespace SensorNetwork
         public int AddNode()
         {
             Exception nodeCount = new Exception("Too many nodes in network");
-            var values = new NetworkVariables();
 
-            if (_nodeList.Count < values.MaxNodeCount)
+            if (_nodeList.Count < values.GetMaxNodeCount())
             {
                 Node sensorNode = new Node(_nodeList.Count + 1, 0);
                 _nodeList.Add(sensorNode);
@@ -69,7 +69,7 @@ namespace SensorNetwork
             }
             else
             {
-                Log log = new Log(nodeCount.ToString()); //writing exception to log file
+                Log log = new Log(nodeCount.ToString(),values.GetLogPath()); //writing exception to log file
                 return -1;
             }
         }
@@ -82,7 +82,6 @@ namespace SensorNetwork
         public int[] AddNodes(string addNumber)
         {
 
-            var values = new NetworkVariables();
             try
             {
                 int count = Int32.Parse(addNumber);
@@ -90,7 +89,7 @@ namespace SensorNetwork
                 Exception nodeCount = new Exception("Too many nodes in network");
                 for (int i = 0; i < count; i++)
                 {
-                    if (_nodeList.Count < values.MaxNodeCount)
+                    if (_nodeList.Count < values.GetMaxNodeCount())
                     {
                         Node sensorNode = new Node(_nodeList.Count + 1,0);
                         _nodeList.Add(sensorNode);
@@ -102,7 +101,7 @@ namespace SensorNetwork
             }
             catch(Exception except)
             {
-                var log = new Log(except.ToString()); //writing exception to log file
+                var log = new Log(except.ToString(),values.GetLogPath()); //writing exception to log file
             }
 
             return null;
@@ -125,7 +124,7 @@ namespace SensorNetwork
             }
             catch (Exception except)
             {
-                var log = new Log(except.ToString()); //writing exception to log file
+                var log = new Log(except.ToString(),values.GetLogPath()); //writing exception to log file
                 return null;
             }
 
@@ -149,45 +148,55 @@ namespace SensorNetwork
             }
             catch(Exception except)
             {
-                var log = new Log(except.ToString()); //writing exception to log file
+                var log = new Log(except.ToString(),values.GetLogPath()); //writing exception to log file
             }
         }
+
 
 
 
     }
-    public class NetworkVariables
+
+    /// <summary>
+    /// Class for retreiving information from ServiceSettings.config file
+    /// </summary>
+    public class Settings
     {
-        //Default settings
-        public int NetworkAreaSize = 64;
-        public int MaxNodeCount = 64;
-        public int NetworkID;
-        public int InitialNodeCount = 10;
-
-        public NetworkVariables()
+        
+        public int GetAreaSize()
         {
-            try
-            {
-                StreamReader sr = new StreamReader("App_Data/ServiceSettings");
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.Contains("NetworkAreaSize"))
-                        NetworkAreaSize = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
-                    if (line.Contains("NetworkMaxNodeCount"))
-                        MaxNodeCount = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
-                    if (line.Contains("NetworkID"))
-                        NetworkID = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
-                    if (line.Contains("InitialNodeCount"))
-                        InitialNodeCount = Int32.Parse(line.Remove(0, line.LastIndexOf("=")));
-                    var log = new Log("jsem tu");
-                }
-            }
-            catch (Exception except)
-            {
-                var log = new Log(except.ToString()); //writing exception to log file
-            }
-
+            int areaSize;
+            Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("NetworkAreaSize"),out areaSize);
+            return areaSize;
         }
+
+        public int GetMaxNodeCount()
+        {
+            int nodeCount;
+            Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("NetworkMaxNodeCount"), out nodeCount);
+            return nodeCount;
+        }
+
+        public int GetInitialNodeCount()
+        {
+            int nodeCount;
+            Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("InitialNodeCount"), out nodeCount);
+            return nodeCount;
+        }
+
+        public int GetNetworkID()
+        {
+            int networkID;
+            Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("NetworkID"), out networkID);
+            return networkID;
+        }
+
+        public string GetLogPath()
+        {
+            return System.Configuration.ConfigurationManager.AppSettings.Get("LogPath");
+        }
+
+
+        
     }
 }

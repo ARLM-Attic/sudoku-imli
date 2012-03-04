@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <None Include="App_Data\ServiceSettings">
+    <None Include="App_Data\ServiceSettings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Web.config">
