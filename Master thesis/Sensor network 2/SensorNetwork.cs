@@ -18,18 +18,24 @@ namespace SensorNetwork
         Settings values = new Settings();
         
         //default constructor
-        //constructing sensor network with 10 nodes
+        //constructing sensor network with 10 nodes and if set, we add nodes which are in both networks
         public SensorNetwork()
         {
             int NodeCount = values.GetInitialNodeCount();
+            int crossNetworkNodeCount = values.GetCrossNetworkNodeCount();
+
             int networkID = values.GetNetworkID();
             for (int i = 0; i < NodeCount ; i++)
             {
                 Node initialNode = new Node(i,networkID);
                 _nodeList.Add(initialNode);
             }
-            Node crossNode = new Node(10, 0, 0, 0, 0, "test");
-            _nodeList.Add(crossNode);
+            for (int i = 0; i < crossNetworkNodeCount;i++ )
+            {
+                Node crossNode = new Node(i + NodeCount,networkID,i,i,i); //
+                _nodeList.Add(crossNode);
+            }
+                
         }
 
         /// <summary>
@@ -196,6 +202,12 @@ namespace SensorNetwork
             return System.Configuration.ConfigurationManager.AppSettings.Get("LogPath");
         }
 
+        public int GetCrossNetworkNodeCount()
+        {
+            int crossNodes;
+            Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("CrossNetworkNodes"), out crossNodes);
+            return crossNodes;
+        }
 
         
     }

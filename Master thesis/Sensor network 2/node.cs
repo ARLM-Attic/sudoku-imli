@@ -89,6 +89,23 @@ namespace SensorNetwork
             gpsPosition = gps;
         }
 
+        public Node(int identification, int networkID, double x, double y, double z, string gps, double xSecondary, double ysecondary,double zSecondary)
+        {
+            ID = identification;
+            SensorNetworkID = networkID;
+            int areaSize = values.GetAreaSize();
+            XPos = x;
+            YPos = y;
+            ZPos = z;
+
+            XPosSecondary = xSecondary;
+            YPosSecondary = ysecondary;
+            ZPosSecondary = zSecondary;
+            RoundNumbers();
+
+            gpsPosition = gps;
+        }
+
         public void ChangePosition()
         { //simulation of node movement inside of the network
             Random rand = new Random();
@@ -113,7 +130,7 @@ namespace SensorNetwork
 
         public void ChangePosition(double XSecond,double YSecond, double ZSecond)
         {
-            //changing position
+            
             Random rand = new Random();
             double temp;
             int areaSize = values.GetAreaSize();
