@@ -17,14 +17,16 @@ namespace PlaceHolder
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
     public class Combine
     {
-        List<Node> _nodeList = new List<Node>();
-        List<string> usedIDs = new List<string>();
+        private readonly List<Node> _nodeList = new List<Node>();
+        private readonly List<string> _usedIDs = new List<string>();
+        private List<Node> _resultNodes = new List<Node>();
         // TODO: Implement the collection resource that will contain the SampleItem instances
 
         [WebGet(UriTemplate = "")]
         public List<Node> GetCollection()
         {
-            return _nodeList;
+            CombineNetworks();
+            return _resultNodes;
         }
 
         /// <summary>
@@ -32,7 +34,7 @@ namespace PlaceHolder
         /// </summary>am>
         /// <returns>ID of node in nodeList</returns>
         [WebInvoke(UriTemplate = "{id};{networkID};{secondaryNetworkID};{xPos};{yPos};{zPos};{secondaryXpos};{secondaryYpos};{secondaryZpos};{gps}", Method = "POST")]
-        public int CompleteCreate(string networkID,string secondaryNetworkID, string xPos, string yPos, string zPos, string secondaryXPos, string secondaryYPos, string secondaryZPos, string gps)
+        public string CompleteCreate(string networkID,string secondaryNetworkID, string xPos, string yPos, string zPos, string secondaryXPos, string secondaryYPos, string secondaryZPos, string gps)
         {
             int ident, networkIdent, secondaryNetworkIdent;
             double xPosition, yPosition, zPosition, secondaryXPosition, secondaryYPosition, secondaryZPosition;
@@ -53,10 +55,7 @@ namespace PlaceHolder
 
             _nodeList.Add(node);
 
-           
-           
-            // TODO: Add the new instance of SampleItem to the collection))))
-            throw new NotImplementedException();
+            return id;
         }
 
         /// <summary>
@@ -71,7 +70,7 @@ namespace PlaceHolder
         public string SimpleCreate(string networkID, string xPos, string yPos, string zPos)
         {
             string id = GenerateID();
-            int ident, networkIdent;
+            int networkIdent;
             double xPosition, yPosition, zPosition;
             Int32.TryParse(networkID, out networkIdent);
 
@@ -102,8 +101,8 @@ namespace PlaceHolder
         [WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
         public void Delete(string id)
         {
-            // TODO: Remove the instance of SampleItem with the given id from the collection
-            throw new NotImplementedException();
+            _nodeList.RemoveAt(_nodeList.FindIndex((m => m.ID.Equals(id)))); //removing entry from list
+            _usedIDs.RemoveAt(_usedIDs.IndexOf(id));           
         }
 
         /// <summary>
@@ -116,12 +115,15 @@ namespace PlaceHolder
             while(id == null)
             {
                 id = System.Web.Security.Membership.GeneratePassword(6, 0);
-                if (usedIDs.IndexOf(id) != -1) id = null;  
+                if (_usedIDs.IndexOf(id) != -1) id = null;  
             }
             return id;
         }
 
-
+        public void CombineNetworks()
+        {
+            
+        }
 
     }
 }
