@@ -10,7 +10,7 @@ namespace PlaceHolder
     public class Node
     {
         [DataMemberAttribute]
-        public string ID { get;  set;}
+        public int ID { get;  set;}
         [DataMemberAttribute]
         public int SensorNetworkID { get;  set; }
         [DataMemberAttribute]
@@ -32,7 +32,7 @@ namespace PlaceHolder
 
 
 
-        public Node(string identification, int networkID, double x, double y, double z)
+        public Node(int identification, int networkID, double x, double y, double z)
         {
             ID = identification;
             SensorNetworkID = networkID;
@@ -43,7 +43,7 @@ namespace PlaceHolder
             RoundNumbers();
         }
 
-        public Node(string identification, int networkID, double x, double y, double z, string gps, double xSecondary, double ysecondary, double zSecondary, int SecondaryNetworkID)
+        public Node(int identification, int networkID, double x, double y, double z, string gps, double xSecondary, double ysecondary, double zSecondary, int SecondaryNetworkID)
         {
             ID = identification;
             SensorNetworkID = networkID;

@@ -17,8 +17,12 @@ namespace PlaceHolder
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
     public class Combine
     {
-        private readonly List<Node> _nodeList = new List<Node>();
+        private readonly List<Node> _nodeList = new List<Node>(); //list of normal nodes
+        private List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
         private readonly List<string> _usedIDs = new List<string>();
+        private Settings _settings = new Settings();
+
+
         private List<Node> _resultNodes = new List<Node>();
         // TODO: Implement the collection resource that will contain the SampleItem instances
 
@@ -34,12 +38,12 @@ namespace PlaceHolder
         /// </summary>am>
         /// <returns>ID of node in nodeList</returns>
         [WebInvoke(UriTemplate = "{id};{networkID};{secondaryNetworkID};{xPos};{yPos};{zPos};{secondaryXpos};{secondaryYpos};{secondaryZpos};{gps}", Method = "POST")]
-        public string CompleteCreate(string networkID,string secondaryNetworkID, string xPos, string yPos, string zPos, string secondaryXPos, string secondaryYPos, string secondaryZPos, string gps)
+        public void CompleteCreate(string id,string networkID,string secondaryNetworkID, string xPos, string yPos, string zPos, string secondaryXPos, string secondaryYPos, string secondaryZPos, string gps)
         {
             int ident, networkIdent, secondaryNetworkIdent;
             double xPosition, yPosition, zPosition, secondaryXPosition, secondaryYPosition, secondaryZPosition;
 
-            string id = GenerateID();
+            Int32.TryParse(id, out ident);
             Int32.TryParse(networkID, out networkIdent);
             Int32.TryParse(secondaryNetworkID, out secondaryNetworkIdent);
 
@@ -51,11 +55,9 @@ namespace PlaceHolder
             Double.TryParse(secondaryYPos, out secondaryYPosition);
             Double.TryParse(secondaryZPos, out secondaryZPosition);
 
-            Node node = new Node(id, networkIdent, xPosition, yPosition, zPosition, gps, secondaryXPosition, secondaryYPosition, secondaryZPosition,secondaryNetworkIdent);
-
+            Node node = new Node(ident, networkIdent, xPosition, yPosition, zPosition, gps, secondaryXPosition, secondaryYPosition, secondaryZPosition,secondaryNetworkIdent);
+            _crossNodeList.Add(node);
             _nodeList.Add(node);
-
-            return id;
         }
 
         /// <summary>
@@ -66,20 +68,21 @@ namespace PlaceHolder
         /// <param name="yPos"></param>
         /// <param name="zPos"></param>
         /// <returns></returns>
-        [WebInvoke(UriTemplate = "{networkID};{xPos};{yPos};{zPos}", Method = "POST")]
-        public string SimpleCreate(string networkID, string xPos, string yPos, string zPos)
+        [WebInvoke(UriTemplate = "{id};{networkID};{xPos};{yPos};{zPos}", Method = "POST")]
+        public string SimpleCreate(string id,string networkID, string xPos, string yPos, string zPos)
         {
-            string id = GenerateID();
-            int networkIdent;
+           
+            int ident, networkIdent;
             double xPosition, yPosition, zPosition;
             Int32.TryParse(networkID, out networkIdent);
+            Int32.TryParse(id, out ident);
 
             Double.TryParse(xPos, out xPosition);
             Double.TryParse(yPos, out yPosition);
             Double.TryParse(zPos, out zPosition);
 
 
-            Node node = new Node(id, networkIdent, xPosition, yPosition, zPosition);
+            Node node = new Node(ident, networkIdent, xPosition, yPosition, zPosition);
 
             _nodeList.Add(node);
             return id;
@@ -101,12 +104,13 @@ namespace PlaceHolder
         [WebInvoke(UriTemplate = "{id}", Method = "DELETE")]
         public void Delete(string id)
         {
-            _nodeList.RemoveAt(_nodeList.FindIndex((m => m.ID.Equals(id)))); //removing entry from list
-            _usedIDs.RemoveAt(_usedIDs.IndexOf(id));           
+            int identification;
+            Int32.TryParse(id, out identification);
+            _nodeList.RemoveAt(_nodeList.FindIndex((m => m.ID.Equals(identification)))); //removing entry from list     
         }
 
         /// <summary>
-        /// generating new id for each node, checking if it doesnt exist within list yet
+        /// generating new id for each node, checking if it doesnt exist within list yet - obsolete atm
         /// </summary>
         /// <returns>new ID</returns>
         public string GenerateID()
@@ -122,6 +126,15 @@ namespace PlaceHolder
 
         public void CombineNetworks()
         {
+            if (_crossNodeList.Count < 2)
+            {
+                var log = new Log("Not enough cross nodes", _settings.GetLogPath());
+            }
+
+            foreach (var node in _crossNodeList)
+            {
+                   
+            }
             
         }
 
