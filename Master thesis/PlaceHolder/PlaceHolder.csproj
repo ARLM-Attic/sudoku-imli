@@ -67,6 +67,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2DCombine.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="node.cs" />
     <Compile Include="Service1.cs" />

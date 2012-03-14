@@ -19,7 +19,8 @@ namespace PlaceHolder
     {
         private readonly List<Node> _nodeList = new List<Node>(); //list of normal nodes
         private List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
-        private readonly List<string> _usedIDs = new List<string>();
+
+        //private readonly List<string> _usedIDs = new List<string>(); obsolete
         private Settings _settings = new Settings();
 
 
@@ -27,13 +28,35 @@ namespace PlaceHolder
         // TODO: Implement the collection resource that will contain the SampleItem instances
 
         [WebGet(UriTemplate = "")]
-        public List<Node> GetCollection()
+        public string GetCollection()
         {
-            CombineNetworks();
-            return _resultNodes;
+           // CombineNetworks();
+           // return _resultNodes;
+            return "a";
         }
 
-        /// <summary>
+        [WebGet(UriTemplate = "{x},{y}")]
+        public string A(string x, string y)
+        {
+            double a, b;
+            int a1 = 0;
+            int b1 = 0;
+            Double.TryParse(x, out a);
+            Double.TryParse(y, out b);
+
+
+            double x1, x2;
+            double inputAngle = (Math.PI/180)*90;
+            x1 = Math.Cos(inputAngle) * a + Math.Sin(inputAngle) * b + a1;
+            x2 = -Math.Sin(inputAngle) * a + Math.Cos(inputAngle) * b + b1;
+            
+            
+            
+           
+
+            return x1 +" : " +x2;
+        }
+                /// <summary>
         /// creating nodes with positions in 2 networks or with gps position
         /// </summary>am>
         /// <returns>ID of node in nodeList</returns>
@@ -88,11 +111,7 @@ namespace PlaceHolder
             return id;
         }
 
-        [WebGet(UriTemplate = "{id};{test}")]
-        public string Get(string id)
-        {
-            return id;
-        }
+
 
         [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
         public int Update(string id, Node instance)
@@ -119,7 +138,7 @@ namespace PlaceHolder
             while(id == null)
             {
                 id = System.Web.Security.Membership.GeneratePassword(6, 0);
-                if (_usedIDs.IndexOf(id) != -1) id = null;  
+               // if (_usedIDs.IndexOf(id) != -1) id = null;  
             }
             return id;
         }
