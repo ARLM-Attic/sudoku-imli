@@ -5,23 +5,25 @@ using System.Web;
 
 namespace PlaceHolder
 {
-    public class TwoDimensionCombine
+    public class _3DCombine
     {
         private readonly List<Node> _nodeList = new List<Node>(); //list of normal nodes
         private readonly List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
         private double _rotationAngle; //angle by which are networks rotated to each other
+        private double _rotationAngleSecondary;
         private double _distanceRatio = 1; //if networks arent using same distance measurement
         private int _primaryNetwork; //id of network that we decide is primary
         private int _secondaryNetwork;
         private double _xShift; //x distance between networks
         private double _yShift; //y distance between networks
+        private double _zShift;
 
         /// <summary>
         /// First Constructor, used when crossnodes are available
         /// </summary>
         /// <param name="nodeList">list of nodes with coordinates in only one network</param>
         /// <param name="crossNodeList">list of nodes with coordinates in both networks</param>
-        public TwoDimensionCombine(List<Node> nodeList, List<Node>crossNodeList)
+        public _3DCombine(List<Node> nodeList, List<Node>crossNodeList)
         {
             _nodeList = nodeList;
             _crossNodeList = crossNodeList;
@@ -34,8 +36,11 @@ namespace PlaceHolder
             }
         }
 
+        /////////REWRITE BELOW////////
+        ///                 /////
+        ///                 /////
         //second constructor in case we dont have cross nodes, but we have settigns in ServiceSettings.conf
-        public TwoDimensionCombine(List<Node> nodeList)
+        public _3DCombine(List<Node> nodeList)
         {
              var set = new Settings();
             _nodeList = nodeList;
@@ -54,11 +59,11 @@ namespace PlaceHolder
             double[] coordinateShift = set.returnCoordinateShift();
             _xShift = coordinateShift[0];
             _yShift = coordinateShift[1];
+            _zShift = coordinateShift[2];
             _rotationAngle = set.returnShiftAngle();
 
             AddNodesInfo();
         }
-
         /// <summary>
         /// Calculating angle between two points
         /// </summary>
@@ -257,4 +262,6 @@ namespace PlaceHolder
             return editedNode;
         }
     }
+
+    
 }
