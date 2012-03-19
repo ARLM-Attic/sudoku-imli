@@ -85,7 +85,7 @@ namespace PlaceHolder
                     if (xDifference > 0) angle = 180;
                     else angle = 0;
                 }
-                if (xDifference == 0)
+                else
                 {
                     if (yDifference > 0) angle = 270;
                     else angle = 90;
@@ -93,7 +93,12 @@ namespace PlaceHolder
             }
             else
             {
-                radians = Math.Atan(xDifference / yDifference); //else we have co determine it by formula tan alfa = a/b
+                //preset angle by determining in which quadrant we are computing angle
+                if (x1 > x2 && y2 > y1) angle = 90;
+                else if (x1 > x2 && y1 > y2) angle = 180;
+                else if (y1 > y2 && x2 > x1) angle = 270;
+
+                radians = Math.Atan(xDifference / yDifference); //else we have to determine it by formula tan alfa = a/b
                 angle += radians * (180 / Math.PI);
             }
 

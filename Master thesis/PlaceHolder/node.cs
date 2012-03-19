@@ -9,6 +9,8 @@ namespace PlaceHolder
     [DataContract]
     public class Node
     {
+        private Node node;
+
         [DataMemberAttribute]
         public int ID { get;  set;}
         [DataMemberAttribute]
@@ -30,6 +32,21 @@ namespace PlaceHolder
         [DataMemberAttribute]
         public string gpsPosition { get;  set; }
 
+
+        public Node(Node node)
+        {
+            ID = node.ID;
+            SensorNetworkID = node.SensorNetworkID;
+            SecondarySensorNetworkID = node.SecondarySensorNetworkID;
+            XPos = node.XPos;
+            YPos = node.YPos;
+            ZPos = node.ZPos;
+            XPosSecondary = node.XPosSecondary;
+            YPosSecondary = node.YPosSecondary;
+            ZPosSecondary = node.ZPosSecondary;
+            gpsPosition = node.gpsPosition;
+            //this.node = node;
+        }
 
 
         public Node(int identification, int networkID, double x, double y, double z)
@@ -59,6 +76,8 @@ namespace PlaceHolder
 
             gpsPosition = gps;
         }
+
+
 
 
         /// <summary>

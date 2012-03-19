@@ -9,14 +9,19 @@ namespace PlaceHolder
     {
         private readonly List<Node> _nodeList = new List<Node>(); //list of normal nodes
         private readonly List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
-        private double _rotationAngle; //angle by which are networks rotated to each other
-        private double _rotationAngleSecondary;
-        private double _distanceRatio = 1; //if networks arent using same distance measurement
+
+        private double _alfaRotation; //angle by which are networks rotated to each other on x axis
+        private double _betaRotation; //angle by which are networks rotated to each other on y axis
+        private double _gamaRotation; //angle by which are networks rotated to each other on z axis
+
+        private double _distanceRatio = 1; //if networks arent using same distance measurement - obsolete atm
+
         private int _primaryNetwork; //id of network that we decide is primary
         private int _secondaryNetwork;
+
         private double _xShift; //x distance between networks
         private double _yShift; //y distance between networks
-        private double _zShift;
+        private double _zShift; //z distance between networks
 
         /// <summary>
         /// First Constructor, used when crossnodes are available
@@ -32,13 +37,11 @@ namespace PlaceHolder
                 _primaryNetwork = _crossNodeList[0].SensorNetworkID; //primary network id of first crossnode is going to be primary network
                 _secondaryNetwork = _crossNodeList[0].SecondarySensorNetworkID; // setting secondary network id
                 CalculateNetworkDifferences(); //calculating angle and distance between networks
-                AddNodesInfo(); //adding secondary coordinates to all nodes
+                //AddNodesInfo(); //adding secondary coordinates to all nodes
             }
         }
 
-        /////////REWRITE BELOW////////
-        ///                 /////
-        ///                 /////
+
         //second constructor in case we dont have cross nodes, but we have settigns in ServiceSettings.conf
         public _3DCombine(List<Node> nodeList)
         {
@@ -60,10 +63,21 @@ namespace PlaceHolder
             _xShift = coordinateShift[0];
             _yShift = coordinateShift[1];
             _zShift = coordinateShift[2];
-            _rotationAngle = set.returnShiftAngle();
+            _alfaRotation = set.returnShiftAngle();
 
             AddNodesInfo();
         }
+
+        public void test()
+        {
+            double angle = returnAngle(_crossNodeList[0].XPos, _crossNodeList[0].YPos, _crossNodeList[1].XPos,
+                                       _crossNodeList[1].YPos);
+            double angleSecond = returnAngle(_crossNodeList[0].XPosSecondary, _crossNodeList[0].YPosSecondary, _crossNodeList[1].XPosSecondary,
+                                       _crossNodeList[1].YPosSecondary);
+
+
+        }
+
         /// <summary>
         /// Calculating angle between two points
         /// </summary>
@@ -90,7 +104,7 @@ namespace PlaceHolder
                     if (xDifference > 0) angle = 180;
                     else angle = 0;
                 }
-                if (xDifference == 0)
+                else 
                 {
                     if (yDifference > 0) angle = 270;
                     else angle = 90;
@@ -98,101 +112,180 @@ namespace PlaceHolder
             }
             else
             {
-                radians = Math.Atan(xDifference / yDifference); //else we have co determine it by formula tan alfa = a/b
+                //preset angle by determining in which quadrant we are computing angle
+                if (x1 > x2 && y2 > y1) angle = 90;
+                else if (x1 > x2 && y1 > y2) angle = 180;
+                else if (y1 > y2 && x2 > x1) angle = 270;
+
+                radians = Math.Atan(xDifference / yDifference); //else we have to determine it by formula tan alfa = a/b
                 angle += radians * (180 / Math.PI);
             }
 
             return angle;
         }
 
+        /////////REWRITE BELOW////////
+        ///                 /////
+        ///                 /////
         /// <summary>
         /// Calculating angle and distance between networks
         /// </summary>
         private void CalculateNetworkDifferences()
         {
-            double xDifference; //
-            double yDifference;
-            double xDifferenceSecondary;
-            double yDifferenceSecondary;
-            double pointDistance;
-            double pointDistanceSecondary;
+          double[] rotationAngles = new double[3];
+          double angle;
+          double angleSecondary;
+            
 
-            double angle = 0;
-            double angleSecondary = 0;
-
-            //in this section we are computing an angle between two networks
-            for(int i = 0; i + 1  < _crossNodeList.Count; i++)
+            //in this section we are computing an angles between two networks
+            for (int i = 0; i + 1 < _crossNodeList.Count; i++) 
             {
-                //getting x and y difference between points x1,x2 and y1,y2
-                //xDifference = (_crossNodeList[i].XPos - _crossNodeList[i + 1].XPos);
-                //yDifference = (_crossNodeList[i].YPos - _crossNodeList[i+i].YPos);
-               // pointDistance = Math.Pow(xDifference + yDifference, 2);
-
-                //xDifferenceSecondary = (_crossNodeList[i].XPosSecondary - _crossNodeList[i + 1].XPosSecondary);
-                //yDifferenceSecondary = (_crossNodeList[i].YPosSecondary - _crossNodeList[i+i].YPosSecondary);
-                //pointDistanceSecondary = Math.Pow(xDifference + yDifference, 2);
-
-                //checking if both consequent nodes have same primary network id, if not we switch their XPOS/YPOS for XPOSSECONDARY etc.
-                if (_crossNodeList[i].SensorNetworkID == _crossNodeList[i+1].SensorNetworkID) //in this case both consequent nodes have same primary network id
+                if (_crossNodeList[i].SensorNetworkID != _primaryNetwork && _crossNodeList[i + 1].SensorNetworkID == _primaryNetwork) //first node doesnt have same primary network id
                 {
-                    angle = returnAngle(_crossNodeList[i].XPos, _crossNodeList[i].YPos, _crossNodeList[i + 1].XPos,
-                                         _crossNodeList[i + 1].YPos);
+                    Node firstNode = new Node(_crossNodeList[i].ID, _crossNodeList[i].SecondarySensorNetworkID,
+                                              _crossNodeList[i].XPosSecondary, _crossNodeList[i].YPosSecondary,
+                                              _crossNodeList[i].ZPosSecondary,
+                                              _crossNodeList[i].gpsPosition, _crossNodeList[i].XPos,
+                                              _crossNodeList[i].YPos, _crossNodeList[i].ZPos,
+                                              _crossNodeList[i].SensorNetworkID);
+                    Node secondNode = new Node(_crossNodeList[i+1]);
 
-                    angleSecondary = returnAngle(_crossNodeList[i].XPosSecondary, _crossNodeList[i].YPosSecondary,
-                                                  _crossNodeList[i + 1].XPosSecondary,
-                                                  _crossNodeList[i + 1].YPosSecondary);
-
-                    _rotationAngle +=(Math.Abs(angle - angleSecondary));
-                }
-                else if(_crossNodeList[i].SensorNetworkID != _primaryNetwork && _crossNodeList[i+1].SensorNetworkID == _primaryNetwork) //first node doesnt have same primary network id
-                {
-                    angle = returnAngle(_crossNodeList[i].XPosSecondary, _crossNodeList[i].YPosSecondary, _crossNodeList[i + 1].XPos,
-                     _crossNodeList[i + 1].YPos);
-
-                    angleSecondary = returnAngle(_crossNodeList[i].XPos, _crossNodeList[i].YPos,
-                                                  _crossNodeList[i + 1].XPosSecondary,_crossNodeList[i + 1].YPosSecondary);
-                    _rotationAngle = (Math.Abs(angle - angleSecondary));
+                    rotationAngles = ReturnRotationAngles(firstNode, secondNode);
                 }
                 else if (_crossNodeList[i + 1].SensorNetworkID != _primaryNetwork && _crossNodeList[i].SensorNetworkID == _primaryNetwork) //second node doesnt have same primary network id
                 {
+                    Node firstNode = new Node(_crossNodeList[i]);
 
-                    angle = returnAngle(_crossNodeList[i].XPos, _crossNodeList[i].YPos, _crossNodeList[i + 1].XPosSecondary,
-                     _crossNodeList[i + 1].YPosSecondary);
-
-                    angleSecondary = returnAngle(_crossNodeList[i].XPosSecondary, _crossNodeList[i].YPosSecondary,
-                                                  _crossNodeList[i + 1].XPos, _crossNodeList[i + 1].YPos);
-
-                    _rotationAngle += (Math.Abs(angle - angleSecondary));
-
+                    Node secondNode = new Node(_crossNodeList[i+1].ID, _crossNodeList[i].SecondarySensorNetworkID,
+                                               _crossNodeList[i+1].XPosSecondary, _crossNodeList[i].YPosSecondary,
+                                               _crossNodeList[i+1].ZPosSecondary,
+                                               _crossNodeList[i+1].gpsPosition, _crossNodeList[i].XPos,
+                                               _crossNodeList[i+1].YPos, _crossNodeList[i].ZPos,
+                                               _crossNodeList[i+1].SensorNetworkID);
+                    rotationAngles = ReturnRotationAngles(firstNode, secondNode);
                 }
+                else
+                {
+                    Node firstNode = new Node(_crossNodeList[i]);
+                    Node secondNode = new Node(_crossNodeList[i+1]);
+
+                    rotationAngles = ReturnRotationAngles(firstNode, secondNode);
+                }
+
+                _betaRotation += rotationAngles[0]; //rotation around z axis
+                _gamaRotation += rotationAngles[1]; //rotation around y axis
+                _alfaRotation += rotationAngles[2]; //rotation around x axis
 
             }
 
             //aritmethic mean of all calculated angles ;note - they all should be same
-            _rotationAngle = Math.Abs(_rotationAngle/(_crossNodeList.Count-1));
+            _alfaRotation = Math.Abs(_alfaRotation/(_crossNodeList.Count-1));
+            _betaRotation = Math.Abs(_betaRotation / (_crossNodeList.Count - 1));
+            _gamaRotation = Math.Abs(_gamaRotation / (_crossNodeList.Count - 1));
             
-
+            ////REWRITE/////
+            /// 
+            /// 
+            
             //calculating x/y shift between networks
-            double[] shiftedCoordinates = calculateShitft(_crossNodeList[0].XPosSecondary,
-                                                          _crossNodeList[0].YPosSecondary, _rotationAngle);
+           double[] shiftedCoordinates = calculateShitft(_crossNodeList[0].XPosSecondary,
+                                                          _crossNodeList[0].YPosSecondary,_crossNodeList[0].ZPosSecondary, _alfaRotation,_betaRotation,_gamaRotation);
 
-            _xShift = _crossNodeList[0].XPos + shiftedCoordinates[0];
-            _yShift = _crossNodeList[0].YPos + shiftedCoordinates[1];
+            //_xShift = _crossNodeList[0].XPos + shiftedCoordinates[0];
+            //_yShift = _crossNodeList[0].YPos + shiftedCoordinates[1];
                
         }
+
         /// <summary>
+        /// A function that takes primary/secondary coordinates of given nodes, 
+        /// and calculates a rotation of one cartesian system to another
+        /// </summary>
+        /// <param name="firstNode"></param>
+        /// <param name="secondNode"></param>
+        /// <returns>Returns rotation of cartesian coordinate system around every axis</returns>
+        private double[] ReturnRotationAngles(Node firstNode, Node secondNode)
+        {
+            var rotationAngles = new double[3];
+
+            //calculating alfa rotation
+            double angle = returnAngle(firstNode.XPos, firstNode.YPos, secondNode.XPos,
+                                       secondNode.YPos);
+
+            double angleSecondary = returnAngle(firstNode.XPosSecondary, firstNode.YPosSecondary,
+                                                secondNode.XPosSecondary,
+                                                secondNode.YPosSecondary);
+
+            rotationAngles[0] = (Math.Abs(angle - angleSecondary));
+
+            //calculating beta rotation
+            angle = returnAngle(firstNode.XPos, firstNode.ZPos, secondNode.XPos,
+                                secondNode.ZPos);
+
+            angleSecondary = returnAngle(firstNode.XPosSecondary, firstNode.ZPosSecondary,
+                                         secondNode.XPosSecondary,
+                                         secondNode.ZPosSecondary);
+
+            rotationAngles[1] = (Math.Abs(angle - angleSecondary));
+
+            //calculating gama rotation
+            angle = returnAngle(firstNode.YPos, firstNode.ZPos, secondNode.YPos,
+                                secondNode.ZPos);
+
+            angleSecondary = returnAngle(firstNode.YPosSecondary, firstNode.ZPosSecondary,
+                                         secondNode.YPosSecondary,
+                                         secondNode.ZPosSecondary);
+
+            rotationAngles[2] = (Math.Abs(angle - angleSecondary));
+
+
+            return rotationAngles;
+
+        }
+
+
+        ///<summary>
         /// Calculating shift in coordinates
         /// </summary>
         /// <param name="x">original XPOS</param>
         /// <param name="y">original YPOS</param>
-        /// <param name="angle">shift angle</param>
+        /// <param name="z">original ZPOS</param>
+        /// <param name="alfa">alfa shift angle - shift angle around x axis</param>
+        /// <param name="beta">beta shift angle - shift angle around y axis</param>
+        /// <param name="gama">gama shift angle - shift angle around z axis</param>
         /// <returns>Shifted coordinates</returns>
-        private double[] calculateShitft(double x, double y,double angle)
+        private double[] calculateShitft(double x, double y, double z,double alfa, double beta, double gama)
         {
-            double[] result = new double[2];
-            double inputAngle = (Math.PI / 180) * angle;
-            result[0] = Math.Cos(inputAngle) * x + Math.Sin(inputAngle) * y ; //formula for 2D matrix shifting
-            result[1] = -Math.Sin(inputAngle) * x + Math.Cos(inputAngle) * y;
+            double[] result = new double[3];
+            double[] rotationMatrix = new double[9];
+            double[] inputMatrix = new double[3];
+
+
+
+            double inputAlfa = (Math.PI/180)*alfa;
+            double inputBeta = (Math.PI/180)*beta;
+            double inputGama = (Math.PI/180)*gama;
+
+            rotationMatrix[0] = Math.Cos(inputBeta)*Math.Cos(inputGama);
+            rotationMatrix[1] = -Math.Cos(inputBeta)*Math.Sin(inputGama);
+            rotationMatrix[2] = -Math.Sin(inputGama);
+            rotationMatrix[3] = Math.Cos(inputAlfa)*Math.Sin(inputGama) -
+                        Math.Sin(inputAlfa)*Math.Cos(inputBeta)*Math.Cos(inputGama);
+            rotationMatrix[4] = Math.Cos(inputAlfa)*Math.Sin(inputGama) +
+                        Math.Sin(inputAlfa)*Math.Cos(inputBeta)*Math.Sin(inputGama);
+            rotationMatrix[5] = -Math.Sin(inputAlfa)*Math.Cos(inputBeta);
+            rotationMatrix[6] = Math.Cos(inputAlfa)*Math.Sin(inputBeta)*Math.Cos(inputGama) +
+                        Math.Sin(inputAlfa)*Math.Sin(inputGama);
+            rotationMatrix[7] = Math.Sin(inputAlfa)*Math.Cos(inputGama) - Math.Cos(inputAlfa)*
+                        Math.Sin(inputBeta)*Math.Sin(inputGama);
+            rotationMatrix[8] = Math.Cos(inputAlfa)*Math.Cos(inputBeta);
+
+            inputMatrix[0] = x;
+            inputMatrix[1] = y;
+            inputMatrix[2] = z;
+            for(int i = 0; i < 9; i++)
+            {
+                 result[i/3] += rotationMatrix[i] * inputMatrix[i%3];
+            }
 
             return result;
         }
@@ -245,14 +338,14 @@ namespace PlaceHolder
         {
             if(editedNode.SensorNetworkID != _primaryNetwork)
             {
-                double[] shiftedCoordinates = calculateShitft(editedNode.XPos, editedNode.YPos, _rotationAngle);
+                double[] shiftedCoordinates = calculateShitft(editedNode.XPos, editedNode.YPos,editedNode.ZPos, _alfaRotation,_betaRotation,_gamaRotation);
                 editedNode.XPosSecondary = _xShift - shiftedCoordinates[0];
                 editedNode.YPosSecondary = _yShift - shiftedCoordinates[1];
                 editedNode.SecondarySensorNetworkID = _primaryNetwork;
             }
             else
             {
-                double[] shiftedCoordinates = calculateShitft2(_xShift - editedNode.XPos, _yShift -editedNode.YPos, _rotationAngle);
+                double[] shiftedCoordinates = calculateShitft2(_xShift - editedNode.XPos, _yShift -editedNode.YPos, _alfaRotation);
                 editedNode.XPosSecondary = shiftedCoordinates[0];
                 editedNode.YPosSecondary = shiftedCoordinates[1];
                 editedNode.SecondarySensorNetworkID = _secondaryNetwork;
