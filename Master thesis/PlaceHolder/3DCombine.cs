@@ -37,7 +37,7 @@ namespace PlaceHolder
                 _primaryNetwork = _crossNodeList[0].SensorNetworkID; //primary network id of first crossnode is going to be primary network
                 _secondaryNetwork = _crossNodeList[0].SecondarySensorNetworkID; // setting secondary network id
                 CalculateNetworkDifferences(); //calculating angle and distance between networks
-                //AddNodesInfo(); //adding secondary coordinates to all nodes
+                AddNodesInfo(); //adding secondary coordinates to all nodes
             }
         }
 
@@ -188,11 +188,12 @@ namespace PlaceHolder
             /// 
             
             //calculating x/y shift between networks
-           double[] shiftedCoordinates = calculateShitft(_crossNodeList[0].XPosSecondary,
+           double[] shiftedCoordinates = CalculateShitft(_crossNodeList[0].XPosSecondary,
                                                           _crossNodeList[0].YPosSecondary,_crossNodeList[0].ZPosSecondary, _alfaRotation,_betaRotation,_gamaRotation);
 
-            //_xShift = _crossNodeList[0].XPos + shiftedCoordinates[0];
-            //_yShift = _crossNodeList[0].YPos + shiftedCoordinates[1];
+            _xShift = _crossNodeList[0].XPos + shiftedCoordinates[0];
+            _yShift = _crossNodeList[0].YPos + shiftedCoordinates[1];
+            _zShift = _crossNodeList[0].ZPos + shiftedCoordinates[2];
                
         }
 
@@ -253,7 +254,7 @@ namespace PlaceHolder
         /// <param name="beta">beta shift angle - shift angle around y axis</param>
         /// <param name="gama">gama shift angle - shift angle around z axis</param>
         /// <returns>Shifted coordinates</returns>
-        private double[] calculateShitft(double x, double y, double z,double alfa, double beta, double gama)
+        private double[] CalculateShitft(double x, double y, double z,double alfa, double beta, double gama)
         {
             double[] result = new double[3];
             double[] rotationMatrix = new double[9];
@@ -269,8 +270,8 @@ namespace PlaceHolder
             rotationMatrix[1] = -Math.Cos(inputBeta)*Math.Sin(inputGama);
             rotationMatrix[2] = -Math.Sin(inputGama);
             rotationMatrix[3] = Math.Cos(inputAlfa)*Math.Sin(inputGama) -
-                        Math.Sin(inputAlfa)*Math.Cos(inputBeta)*Math.Cos(inputGama);
-            rotationMatrix[4] = Math.Cos(inputAlfa)*Math.Sin(inputGama) +
+                        Math.Sin(inputAlfa)*Math.Sin(inputBeta)*Math.Cos(inputGama);
+            rotationMatrix[4] = Math.Cos(inputAlfa)*Math.Cos(inputGama) +
                         Math.Sin(inputAlfa)*Math.Cos(inputBeta)*Math.Sin(inputGama);
             rotationMatrix[5] = -Math.Sin(inputAlfa)*Math.Cos(inputBeta);
             rotationMatrix[6] = Math.Cos(inputAlfa)*Math.Sin(inputBeta)*Math.Cos(inputGama) +
@@ -297,12 +298,41 @@ namespace PlaceHolder
         /// <param name="y">original YPOS</param>
         /// <param name="angle">shift angle</param>
         /// <returns>Shifted coordinates</returns>
-        private double[] calculateShitft2(double x, double y, double angle)
+        private double[] CalculateInverseShitft(double x, double y, double z, double alfa, double beta, double gama)
         {
-            double[] result = new double[2];
-            double inputAngle = (Math.PI / 180) * angle;
-            result[0] = Math.Cos(inputAngle) * x - Math.Sin(inputAngle) * y; //formula for 2D matrix shifting
-            result[1] = Math.Sin(inputAngle) * x + Math.Cos(inputAngle) * y;
+            double[] result = new double[3];
+            double[] rotationMatrix = new double[9];
+            double[] inputMatrix = new double[3];
+
+
+
+            double inputAlfa = (Math.PI / 180) * alfa;
+            double inputBeta = (Math.PI / 180) * beta;
+            double inputGama = (Math.PI / 180) * gama;
+
+            rotationMatrix[0] = Math.Cos(inputBeta) * Math.Cos(inputGama);
+            rotationMatrix[1] = Math.Cos(inputAlfa)*Math.Sin(inputGama) - Math.Sin(inputAlfa)*Math.Sin(inputBeta)*Math.Cos(inputGama);
+
+            rotationMatrix[2] =Math.Cos(inputAlfa)*Math.Sin(inputBeta)*Math.Cos(inputGama) + Math.Sin(inputAlfa)*Math.Sin(inputGama);
+
+            rotationMatrix[3] = -Math.Cos(inputBeta)*Math.Sin(inputGama);
+            rotationMatrix[4] = Math.Cos(inputAlfa) * Math.Cos(inputGama) +
+                        Math.Sin(inputAlfa) * Math.Sin(inputBeta) * Math.Sin(inputGama);
+
+            rotationMatrix[5] = Math.Sin(inputAlfa)*Math.Cos(inputGama) -
+                                Math.Cos(inputAlfa)*Math.Sin(inputBeta)*Math.Sin(inputGama);
+
+            rotationMatrix[6] = -Math.Sin(inputBeta);
+            rotationMatrix[7] = -Math.Sin(inputAlfa)*Math.Cos(inputBeta);
+            rotationMatrix[8] = Math.Cos(inputAlfa) * Math.Cos(inputBeta);
+
+            inputMatrix[0] = x;
+            inputMatrix[1] = y;
+            inputMatrix[2] = z;
+            for (int i = 0; i < 9; i++)
+            {
+                result[i / 3] += rotationMatrix[i] * inputMatrix[i % 3];
+            }
 
             return result;
         }
@@ -338,20 +368,20 @@ namespace PlaceHolder
         {
             if(editedNode.SensorNetworkID != _primaryNetwork)
             {
-                double[] shiftedCoordinates = calculateShitft(editedNode.XPos, editedNode.YPos,editedNode.ZPos, _alfaRotation,_betaRotation,_gamaRotation);
+                double[] shiftedCoordinates = CalculateShitft(editedNode.XPos, editedNode.YPos,editedNode.ZPos, _alfaRotation,_betaRotation,_gamaRotation);
                 editedNode.XPosSecondary = _xShift - shiftedCoordinates[0];
                 editedNode.YPosSecondary = _yShift - shiftedCoordinates[1];
+                editedNode.ZPosSecondary = _zShift - shiftedCoordinates[2];
                 editedNode.SecondarySensorNetworkID = _primaryNetwork;
             }
             else
             {
-                double[] shiftedCoordinates = calculateShitft2(_xShift - editedNode.XPos, _yShift -editedNode.YPos, _alfaRotation);
+                double[] shiftedCoordinates = CalculateInverseShitft(editedNode.XPos, editedNode.YPos, editedNode.ZPos, _alfaRotation, _betaRotation, _gamaRotation);
                 editedNode.XPosSecondary = shiftedCoordinates[0];
                 editedNode.YPosSecondary = shiftedCoordinates[1];
+                editedNode.ZPosSecondary = shiftedCoordinates[2];
                 editedNode.SecondarySensorNetworkID = _secondaryNetwork;
             }
-
-
             return editedNode;
         }
     }
