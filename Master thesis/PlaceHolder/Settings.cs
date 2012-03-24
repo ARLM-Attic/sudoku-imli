@@ -16,7 +16,7 @@ namespace PlaceHolder
             return System.Configuration.ConfigurationManager.AppSettings.Get("LogPath");
         }
 
-        public bool areCrossNodesAvailable()
+        public bool AreCrossNodesAvailable()
         {
             if (ConfigurationManager.AppSettings.Get("CrossNodesAvailable").Contains("YES"))
             {
@@ -43,6 +43,20 @@ namespace PlaceHolder
             Double.TryParse(ConfigurationManager.AppSettings.Get("ShiftAngle"), out angle);
 
             return angle;
+        }
+
+        public int[] returnInputPlugins()
+        {
+            var plugins = new int[2];
+
+            plugins[0] = 1;
+
+            return plugins;
+        }
+
+        public string ReturnPluginPath()
+        {
+            return ConfigurationManager.AppSettings.Get("Plugin Path");
         }
     }
     

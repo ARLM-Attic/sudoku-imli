@@ -2,7 +2,6 @@
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
-using System.ServiceModel.Activation;
 
 namespace Sensor_network_1
 {

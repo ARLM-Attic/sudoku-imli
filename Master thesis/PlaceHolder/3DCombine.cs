@@ -183,10 +183,7 @@ namespace PlaceHolder
             _betaRotation = Math.Abs(_betaRotation / (_crossNodeList.Count - 1));
             _gamaRotation = Math.Abs(_gamaRotation / (_crossNodeList.Count - 1));
             
-            ////REWRITE/////
-            /// 
-            /// 
-            
+
             //calculating x/y shift between networks
            double[] shiftedCoordinates = CalculateShitft(_crossNodeList[0].XPosSecondary,
                                                           _crossNodeList[0].YPosSecondary,_crossNodeList[0].ZPosSecondary, _alfaRotation,_betaRotation,_gamaRotation);
@@ -254,7 +251,7 @@ namespace PlaceHolder
         /// <param name="beta">beta shift angle - shift angle around y axis</param>
         /// <param name="gama">gama shift angle - shift angle around z axis</param>
         /// <returns>Shifted coordinates</returns>
-        private double[] CalculateShitft(double x, double y, double z,double alfa, double beta, double gama)
+        public double[] CalculateShitft(double x, double y, double z,double alfa, double beta, double gama)
         {
             double[] result = new double[3];
             double[] rotationMatrix = new double[9];
@@ -298,13 +295,11 @@ namespace PlaceHolder
         /// <param name="y">original YPOS</param>
         /// <param name="angle">shift angle</param>
         /// <returns>Shifted coordinates</returns>
-        private double[] CalculateInverseShitft(double x, double y, double z, double alfa, double beta, double gama)
+        public double[] CalculateInverseShitft(double x, double y, double z, double alfa, double beta, double gama)
         {
             double[] result = new double[3];
             double[] rotationMatrix = new double[9];
             double[] inputMatrix = new double[3];
-
-
 
             double inputAlfa = (Math.PI / 180) * alfa;
             double inputBeta = (Math.PI / 180) * beta;

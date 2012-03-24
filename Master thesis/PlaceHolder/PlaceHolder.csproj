@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System" />
@@ -69,6 +70,7 @@
   <ItemGroup>
     <Compile Include="2DCombine.cs" />
     <Compile Include="3DCombine.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="node.cs" />
     <Compile Include="Service1.cs" />

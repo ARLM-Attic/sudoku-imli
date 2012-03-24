@@ -9,11 +9,14 @@ namespace PlaceHolder
     public class Log
     {
         public Log(string log,string path)
-        {     
-            StreamWriter sr = File.AppendText(path);
-            string info = DateTime.Now +" : "+ log;
-            sr.WriteLine(info,0,info.Count());
-            sr.Close();
+        {
+            if (path != null)
+            {
+                StreamWriter sr = File.AppendText(path);
+                string info = DateTime.Now + " : " + log;
+                sr.WriteLine(info, 0, info.Count());
+                sr.Close();
+            }
         }
 
     }

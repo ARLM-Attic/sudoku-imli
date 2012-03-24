@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
+using System.ComponentModel.Composition;
 
 namespace PlaceHolder
 {
@@ -17,22 +19,31 @@ namespace PlaceHolder
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
     public class Combine
     {
-        private readonly List<Node> _nodeList = new List<Node>(); //list of normal nodes
-        private List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
+        private static List<Node> _nodeList = new List<Node>(); //list of normal nodes
+        private static List<Node> _crossNodeList = new List<Node>(); //list of nodes that have location specified in two networks
 
-        //private readonly List<string> _usedIDs = new List<string>(); obsolete
         private Settings _settings = new Settings();
 
+        private static List<Node> _resultNodes = new List<Node>();
 
-        private List<Node> _resultNodes = new List<Node>();
-        // TODO: Implement the collection resource that will contain the SampleItem instances
+        private static List<List<Node>> _nodeListCollection = new List<List<Node>>();
+
+        public Combine()
+        {
+            _nodeListCollection.Add(_nodeList);
+            _nodeListCollection.Add(_crossNodeList);
+            _nodeListCollection.Add(_resultNodes);
+
+            var IO = new ModularIO(_nodeListCollection);
+
+            _nodeListCollection = IO.ReturnCollection();
+        }
+
 
         [WebGet(UriTemplate = "")]
-        public string GetCollection()
+        public List<Node> GetCollection()
         {
-           // CombineNetworks();
-           // return _resultNodes;
-            return "a";
+            return _nodeListCollection[2]; //returning resultNodes
         }
 
         [WebGet(UriTemplate = "{x},{y}")]
@@ -43,16 +54,10 @@ namespace PlaceHolder
             int b1 = 0;
             Double.TryParse(x, out a);
             Double.TryParse(y, out b);
-
-
             double x1, x2;
             double inputAngle = (Math.PI/180)*90;
             x1 = Math.Cos(inputAngle) * a + Math.Sin(inputAngle) * b + a1;
             x2 = -Math.Sin(inputAngle) * a + Math.Cos(inputAngle) * b + b1;
-            
-            
-            
-           
 
             return x1 +" : " +x2;
         }
