@@ -30,13 +30,20 @@ namespace PlaceHolder
 
         public Combine()
         {
+                    
+            var test = new Node(0, 0, 0, 0, 0);
+            _resultNodes.Add(test);
+            _nodeList.Add(test);
+            _crossNodeList.Add(test);
             _nodeListCollection.Add(_nodeList);
             _nodeListCollection.Add(_crossNodeList);
             _nodeListCollection.Add(_resultNodes);
 
-            var IO = new ModularIO(_nodeListCollection);
 
-            _nodeListCollection = IO.ReturnCollection();
+
+            var IO = new ModularIO();
+
+            _nodeListCollection = IO.GetNodesCollection.ReturnNodes(_nodeListCollection);
         }
 
 

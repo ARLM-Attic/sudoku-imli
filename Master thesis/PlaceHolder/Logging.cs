@@ -12,10 +12,13 @@ namespace PlaceHolder
         {
             if (path != null)
             {
-                StreamWriter sr = File.AppendText(path);
-                string info = DateTime.Now + " : " + log;
-                sr.WriteLine(info, 0, info.Count());
-                sr.Close();
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                
+                    StreamWriter sr = File.AppendText(path+"/log");
+                    string info = DateTime.Now + " : " + log;
+                    sr.WriteLine(info, 0, info.Count());
+                    sr.Close();       
             }
         }
 

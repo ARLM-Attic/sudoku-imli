@@ -25,7 +25,7 @@ namespace PlaceHolder
 
     public interface IGetMethodID
     {
-        int MethodID { get; }
+        char MethodID { get; }
     }
 
     [Export(typeof(IGetNodes))]
@@ -34,7 +34,7 @@ namespace PlaceHolder
     {
         public List<List<Node>> GetNodes(List<List<Node>> nodeListCollection)
         {
-            var node = new Node(0, 1, 1, 1, 1);
+            var node = new Node(1, 1, 1, 1, 1);
             nodeListCollection[0].Add(node);
 
             return nodeListCollection;
@@ -58,9 +58,9 @@ namespace PlaceHolder
                 int i = 0;
                 foreach (var method in methods)
                 {
-                    if (pluginIDs[i] == method.Metadata.MethodID)
+                   // if (pluginIDs[i] == method.Metadata.MethodID)
                         nodeListCollection = method.Value.GetNodes(nodeListCollection);
-                    i++;
+                   // i++;
                 }
             }
             else
@@ -78,40 +78,29 @@ namespace PlaceHolder
     public class ModularIO
     {
         private Settings settings = new Settings();
-
-        private List<List<Node>> _nodeListCollection;
         
         private CompositionContainer _container;
+        private AggregateCatalog catalog = new AggregateCatalog();
 
         [Import(typeof (IReturnNodes))] public IReturnNodes GetNodesCollection;
 
-        public ModularIO(List<List<Node>> nodeListCollection)
+        public ModularIO()
         {
             try
-            {
-                
+            { 
                 string pluginPath = settings.ReturnPluginPath();
-                var catalog = new AggregateCatalog();
-                catalog.Catalogs.Add(new AssemblyCatalog(typeof (Combine).Assembly));
+               catalog.Catalogs.Add(new AssemblyCatalog(typeof (ModularIO).Assembly));
 
                 if (pluginPath != null)
-                    catalog.Catalogs.Add(new DirectoryCatalog(settings.ReturnPluginPath()));
+                    catalog.Catalogs.Add(new DirectoryCatalog(pluginPath));
 
                 _container = new CompositionContainer(catalog);
                 _container.ComposeParts(this);
-
-                _nodeListCollection = GetNodesCollection.ReturnNodes(nodeListCollection);
             }
             catch (CompositionException exception)
             {
                 var log = new Log(exception.ToString(), settings.GetLogPath());
             }
         }
-
-        public List<List<Node>> ReturnCollection()
-        {
-            return _nodeListCollection;
-        }
-
     }
 }
