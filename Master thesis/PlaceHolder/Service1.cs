@@ -39,8 +39,6 @@ namespace PlaceHolder
             _nodeListCollection.Add(_crossNodeList);
             _nodeListCollection.Add(_resultNodes);
 
-
-
             var IO = new ModularIO();
 
             _nodeListCollection = IO.GetNodesCollection.ReturnNodes(_nodeListCollection);
@@ -50,7 +48,7 @@ namespace PlaceHolder
         [WebGet(UriTemplate = "")]
         public List<Node> GetCollection()
         {
-            return _nodeListCollection[2]; //returning resultNodes
+            return _nodeListCollection[0]; //returning resultNodes
         }
 
         [WebGet(UriTemplate = "{x},{y}")]

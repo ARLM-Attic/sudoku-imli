@@ -23,13 +23,13 @@ namespace PlaceHolder
         List<List<Node>> ModifyNodes(List<List<Node>> nodeListCollection);
     }
 
-    public interface IGetMethodID
+    public interface IGetMethodName
     {
-        char MethodID { get; }
+        char MethodName { get; }
     }
 
     [Export(typeof(IGetNodes))]
-    [ExportMetadata("MethodID",'1')]
+    [ExportMetadata("MethodName",'1')]
     class HttpRetreive : IGetNodes
     {
         public List<List<Node>> GetNodes(List<List<Node>> nodeListCollection)
@@ -45,7 +45,7 @@ namespace PlaceHolder
     public class Input: IReturnNodes
     {
         [ImportMany] 
-        IEnumerable<Lazy<IGetNodes,IGetMethodID>> methods;
+        IEnumerable<Lazy<IGetNodes,IGetMethodName>> methods;
 
         public List<List<Node>> ReturnNodes(List<List<Node>> nodeListCollection)
         {
@@ -65,7 +65,7 @@ namespace PlaceHolder
             }
             else
             {
-                foreach (Lazy<IGetNodes,IGetMethodID> method in methods)
+                foreach (Lazy<IGetNodes,IGetMethodName> method in methods)
                 {
                     nodeListCollection = method.Value.GetNodes(nodeListCollection);
                 }

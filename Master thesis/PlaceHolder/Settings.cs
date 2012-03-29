@@ -58,6 +58,13 @@ namespace PlaceHolder
         {
             return ConfigurationManager.AppSettings.Get("Plugin Path");
         }
+
+        public string[] ReturnSensorNetworks()
+        {
+            string temp = ConfigurationManager.AppSettings.Get("Sensor Networks");
+
+            return temp.Split(';');
+        }
     }
     
 }

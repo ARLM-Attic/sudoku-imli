@@ -13,6 +13,8 @@ namespace SensorNetwork
         public int ID { get;  set;}
         [DataMemberAttribute]
         public int SensorNetworkID { get;  set; }
+        [DataMemberAttribute]
+        public int SecondarySensorNetworkID { get; set; }
         [DataMemberAttribute]   
         public double XPos {get;  set;}
         [DataMemberAttribute]
