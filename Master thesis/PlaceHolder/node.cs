@@ -9,28 +9,28 @@ namespace PlaceHolder
     [DataContract]
     public class Node
     {
-        private Node node;
-
-        [DataMemberAttribute]
+        [DataMember]
         public int ID { get;  set;}
-        [DataMemberAttribute]
+        [DataMember]
         public int SensorNetworkID { get;  set; }
-        [DataMemberAttribute]
+        [DataMember]
         public int SecondarySensorNetworkID { get; set; }
-        [DataMemberAttribute]   
+        [DataMember]   
         public double XPos {get;  set;}
-        [DataMemberAttribute]
+        [DataMember]
         public double YPos { get;  set;}
-        [DataMemberAttribute]
+        [DataMember]
         public double ZPos { get;  set; }
-        [DataMemberAttribute]
+        [DataMember]
         public double XPosSecondary { get;  set; }
-        [DataMemberAttribute]
+        [DataMember]
         public double YPosSecondary { get;  set; }
-        [DataMemberAttribute]
+        [DataMember]
         public double ZPosSecondary { get;  set; }
-        [DataMemberAttribute]
-        public string gpsPosition { get;  set; }
+        [DataMember]
+        public string GlobalPositionValue { get;  set; }
+        [DataMember]
+        public string GLobalPositionType { get; set; }
 
 
         public Node(Node node)
@@ -44,7 +44,7 @@ namespace PlaceHolder
             XPosSecondary = node.XPosSecondary;
             YPosSecondary = node.YPosSecondary;
             ZPosSecondary = node.ZPosSecondary;
-            gpsPosition = node.gpsPosition;
+            GlobalPositionValue = node.GlobalPositionValue;
             //this.node = node;
         }
 
@@ -60,7 +60,7 @@ namespace PlaceHolder
             RoundNumbers();
         }
 
-        public Node(int identification, int networkID, double x, double y, double z, string gps, double xSecondary, double ysecondary, double zSecondary, int SecondaryNetworkID)
+        public Node(int identification, int networkID, double x, double y, double z, string globalPosition,string globalPostionType, double xSecondary, double ysecondary, double zSecondary, int SecondaryNetworkID)
         {
             ID = identification;
             SensorNetworkID = networkID;
@@ -74,7 +74,8 @@ namespace PlaceHolder
             ZPosSecondary = zSecondary;
             RoundNumbers();
 
-            gpsPosition = gps;
+            GlobalPositionValue = globalPosition;
+            GLobalPositionType = globalPostionType;
         }
 
 

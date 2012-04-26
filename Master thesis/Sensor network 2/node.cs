@@ -28,7 +28,9 @@ namespace SensorNetwork
         [DataMemberAttribute]
         public double ZPosSecondary { get;  set; }
         [DataMemberAttribute]
-        public string gpsPosition { get;  set; }
+        public string GlobalPositionValue { get;  set; }
+        [DataMemberAttribute]
+        public string GlobalPositionType { get; set; }
 
 
         Settings values = new Settings();
@@ -50,11 +52,11 @@ namespace SensorNetwork
             YPosSecondary = 0;
             ZPosSecondary = 0;
 
-            gpsPosition = "";
+            GlobalPositionValue = "";
             RoundNumbers(); //rounding up numbers to two digits precision
         }
 
-        public Node(int identification,int networkID, double x, double y,double z)
+        public Node(int identification,int networkID,int secondaryNetworkID, double x, double y,double z)
         {
             Random rand = new Random();
             ID = identification;
@@ -63,17 +65,17 @@ namespace SensorNetwork
             XPos = rand.Next(areaSize) * rand.NextDouble();
             YPos = rand.Next(areaSize) * rand.NextDouble();
             ZPos = rand.Next(areaSize) * rand.NextDouble();
-
+            SecondarySensorNetworkID = secondaryNetworkID;
            
             XPosSecondary = x;
             YPosSecondary = y;
             ZPosSecondary = z;
 
-            gpsPosition = "";
+            GlobalPositionValue = "";
             RoundNumbers();
         }
 
-        public Node(int identification,int networkID, double x, double y,double z, string gps)
+        public Node(int identification,int networkID, double x, double y,double z, string gps, string gpsType)
         {
             Random rand = new Random();
             ID = identification;
@@ -88,14 +90,16 @@ namespace SensorNetwork
             ZPosSecondary = z;
             RoundNumbers();
 
-            gpsPosition = gps;
+            GlobalPositionValue = gps;
+            GlobalPositionType = gpsType;
         }
 
-        public Node(int identification, int networkID, double x, double y, double z, string gps, double xSecondary, double ysecondary,double zSecondary)
+        public Node(int identification, int networkID,int secondaryNetworkID, double x, double y, double z, double xSecondary, double ysecondary,double zSecondary)
         {
             ID = identification;
             SensorNetworkID = networkID;
             int areaSize = values.GetAreaSize();
+            SecondarySensorNetworkID = secondaryNetworkID;
             XPos = x;
             YPos = y;
             ZPos = z;
@@ -104,8 +108,6 @@ namespace SensorNetwork
             YPosSecondary = ysecondary;
             ZPosSecondary = zSecondary;
             RoundNumbers();
-
-            gpsPosition = gps;
         }
 
         public void ChangePosition()

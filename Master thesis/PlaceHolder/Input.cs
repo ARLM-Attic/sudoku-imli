@@ -27,7 +27,8 @@ namespace PlaceHolder
     {
         char MethodName { get; }
     }
-
+    
+    /*
     [Export(typeof(IGetNodes))]
     [ExportMetadata("MethodName",'1')]
     class HttpRetreive : IGetNodes
@@ -39,13 +40,17 @@ namespace PlaceHolder
 
             return nodeListCollection;
         }
-    }
+    }*/
 
     [Export(typeof(IReturnNodes))]
     public class Input: IReturnNodes
     {
         [ImportMany] 
-        IEnumerable<Lazy<IGetNodes,IGetMethodName>> methods;
+        IEnumerable<Lazy<IGetNodes,IGetMethodName>> getMethods;
+
+        [ImportMany]
+        IEnumerable<Lazy<IModifyNodes, IGetMethodName>> modifyMethods;
+
 
         public List<List<Node>> ReturnNodes(List<List<Node>> nodeListCollection)
         {
@@ -56,16 +61,24 @@ namespace PlaceHolder
             if (pluginIDs.Count() != 0)
             {
                 int i = 0;
-                foreach (var method in methods)
+                foreach (var method in getMethods)
                 {
                    // if (pluginIDs[i] == method.Metadata.MethodID)
                         nodeListCollection = method.Value.GetNodes(nodeListCollection);
                    // i++;
                 }
+
+                foreach (var method in modifyMethods)
+                {
+                    // if (pluginIDs[i] == method.Metadata.MethodID)
+                    nodeListCollection = method.Value.ModifyNodes(nodeListCollection);
+                    // i++;
+                }
+
             }
             else
             {
-                foreach (Lazy<IGetNodes,IGetMethodName> method in methods)
+                foreach (Lazy<IGetNodes, IGetMethodName> method in getMethods)
                 {
                     nodeListCollection = method.Value.GetNodes(nodeListCollection);
                 }

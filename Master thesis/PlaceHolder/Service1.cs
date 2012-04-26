@@ -7,6 +7,7 @@ using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using System.ComponentModel.Composition;
+using System.Web.Script.Services;
 
 namespace PlaceHolder
 {
@@ -15,7 +16,7 @@ namespace PlaceHolder
     // a single instance of the service to process all calls.	
     [ServiceContract]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     // NOTE: If the service is renamed, remember to update the global.asax.cs file
     public class Combine
     {
@@ -31,10 +32,10 @@ namespace PlaceHolder
         public Combine()
         {
                     
-            var test = new Node(0, 0, 0, 0, 0);
-            _resultNodes.Add(test);
-            _nodeList.Add(test);
-            _crossNodeList.Add(test);
+            //var test = new Node(0, 0, 0, 0, 0);
+            //_resultNodes.Add(test);
+            //_nodeList.Add(test);
+            //_crossNodeList.Add(test);
             _nodeListCollection.Add(_nodeList);
             _nodeListCollection.Add(_crossNodeList);
             _nodeListCollection.Add(_resultNodes);
@@ -42,14 +43,24 @@ namespace PlaceHolder
             var IO = new ModularIO();
 
             _nodeListCollection = IO.GetNodesCollection.ReturnNodes(_nodeListCollection);
+            
         }
 
 
-        [WebGet(UriTemplate = "")]
+        [WebGet(UriTemplate = "xml/")]
         public List<Node> GetCollection()
         {
             return _nodeListCollection[0]; //returning resultNodes
         }
+
+        [WebGet(UriTemplate = "{Format}")]
+        public List<Node> test(string Format)
+        {
+            WebOperationContext.Current.OutgoingResponse.Format = WebMessageFormat.Json;
+            return _nodeListCollection[0];
+        }
+
+
 
         [WebGet(UriTemplate = "{x},{y}")]
         public string A(string x, string y)
@@ -88,9 +99,9 @@ namespace PlaceHolder
             Double.TryParse(secondaryYPos, out secondaryYPosition);
             Double.TryParse(secondaryZPos, out secondaryZPosition);
 
-            Node node = new Node(ident, networkIdent, xPosition, yPosition, zPosition, gps, secondaryXPosition, secondaryYPosition, secondaryZPosition,secondaryNetworkIdent);
-            _crossNodeList.Add(node);
-            _nodeList.Add(node);
+            //Node node = new Node(ident, networkIdent, xPosition, yPosition, zPosition, gps, secondaryXPosition, secondaryYPosition, secondaryZPosition,secondaryNetworkIdent);
+            //_crossNodeList.Add(node);
+            //_nodeList.Add(node);
         }
 
         /// <summary>

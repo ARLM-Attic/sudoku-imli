@@ -8,6 +8,8 @@ using System.ServiceModel.Web;
 namespace SensorNetwork
 {
     // Deploying the service: Publish it to the inetput/wwwroot directory. in IIS admin set it as application and set it as .net 4 app.
+    // Also do not forget to create an user rights for IIS
+    // Last step is to install net 4. http://stackoverflow.com/questions/4890245/how-to-add-asp-net-4-0-as-application-pool-on-iis-7-windows-7
     [ServiceContract]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
@@ -23,6 +25,14 @@ namespace SensorNetwork
         {
             int NodeCount = values.GetInitialNodeCount();
             int crossNetworkNodeCount = values.GetCrossNetworkNodeCount();
+            
+            string temp = values.getAnything("secondaryNetworkID");
+            int secondaryNetworkID;
+            Int32.TryParse(temp, out secondaryNetworkID);
+
+            temp = values.getAnything("GlobalPosNodeCount");
+            int globalNodeCount;
+            Int32.TryParse(temp, out globalNodeCount);
 
             int networkID = values.GetNetworkID();
             for (int i = 0; i < NodeCount ; i++)
@@ -32,7 +42,19 @@ namespace SensorNetwork
             }
             for (int i = 0; i < crossNetworkNodeCount;i++ )
             {
-                Node crossNode = new Node(i + NodeCount,networkID,i,i,i); //
+                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i, i, i,i + 2, i + 3, i + 4); //
+                _nodeList.Add(crossNode);
+            }
+
+            string valueString = "Global Position - 0";
+            string globalPos;
+            string globalPosType = values.getAnything("Global Position type");
+
+            for (int i = 0; i < globalNodeCount; i++)
+            {
+                globalPos = values.getAnything(valueString);
+                valueString = valueString.Replace((i).ToString(), (i+1).ToString());
+                Node crossNode = new Node(i + NodeCount, networkID, i, i, i, globalPos,globalPosType); 
                 _nodeList.Add(crossNode);
             }
                 

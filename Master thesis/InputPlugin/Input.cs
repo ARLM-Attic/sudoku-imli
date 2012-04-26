@@ -33,47 +33,56 @@ namespace InputPlugin
         public List<Node> HttpGetNodeCollection(string URI)
         {
             var _nodeList = new List<Node>();
-
-            WebRequest request = WebRequest.Create(URI);
-            request.Method = "GET";
-            WebResponse response = request.GetResponse();
-            var stream = new StreamReader(response.GetResponseStream());
-
-            var xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(stream.ReadToEnd());
-
-
-            //parsing XML response into node objects
-            XmlNodeList IDlist = xmlDoc.GetElementsByTagName("ID");
-            XmlNodeList SecondarySensorIDList = xmlDoc.GetElementsByTagName("SecondarySensorNetworkID");
-            XmlNodeList SensorIDList = xmlDoc.GetElementsByTagName("SensorNetworkID");
-            XmlNodeList XPosList = xmlDoc.GetElementsByTagName("XPos");
-            XmlNodeList YPosList = xmlDoc.GetElementsByTagName("YPos");
-            XmlNodeList ZPosList = xmlDoc.GetElementsByTagName("ZPos");
-            XmlNodeList XPosSecondaryList = xmlDoc.GetElementsByTagName("XPosSecondary");
-            XmlNodeList YPosSecondaryList = xmlDoc.GetElementsByTagName("YPosSecondary");
-            XmlNodeList ZPosSecondaryList = xmlDoc.GetElementsByTagName("ZPosSecondary");
-            XmlNodeList gpsPosList = xmlDoc.GetElementsByTagName("gpsPosition");
-
-            double XPos, YPos, ZPos, XPosSecondary, YPosSecondary, ZPosSecondary;
-
-            string gpsPosition;
-            int networkID, networkIDSecondary, ID;
-            for (int i = 0; i < IDlist.Count; i++)
+            try
             {
-                Int32.TryParse(IDlist[i].InnerText, out ID);
-                Int32.TryParse(SensorIDList[i].InnerText, out networkID);
-                Int32.TryParse(SecondarySensorIDList[i].InnerText, out networkIDSecondary);
-                Double.TryParse(XPosList[i].InnerText, out XPos);
-                Double.TryParse(YPosList[i].InnerText, out YPos);
-                Double.TryParse(ZPosList[i].InnerText, out ZPos);
-                Double.TryParse(XPosSecondaryList[i].InnerText, out XPosSecondary);
-                Double.TryParse(YPosSecondaryList[i].InnerText, out YPosSecondary);
-                Double.TryParse(ZPosSecondaryList[i].InnerText, out ZPosSecondary);
-                gpsPosition = gpsPosList[i].InnerText;
-                Node newNode = new Node(ID, networkID, XPos, YPos, ZPos, gpsPosition, XPosSecondary, YPosSecondary,
-                                        ZPosSecondary, networkIDSecondary);
-                _nodeList.Add(newNode);
+                WebRequest request = WebRequest.Create(URI);
+                request.Method = "GET";
+
+                WebResponse response = request.GetResponse();
+                var stream = new StreamReader(response.GetResponseStream());
+
+                var xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml(stream.ReadToEnd());
+
+
+                //parsing XML response into node objects
+                XmlNodeList IDlist = xmlDoc.GetElementsByTagName("ID");
+                XmlNodeList SecondarySensorIDList = xmlDoc.GetElementsByTagName("SecondarySensorNetworkID");
+                XmlNodeList SensorIDList = xmlDoc.GetElementsByTagName("SensorNetworkID");
+                XmlNodeList XPosList = xmlDoc.GetElementsByTagName("XPos");
+                XmlNodeList YPosList = xmlDoc.GetElementsByTagName("YPos");
+                XmlNodeList ZPosList = xmlDoc.GetElementsByTagName("ZPos");
+                XmlNodeList XPosSecondaryList = xmlDoc.GetElementsByTagName("XPosSecondary");
+                XmlNodeList YPosSecondaryList = xmlDoc.GetElementsByTagName("YPosSecondary");
+                XmlNodeList ZPosSecondaryList = xmlDoc.GetElementsByTagName("ZPosSecondary");
+                XmlNodeList gpsPosList = xmlDoc.GetElementsByTagName("GlobalPositionValue");
+                XmlNodeList gpsTypeList = xmlDoc.GetElementsByTagName("GlobalPositionType");
+
+                double XPos, YPos, ZPos, XPosSecondary, YPosSecondary, ZPosSecondary;
+
+                string gpsPosition, gpsType;
+                int networkID, networkIDSecondary, ID;
+                for (int i = 0; i < IDlist.Count; i++)
+                {
+                    Int32.TryParse(IDlist[i].InnerText, out ID);
+                    Int32.TryParse(SensorIDList[i].InnerText, out networkID);
+                    Int32.TryParse(SecondarySensorIDList[i].InnerText, out networkIDSecondary);
+                    Double.TryParse(XPosList[i].InnerText, out XPos);
+                    Double.TryParse(YPosList[i].InnerText, out YPos);
+                    Double.TryParse(ZPosList[i].InnerText, out ZPos);
+                    Double.TryParse(XPosSecondaryList[i].InnerText, out XPosSecondary);
+                    Double.TryParse(YPosSecondaryList[i].InnerText, out YPosSecondary);
+                    Double.TryParse(ZPosSecondaryList[i].InnerText, out ZPosSecondary);
+                    gpsPosition = gpsPosList[i].InnerText;
+                    gpsType = gpsTypeList[i].InnerText;
+
+                    Node newNode = new Node(ID, networkID, XPos, YPos, ZPos, gpsPosition,gpsType, XPosSecondary, YPosSecondary,
+                                            ZPosSecondary, networkIDSecondary);
+                    _nodeList.Add(newNode);
+                }
+            }catch(WebException exp)
+            {
+                var log = new Log(exp.ToString(), settings.GetLogPath());
             }
 
             return _nodeList;

@@ -11,6 +11,11 @@ namespace PlaceHolder
         /// </summary>
     public class Settings
     {
+
+        public string getAnything(string keyValue)
+        {
+            return System.Configuration.ConfigurationManager.AppSettings.Get(keyValue);
+        }
         public string GetLogPath()
         {
             return System.Configuration.ConfigurationManager.AppSettings.Get("LogPath");

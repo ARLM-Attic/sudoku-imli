@@ -70,8 +70,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2DCombine.cs" />
-    <Compile Include="3DCombine.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="node.cs" />

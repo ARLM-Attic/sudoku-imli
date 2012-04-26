@@ -8,6 +8,11 @@ namespace SensorNetwork
     public class Settings
     {
 
+        public string getAnything(string keyValue)
+        {
+            return System.Configuration.ConfigurationManager.AppSettings.Get(keyValue);
+        }
+
         public int GetAreaSize()
         {
             int areaSize;
