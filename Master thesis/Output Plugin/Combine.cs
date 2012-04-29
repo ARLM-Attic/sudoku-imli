@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Output_Plugin;
 using PlaceHolder;
 
 namespace OutputPlugin
@@ -19,20 +20,16 @@ namespace OutputPlugin
         {
             List<Node> globalPosList = new List<Node>();
             UpdateLocalPosition(nodeListCollection, globalPosList);
+            UpdateGlobalPosition(nodeListCollection,globalPosList);
                           
             return nodeListCollection;
         }
 
         public void UpdateGlobalPosition(List<List<Node>> nodeListCollection, List<Node> globalPosList)
         {
-            //unless we have 3 nodes with global coordinates we cant do anything
-            if(globalPosList.Count > 2)
-            {
-                
 
+            var globalPosUpdate = new GlobalPosUpdate(nodeListCollection, globalPosList);
 
-
-            }
 
             
 

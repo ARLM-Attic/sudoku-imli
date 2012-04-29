@@ -49,6 +49,7 @@
     <Compile Include="3DCombine.cs" />
     <Compile Include="Combine.cs" />
     <Compile Include="GeoUTMConverter.cs" />
+    <Compile Include="GlobalPosUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

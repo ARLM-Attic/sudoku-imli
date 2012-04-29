@@ -63,7 +63,7 @@ namespace SensorNetwork
             SensorNetworkID = networkID;
             int areaSize = values.GetAreaSize();
             XPos = rand.Next(areaSize) * rand.NextDouble();
-            YPos = rand.Next(areaSize) * rand.NextDouble();
+            YPos = rand.Next(areaSize) * rand.NextDouble();  
             ZPos = rand.Next(areaSize) * rand.NextDouble();
             SecondarySensorNetworkID = secondaryNetworkID;
            
@@ -76,18 +76,17 @@ namespace SensorNetwork
         }
 
         public Node(int identification,int networkID, double x, double y,double z, string gps, string gpsType)
-        {
+        { 
+
             Random rand = new Random();
             ID = identification;
+
             SensorNetworkID = networkID;
             int areaSize = values.GetAreaSize();
-            XPos = rand.Next(areaSize) * rand.NextDouble();
-            YPos = rand.Next(areaSize) * rand.NextDouble();
-            ZPos = rand.Next(areaSize) * rand.NextDouble();
+            XPos = x;
+            YPos = y;
+            ZPos = z;
 
-            XPosSecondary = x;
-            YPosSecondary = y;
-            ZPosSecondary = z;
             RoundNumbers();
 
             GlobalPositionValue = gps;

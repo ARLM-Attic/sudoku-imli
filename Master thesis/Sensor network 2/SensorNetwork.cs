@@ -46,18 +46,39 @@ namespace SensorNetwork
                 _nodeList.Add(crossNode);
             }
 
-            string valueString = "Global Position - 0";
+            string globalString = "Global Position - 0";
+            string localString = "Local Position - 0";
             string globalPos;
+            string localPosString;
             string globalPosType = values.getAnything("Global Position type");
+            
 
             for (int i = 0; i < globalNodeCount; i++)
             {
-                globalPos = values.getAnything(valueString);
-                valueString = valueString.Replace((i).ToString(), (i+1).ToString());
-                Node crossNode = new Node(i + NodeCount, networkID, i, i, i, globalPos,globalPosType); 
+                globalPos = values.getAnything(globalString);
+                localPosString = values.getAnything(localString);
+                double[] localPos = returnLocalPos(localPosString);
+
+                globalString = globalString.Replace((i).ToString(), (i + 1).ToString());
+                localString = localString.Replace((i).ToString(), (i + 1).ToString());
+                Node crossNode = new Node(i + NodeCount, networkID, localPos[0], localPos[1], 0, globalPos,globalPosType); 
                 _nodeList.Add(crossNode);
             }
                 
+        }
+
+        public double[] returnLocalPos(string value)
+        {
+            double[] localPos = new double[2];
+
+            string temp = value.Substring(0, value.IndexOf(";"));
+
+            Double.TryParse(temp, out localPos[0]);
+
+            temp = value.Substring(value.IndexOf(";") + 1, value.Length - value.IndexOf(";") - 1);
+
+            Double.TryParse(temp, out localPos[1]);
+            return localPos;
         }
 
         /// <summary>

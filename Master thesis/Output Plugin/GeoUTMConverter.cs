@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace trafikappen.Utils
+namespace Output_Plugin
 {
     /*
      * *	Copyright 1997-1998 by Charles L. Taylor
