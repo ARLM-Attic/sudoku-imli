@@ -47,11 +47,11 @@ namespace InputPlugin
 
                 //parsing XML response into node objects
                 XmlNodeList IDlist = xmlDoc.GetElementsByTagName("ID");
-                XmlNodeList SecondarySensorIDList = xmlDoc.GetElementsByTagName("SecondarySensorNetworkID");
                 XmlNodeList SensorIDList = xmlDoc.GetElementsByTagName("SensorNetworkID");
                 XmlNodeList XPosList = xmlDoc.GetElementsByTagName("XPos");
                 XmlNodeList YPosList = xmlDoc.GetElementsByTagName("YPos");
                 XmlNodeList ZPosList = xmlDoc.GetElementsByTagName("ZPos");
+                XmlNodeList SecondarySensorIDList = xmlDoc.GetElementsByTagName("SecondarySensorNetworkID");
                 XmlNodeList XPosSecondaryList = xmlDoc.GetElementsByTagName("XPosSecondary");
                 XmlNodeList YPosSecondaryList = xmlDoc.GetElementsByTagName("YPosSecondary");
                 XmlNodeList ZPosSecondaryList = xmlDoc.GetElementsByTagName("ZPosSecondary");

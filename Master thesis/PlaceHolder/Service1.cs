@@ -53,12 +53,55 @@ namespace PlaceHolder
             return _nodeListCollection[0]; //returning resultNodes
         }
 
-        [WebGet(UriTemplate = "{Format}")]
-        public List<Node> test(string Format)
+        [WebGet(UriTemplate = "json/")]
+        public List<Node> GetJsonCollection()
         {
             WebOperationContext.Current.OutgoingResponse.Format = WebMessageFormat.Json;
             return _nodeListCollection[0];
         }
+        [WebGet(UriTemplate = "json/{ID};{NetworkID}")]
+        public Node GetJsonNode(string ID, string NetworkID)
+        {
+            int nodeID;
+            int nodeNetworkID;
+
+            Int32.TryParse(ID, out nodeID);
+            Int32.TryParse(NetworkID, out nodeNetworkID);
+            WebOperationContext.Current.OutgoingResponse.Format = WebMessageFormat.Json;
+
+            foreach (var list in _nodeListCollection)
+            {
+                foreach (var node in list)
+                {
+                    if (node.ID == nodeID)
+                        if (node.SensorNetworkID == nodeNetworkID) return node;
+                }
+            }
+
+            return null;
+        }
+
+        [WebGet(UriTemplate = "xml/{ID};{NetworkID}")]
+        public Node GetXMLNode(string ID, string NetworkID)
+        {
+            int nodeID;
+            int nodeNetworkID;
+
+            Int32.TryParse(ID, out nodeID);
+            Int32.TryParse(NetworkID, out nodeNetworkID);
+
+            foreach (var list in _nodeListCollection)
+            {
+                foreach (var node in list)
+                {
+                    if (node.ID == nodeID)
+                        if (node.SensorNetworkID == nodeNetworkID) return node;
+                }
+            }
+
+            return null;
+        }
+
 
 
 

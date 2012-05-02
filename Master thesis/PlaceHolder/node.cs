@@ -9,28 +9,29 @@ namespace PlaceHolder
     [DataContract]
     public class Node
     {
-        [DataMember]
-        public int ID { get;  set;}
-        [DataMember]
-        public int SensorNetworkID { get;  set; }
-        [DataMember]
-        public int SecondarySensorNetworkID { get; set; }
-        [DataMember]   
-        public double XPos {get;  set;}
-        [DataMember]
-        public double YPos { get;  set;}
-        [DataMember]
-        public double ZPos { get;  set; }
-        [DataMember]
-        public double XPosSecondary { get;  set; }
-        [DataMember]
-        public double YPosSecondary { get;  set; }
-        [DataMember]
-        public double ZPosSecondary { get;  set; }
-        [DataMember]
-        public string GlobalPositionValue { get;  set; }
-        [DataMember]
+        [DataMemberAttribute]
+        public string GlobalPositionValue { get; set; }
+        [DataMemberAttribute]
         public string GLobalPositionType { get; set; }
+        [DataMemberAttribute]
+        public int ID { get;  set;}
+        [DataMemberAttribute]
+        public int SensorNetworkID { get;  set; }
+        [DataMemberAttribute]   
+        public double XPos {get;  set;}
+        [DataMemberAttribute]
+        public double YPos { get;  set;}
+        [DataMemberAttribute]
+        public double ZPos { get;  set; }
+        [DataMemberAttribute]
+        public int SecondarySensorNetworkID { get; set; }
+        [DataMemberAttribute]
+        public double XPosSecondary { get;  set; }
+        [DataMemberAttribute]
+        public double YPosSecondary { get;  set; }
+        [DataMemberAttribute]
+        public double ZPosSecondary { get;  set; }
+
 
 
         public Node(Node node)

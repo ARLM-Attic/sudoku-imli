@@ -180,14 +180,14 @@ namespace SensorNetwork
         }
 
         [WebInvoke(UriTemplate = "{id}", Method = "PUT")]
-        public Node Update(string id, Node instance)
+        public Node UpdateNode(string id, Node instance)
         {
             // TODO: Update the given instance of Node in the collection
             throw new NotImplementedException();
         }
 
         [WebInvoke(Method = "DELETE")]
-        public void Delete()
+        public void DeleteNode()
         {
             Exception zeroSize = new Exception( "There are no nodes in network to remove");
             try
