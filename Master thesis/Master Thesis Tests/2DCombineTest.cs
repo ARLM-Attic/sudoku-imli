@@ -15,7 +15,7 @@ namespace Master_Thesis_Tests
         {
             List<Node> crossNodeList = new List<Node>();
             List<Node> nodeList = new List<Node>();
-
+            /*
             Node node1 = new Node(0, 1, 4, 4, 0, "", 1, 1, 0, 2);
             Node node2 = new Node(1, 1, 4, 6, 0, "", 3, 1, 0, 2);
             Node node3 = new Node(2, 1, 2, 5, 0, "", 2, 3, 0, 2);
@@ -25,6 +25,7 @@ namespace Master_Thesis_Tests
             crossNodeList.Add(node3);
 
             TwoDimensionCombine Combine = new TwoDimensionCombine(nodeList, crossNodeList);
+             */
         }
     }
 }

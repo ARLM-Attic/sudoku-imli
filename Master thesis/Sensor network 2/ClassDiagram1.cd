@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SensorNetwork.Global" Collapsed="true">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SensorNetwork.Log" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SensorNetwork.Node">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="values" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ACAAAMAAAQAEgCAAgAAAAAAAgAAAASABAAAAAIAACAA=</HashCode>
+      <FileName>node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SensorNetwork.SensorNetwork">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAEEEAAAACAAAAEAAEEIAAA=</HashCode>
+      <FileName>SensorNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SensorNetwork.Settings">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAACABAAAACAAgAAAAAAAAAEABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -18,9 +18,19 @@ namespace PlaceHolder
         List<List<Node>> GetNodes(List<List<Node>> nodeListCollection);
     }
 
+    public interface IGetNode
+    {
+        Node GetNode(Node tempNode, int ID, int SensorNetworkID);
+    }
+
     public interface  IModifyNodes
     {
         List<List<Node>> ModifyNodes(List<List<Node>> nodeListCollection);
+    }
+
+    public interface IModifyNode
+    {
+        Node ModifyNode(Node tempNode, int ID, int SensorNetworkID);
     }
 
     public interface IGetMethodName
@@ -50,6 +60,14 @@ namespace PlaceHolder
 
         [ImportMany]
         IEnumerable<Lazy<IModifyNodes, IGetMethodName>> modifyMethods;
+
+        [ImportMany]
+        IEnumerable<Lazy<IGetNode, IGetMethodName>> simpleGetMethods;
+
+        [ImportMany]
+        IEnumerable<Lazy<IModifyNode, IGetMethodName>> simpleModifyMethods;
+
+
 
 
         public List<List<Node>> ReturnNodes(List<List<Node>> nodeListCollection)
