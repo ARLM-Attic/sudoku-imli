@@ -67,10 +67,11 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Input.cs" />
+    <Compile Include="Plugins.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="node.cs" />
     <Compile Include="Service1.cs" />

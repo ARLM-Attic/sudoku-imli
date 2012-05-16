@@ -16,6 +16,17 @@ namespace PlaceHolder
         {
             return System.Configuration.ConfigurationManager.AppSettings.Get(keyValue);
         }
+
+        public void setAnything(string keyValue, string setValue)
+        {
+            try
+            {
+                System.Configuration.ConfigurationManager.AppSettings.Set(keyValue, setValue);
+            }
+            catch(Exception exp)
+            {}
+        }
+
         public string GetLogPath()
         {
             return System.Configuration.ConfigurationManager.AppSettings.Get("LogPath");

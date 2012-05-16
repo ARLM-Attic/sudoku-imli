@@ -7,12 +7,18 @@ using System.ComponentModel.Composition.Hosting;
 
 namespace PlaceHolder
 {
-
+    //interfaces that combines both modifing and creating new nodes
     public interface IReturnNodes
     {
         List<List<Node>> ReturnNodes(List<List<Node>> nodeListCollection);
     }
 
+    public interface IReturnNode
+    {
+        Node ReturnNode(Node tempNode,int ID, int SensorNetworkID);
+    }
+
+    //interfaces for creating/updating existing new nodes
     public interface IGetNodes
     {
         List<List<Node>> GetNodes(List<List<Node>> nodeListCollection);
@@ -23,6 +29,7 @@ namespace PlaceHolder
         Node GetNode(Node tempNode, int ID, int SensorNetworkID);
     }
 
+    //interfaces used to modify existing nodes based on parametrs of their sensor networks
     public interface  IModifyNodes
     {
         List<List<Node>> ModifyNodes(List<List<Node>> nodeListCollection);
@@ -33,42 +40,23 @@ namespace PlaceHolder
         Node ModifyNode(Node tempNode, int ID, int SensorNetworkID);
     }
 
+    //interface used to get methodname
     public interface IGetMethodName
     {
         char MethodName { get; }
     }
     
-    /*
-    [Export(typeof(IGetNodes))]
-    [ExportMetadata("MethodName",'1')]
-    class HttpRetreive : IGetNodes
-    {
-        public List<List<Node>> GetNodes(List<List<Node>> nodeListCollection)
-        {
-            var node = new Node(1, 1, 1, 1, 1);
-            nodeListCollection[0].Add(node);
-
-            return nodeListCollection;
-        }
-    }*/
-
+    /// <summary>
+    /// Export for Node collections
+    /// </summary>
     [Export(typeof(IReturnNodes))]
-    public class Input: IReturnNodes
+    public class Plugins: IReturnNodes
     {
         [ImportMany] 
         IEnumerable<Lazy<IGetNodes,IGetMethodName>> getMethods;
 
         [ImportMany]
         IEnumerable<Lazy<IModifyNodes, IGetMethodName>> modifyMethods;
-
-        [ImportMany]
-        IEnumerable<Lazy<IGetNode, IGetMethodName>> simpleGetMethods;
-
-        [ImportMany]
-        IEnumerable<Lazy<IModifyNode, IGetMethodName>> simpleModifyMethods;
-
-
-
 
         public List<List<Node>> ReturnNodes(List<List<Node>> nodeListCollection)
         {
@@ -106,6 +94,45 @@ namespace PlaceHolder
         }
     }
 
+    /// <summary>
+    /// Export for Node collections
+    /// </summary>
+    [Export(typeof(IReturnNode))]
+    public class simpleInput : IReturnNode
+    {
+        [ImportMany]
+        IEnumerable<Lazy<IGetNode, IGetMethodName>> simpleGetMethods;
+
+        [ImportMany]
+        IEnumerable<Lazy<IModifyNode, IGetMethodName>> simpleModifyMethods;
+        
+        public Node ReturnNode(Node tempNode, int ID, int sensorNetworkID)
+        {
+            var settings = new Settings();
+
+            int[] pluginIDs = settings.returnInputPlugins();
+
+
+                foreach (var method in simpleGetMethods)
+                {
+                   // if (pluginIDs[i] == method.Metadata.MethodID)
+                        tempNode = method.Value.GetNode(tempNode, ID, sensorNetworkID);
+                   // i++;
+                }
+
+                foreach (var method in simpleModifyMethods)
+                {
+                    // if (pluginIDs[i] == method.Metadata.MethodID)
+                    tempNode = method.Value.ModifyNode(tempNode, ID, sensorNetworkID);
+                    // i++;
+                }
+
+            
+
+            return tempNode;
+        }
+    }
+
     public class ModularIO
     {
         private Settings settings = new Settings();
@@ -114,6 +141,7 @@ namespace PlaceHolder
         private AggregateCatalog catalog = new AggregateCatalog();
 
         [Import(typeof (IReturnNodes))] public IReturnNodes GetNodesCollection;
+        [Import(typeof(IReturnNode))]public IReturnNode GetNode;
 
         public ModularIO()
         {

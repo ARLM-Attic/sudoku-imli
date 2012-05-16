@@ -27,12 +27,7 @@ namespace OutputPlugin
 
         public void UpdateGlobalPosition(List<List<Node>> nodeListCollection, List<Node> globalPosList)
         {
-
             var globalPosUpdate = new GlobalPosUpdate(nodeListCollection, globalPosList);
-
-
-            
-
         }
 
         public void UpdateLocalPosition(List<List<Node>> nodeListCollection, List<Node> globalPosList)
@@ -96,6 +91,107 @@ namespace OutputPlugin
 
             var mixedCombine = new TwoDimensionCombine(nodeList3, nodeList4, 1);
 
+        }
+
+    }
+    [Export(typeof(IModifyNode))]
+    [ExportMetadata("MethodName", '4')]
+    public class NodeUpdate : IModifyNode
+    {
+        Settings settings = new Settings();
+
+        public Node ModifyNode(Node tempNode, int ID, int SensorNetworkID)
+        {
+            tempNode = changeCoordinates(tempNode);
+            tempNode = changeGlobalCoordinates(tempNode);
+
+            return tempNode;
+        }
+
+        private Node changeCoordinates(Node tempNode)
+        {
+            double XShift = 0;
+            double YShift = 0;
+            double rotationAngle = 0;
+
+            string key = "ShiftAngle 1-" + tempNode.SensorNetworkID;
+            string temp = settings.getAnything(key);
+
+            double.TryParse(temp, out rotationAngle);
+            double[] shiftedCoordinates = calculateShitft2(tempNode.XPos, tempNode.YPos, rotationAngle);
+
+            key = key.Replace("ShiftAngle", "XShift");
+            temp = settings.getAnything(key);
+            double.TryParse(temp, out XShift);
+
+            key = key.Replace("X", "Y");
+            temp = settings.getAnything(key);
+            double.TryParse(temp, out YShift);
+
+            tempNode.XPosSecondary = shiftedCoordinates[0] + XShift;
+            tempNode.YPosSecondary = shiftedCoordinates[1] + YShift;
+
+            return tempNode;
+        }
+
+        private Node changeGlobalCoordinates(Node tempNode)
+        {
+            double XShift = 0;
+            double YShift = 0;
+            double rotationAngle = 0;
+
+            string key = "ShiftAngle 1-UTM";
+            string temp = settings.getAnything(key);
+            double[] shiftedCoordinates = new double[2];
+
+            double.TryParse(temp, out rotationAngle);
+            if (tempNode.SensorNetworkID == 1)
+            {
+                shiftedCoordinates = calculateShitft2(tempNode.XPos, tempNode.YPos, rotationAngle);
+            }
+            else
+            {
+                shiftedCoordinates = calculateShitft2(tempNode.XPosSecondary, tempNode.YPosSecondary,
+                                                               rotationAngle);
+            }
+
+            key = key.Replace("ShiftAngle", "XShift");
+            temp = settings.getAnything(key);
+            double.TryParse(temp, out XShift);
+
+            key = key.Replace("X", "Y");
+            temp = settings.getAnything(key);
+            double.TryParse(temp, out YShift);
+
+            int UTMZone;
+            string Hemisphere;
+            key = "UTM ZONE";
+            temp = settings.getAnything(key);
+            Int32.TryParse(temp, out UTMZone);
+
+            key = "Hemisphere";
+            Hemisphere = settings.getAnything(key);
+
+
+            string System = "UTM";
+            if ((System.CompareTo("UTM")) == 0)
+            {
+                tempNode.GlobalPositionValue = (shiftedCoordinates[0] + XShift) + ";" +
+                                                 (shiftedCoordinates[1] + YShift) + ";" + UTMZone + ";" +
+                                                 Hemisphere;
+                tempNode.GLobalPositionType = "UTM";
+            }
+            return tempNode;
+        }
+
+        private double[] calculateShitft2(double x, double y, double angle)
+        {
+            double[] result = new double[2];
+            double inputAngle = (Math.PI / 180) * angle;
+            result[0] = Math.Cos(inputAngle) * x - Math.Sin(inputAngle) * y; //formula for 2D matrix shifting
+            result[1] = Math.Sin(inputAngle) * x + Math.Cos(inputAngle) * y;
+
+            return result;
         }
 
     }

@@ -29,6 +29,8 @@ namespace PlaceHolder
 
         private static List<List<Node>> _nodeListCollection = new List<List<Node>>();
 
+        private ModularIO IO; //class for handling plugin methods
+
         public Combine()
         {
                     
@@ -40,7 +42,7 @@ namespace PlaceHolder
             _nodeListCollection.Add(_crossNodeList);
             _nodeListCollection.Add(_resultNodes);
 
-            var IO = new ModularIO();
+            IO = new ModularIO();
 
             _nodeListCollection = IO.GetNodesCollection.ReturnNodes(_nodeListCollection);
             
@@ -69,12 +71,18 @@ namespace PlaceHolder
             Int32.TryParse(NetworkID, out nodeNetworkID);
             WebOperationContext.Current.OutgoingResponse.Format = WebMessageFormat.Json;
 
+            
+
             foreach (var list in _nodeListCollection)
             {
                 foreach (var node in list)
                 {
                     if (node.ID == nodeID)
-                        if (node.SensorNetworkID == nodeNetworkID) return node;
+                        if (node.SensorNetworkID == nodeNetworkID)
+                        {
+                            return node;// IO.GetNode.ReturnNode(node, node.ID, node.SensorNetworkID);
+                            
+                        }
                 }
             }
 
@@ -95,7 +103,11 @@ namespace PlaceHolder
                 foreach (var node in list)
                 {
                     if (node.ID == nodeID)
-                        if (node.SensorNetworkID == nodeNetworkID) return node;
+                        if (node.SensorNetworkID == nodeNetworkID)
+                        {
+                            return node;// IO.GetNode.ReturnNode(node, node.ID, node.SensorNetworkID);
+                       
+                        }
                 }
             }
 

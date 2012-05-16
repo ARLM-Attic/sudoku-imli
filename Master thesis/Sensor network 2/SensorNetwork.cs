@@ -34,24 +34,12 @@ namespace SensorNetwork
             int globalNodeCount;
             Int32.TryParse(temp, out globalNodeCount);
 
-            int networkID = values.GetNetworkID();
-            for (int i = 0; i < NodeCount ; i++)
-            {
-                Node initialNode = new Node(i,networkID);
-                _nodeList.Add(initialNode);
-            }
-            for (int i = 0; i < crossNetworkNodeCount;i++ )
-            {
-                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i, i, i,i + 2, i + 3, i + 4); //
-                _nodeList.Add(crossNode);
-            }
-
             string globalString = "Global Position - 0";
             string localString = "Local Position - 0";
             string globalPos;
             string localPosString;
             string globalPosType = values.getAnything("Global Position type");
-            
+            int networkID = values.GetNetworkID();
 
             for (int i = 0; i < globalNodeCount; i++)
             {
@@ -61,9 +49,27 @@ namespace SensorNetwork
 
                 globalString = globalString.Replace((i).ToString(), (i + 1).ToString());
                 localString = localString.Replace((i).ToString(), (i + 1).ToString());
-                Node crossNode = new Node(i + NodeCount, networkID, localPos[0], localPos[1], 0, globalPos,globalPosType); 
+                Node crossNode = new Node(i + NodeCount, networkID, localPos[0], localPos[1], 0, globalPos, globalPosType);
                 _nodeList.Add(crossNode);
             }
+
+
+            for (int i = 0; i < NodeCount ; i++)
+            {
+                
+                Node initialNode = new Node(i,networkID);
+                System.Threading.Thread.Sleep(10);//generating random numbers in same milisecond returns same numbers
+                _nodeList.Insert(0,initialNode);
+            }
+            for (int i = 0; i < crossNetworkNodeCount;i++ )
+            {
+                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i, i, i,i + 2, i + 3, i + 4); //
+                _nodeList.Add(crossNode);
+            }
+
+
+            int test = 0;
+
                 
         }
 

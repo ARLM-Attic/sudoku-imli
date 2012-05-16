@@ -20,9 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputPlugin", "InputPlugin\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Output Plugin", "Output Plugin\Output Plugin.csproj", "{9EF927CE-25B4-44D8-87DE-1D68EBC7E8F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualization", "Visualization\Visualization.csproj", "{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
 		SccLocalPath0 = .
@@ -41,6 +43,9 @@ Global
 		SccProjectUniqueName5 = Output\u0020Plugin\\Output\u0020Plugin.csproj
 		SccProjectName5 = Output\u0020Plugin
 		SccLocalPath5 = Output\u0020Plugin
+		SccProjectUniqueName6 = Visualization\\Visualization.csproj
+		SccProjectName6 = Visualization
+		SccLocalPath6 = Visualization
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Master thesis.vsmdi
@@ -114,6 +119,16 @@ Global
 		{9EF927CE-25B4-44D8-87DE-1D68EBC7E8F3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9EF927CE-25B4-44D8-87DE-1D68EBC7E8F3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9EF927CE-25B4-44D8-87DE-1D68EBC7E8F3}.Release|x86.ActiveCfg = Release|Any CPU
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Debug|x86.ActiveCfg = Debug|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Debug|x86.Build.0 = Debug|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Release|Any CPU.ActiveCfg = Release|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Release|Mixed Platforms.Build.0 = Release|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Release|x86.ActiveCfg = Release|x86
+		{FA46D67B-F6EE-4CA7-AFA4-335DAF0EED76}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
