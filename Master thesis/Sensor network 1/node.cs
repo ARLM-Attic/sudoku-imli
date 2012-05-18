@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace SensorNetwork
+namespace AlternateSensorNetwork
 {
     /// <summary>
     /// A node class simulating movement of node inside sensor network

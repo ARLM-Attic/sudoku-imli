@@ -34,9 +34,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(517, 558);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(0, 1042);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(1992, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Visualize";
             this.button1.UseVisualStyleBackColor = true;
@@ -44,18 +45,19 @@
             // 
             // URL
             // 
-            this.URL.Location = new System.Drawing.Point(12, 558);
+            this.URL.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.URL.Location = new System.Drawing.Point(0, 1022);
             this.URL.Name = "URL";
-            this.URL.Size = new System.Drawing.Size(450, 20);
+            this.URL.Size = new System.Drawing.Size(1992, 20);
             this.URL.TabIndex = 1;
-            this.URL.Text = "http://localhost/";
+            this.URL.Text = "http://localhost/Compute/Combine/xml";
             // 
             // Visualize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(604, 593);
+            this.ClientSize = new System.Drawing.Size(1992, 1065);
             this.Controls.Add(this.URL);
             this.Controls.Add(this.button1);
             this.Name = "Visualize";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using PlaceHolder;
@@ -143,12 +144,12 @@ namespace Output_Plugin
             if (temp.Contains("N")) //if its in northern Hemisphere we leave positive latitude
             {
                 temp = temp.Replace("N", "");
-                Double.TryParse(temp, out result[0]);
+                Double.TryParse(temp,  NumberStyles.Any, CultureInfo.InvariantCulture,out result[0]);
             }
             else //otherwise its going to be negative value
             {
                 temp = temp.Replace("S", "");
-                Double.TryParse(temp, out result[0]);
+                Double.TryParse(temp,  NumberStyles.Any, CultureInfo.InvariantCulture,out result[0]);
                 result[0] *= -1;         
             }
 
@@ -157,12 +158,12 @@ namespace Output_Plugin
             if (temp.Contains("E")) //if its in northern Hemisphere we leave positive latitude
             {
                 temp = temp.Replace("E", "");
-                Double.TryParse(temp, out result[1]);
+                Double.TryParse(temp,  NumberStyles.Any, CultureInfo.InvariantCulture,out result[1]);
             }
             else //otherwise its going to be negative value
             {
                 temp = temp.Replace("W", "");
-                Double.TryParse(temp, out result[1]);
+                Double.TryParse(temp, NumberStyles.Any, CultureInfo.InvariantCulture, out result[1]);
                 result[1] *= -1;
             }
 

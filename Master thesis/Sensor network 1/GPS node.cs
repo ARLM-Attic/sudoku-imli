@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sensor_network_1
+namespace AlternateSensorNetwork
 {   ///class storing information about one gps coordinate.
     public class gpsNode
     {

@@ -19,15 +19,14 @@ namespace PlaceHolder
         /// </summary>
         /// <param name="nodeList">list of nodes with coordinates in only one network</param>
         /// <param name="crossNodeList">list of nodes with coordinates in both networks</param>
-        public TwoDimensionCombine(List<Node> nodeList, List<Node>crossNodeList, int primaryNetworkID)
+        public TwoDimensionCombine(List<Node> nodeList, List<Node>crossNodeList, int primaryNetworkID, int secondaryNetworkID)
         {
             _nodeList = nodeList;
             _crossNodeList = crossNodeList;
             _primaryNetwork = primaryNetworkID;
+            _secondaryNetwork = secondaryNetworkID;
             if(crossNodeList.Count > 1)
             {
-                _primaryNetwork = _crossNodeList[0].SensorNetworkID; //primary network id of first crossnode is going to be primary network
-                _secondaryNetwork = _crossNodeList[0].SecondarySensorNetworkID; // setting secondary network id
                 CalculateNetworkDifferences(); //calculating angle and distance between networks
                 AddNodesInfo(); //adding secondary coordinates to all nodes
             }

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Sensor_network_1.Global" Language="C#" %>
+<%@ Application Codebehind="Global.asax.cs" Inherits="AlternateSensorNetwork.Global" Language="C#" %>

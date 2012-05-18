@@ -89,7 +89,7 @@ namespace OutputPlugin
 
             Combine.ClearCombine(nodeList2, xShift, yShift, angle, 1);
 
-            var mixedCombine = new TwoDimensionCombine(nodeList3, nodeList4, 1);
+            var mixedCombine = new TwoDimensionCombine(nodeList3, nodeList4, 1,4);
 
         }
 

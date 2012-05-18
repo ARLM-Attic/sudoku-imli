@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 
-namespace SensorNetwork
+namespace AlternateSensorNetwork
 {
     // Deploying the service: Publish it to the inetput/wwwroot directory. in IIS admin set it as application and set it as .net 4 app.
     // Also do not forget to create an user rights for IIS
@@ -30,28 +30,7 @@ namespace SensorNetwork
             int secondaryNetworkID;
             Int32.TryParse(temp, out secondaryNetworkID);
 
-            temp = values.getAnything("GlobalPosNodeCount");
-            int globalNodeCount;
-            Int32.TryParse(temp, out globalNodeCount);
-
-            string globalString = "Global Position - 0";
-            string localString = "Local Position - 0";
-            string globalPos;
-            string localPosString;
-            string globalPosType = values.getAnything("Global Position type");
             int networkID = values.GetNetworkID();
-
-            for (int i = 0; i < globalNodeCount; i++)
-            {
-                globalPos = values.getAnything(globalString);
-                localPosString = values.getAnything(localString);
-                double[] localPos = returnLocalPos(localPosString);
-
-                globalString = globalString.Replace((i).ToString(), (i + 1).ToString());
-                localString = localString.Replace((i).ToString(), (i + 1).ToString());
-                Node crossNode = new Node(i + NodeCount, networkID, localPos[0], localPos[1], 0, globalPos, globalPosType);
-                _nodeList.Add(crossNode);
-            }
 
 
             for (int i = 0; i < NodeCount ; i++)
@@ -62,7 +41,7 @@ namespace SensorNetwork
             }
             for (int i = 0; i < crossNetworkNodeCount;i++)
             {
-                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i, i, i,i + 2, i + 3, i + 4); //
+                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i*2, i*4, 0,-i*2 +15, -i*4 + 15, 0); //
                 _nodeList.Add(crossNode);
             }
 

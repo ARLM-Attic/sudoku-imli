@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
 
-namespace Sensor_network_1
+namespace AlternateSensorNetwork
 {
     public class Global : HttpApplication
     {
@@ -15,7 +15,7 @@ namespace Sensor_network_1
         private void RegisterRoutes()
         {
             // Edit the base address of Service1 by replacing the "Service1" string below
-            RouteTable.Routes.Add(new ServiceRoute("Service1", new WebServiceHostFactory(), typeof(gpsNetwork)));
+            RouteTable.Routes.Add(new ServiceRoute("SensorNetwork", new WebServiceHostFactory(), typeof(SensorNetwork)));
         }
     }
 }
