@@ -127,6 +127,13 @@ namespace Output_Plugin
             _UTMzone = (int)converter.Zone;
             _hemisphere = converter.Hemi.ToString();
 
+             //setting parameters into web.config for future use
+            _settings.setAnything("XShift 1-UTM", _xShift.ToString());
+            _settings.setAnything("YShift 1-UTM", _yShift.ToString());
+            _settings.setAnything("ShiftAngle 1-UTM", _shiftAngle.ToString());
+            _settings.setAnything("UTM ZONE", _yShift.ToString());
+            _settings.setAnything("Hemisphere", _hemisphere);
+
         }
 
         /// <summary>
@@ -250,8 +257,8 @@ namespace Output_Plugin
             }
             else
             {
-                xPos = editedNode.XPos;
-                yPos = editedNode.YPos;
+                xPos = editedNode.XPosSecondary;
+                yPos = editedNode.YPosSecondary;
             }
             double[] shiftedCoordinates = calculateShitft2(xPos, yPos, _shiftAngle);
                 string System = "UTM"; //  _settings.getAnything("GlobalPosSystem");

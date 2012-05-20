@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Xml;
 
 namespace PlaceHolder
 {
@@ -16,15 +17,38 @@ namespace PlaceHolder
         {
             return System.Configuration.ConfigurationManager.AppSettings.Get(keyValue);
         }
-
+        /// <summary>
+        /// Function taken from
+        /// http://social.msdn.microsoft.com/Forums/da-DK/csharpgeneral/thread/d68a872e-14bc-414a-82c4-d1035a11b4a8
+        /// </summary>
+        /// <param name="keyValue"></param>
+        /// <param name="setValue"></param>
         public void setAnything(string keyValue, string setValue)
         {
-            try
+            XmlDocument xmlDoc = new XmlDocument();
+
+            xmlDoc.Load(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+
+            foreach (XmlElement element in xmlDoc.DocumentElement)
             {
-                System.Configuration.ConfigurationManager.AppSettings.Set(keyValue, setValue);
+                if (element.Name.Equals("appSettings"))
+                {
+                    foreach (XmlNode node in element.ChildNodes)
+                    {
+                        if (node.Attributes[0] != null)
+                        {
+                            if (node.Attributes[0].Value.Equals(keyValue))
+                            {
+                                node.Attributes[1].Value = setValue;
+                            }
+                        }
+                    }
+                }
             }
-            catch(Exception exp)
-            {}
+
+            xmlDoc.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
+
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
         public string GetLogPath()

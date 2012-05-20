@@ -13,7 +13,7 @@ namespace PlaceHolder
         private int _secondaryNetwork;
         private double _xShift; //x distance between networks
         private double _yShift; //y distance between networks
-
+        private Settings _settigns = new Settings();
         /// <summary>
         /// First Constructor, used when crossnodes are available
         /// </summary>
@@ -225,14 +225,19 @@ namespace PlaceHolder
             
 
             //calculating x/y shift between networks
-            double[] shiftedCoordinates = calculateShitft(_crossNodeList[0].XPosSecondary,
+            double[] shiftedCoordinates = calculateShitft2(_crossNodeList[0].XPosSecondary,
                                                           _crossNodeList[0].YPosSecondary, _rotationAngle);
 
-            _xShift = _crossNodeList[0].XPos + shiftedCoordinates[0];
-            _yShift = _crossNodeList[0].YPos + shiftedCoordinates[1];
-               
-
+            _xShift = _crossNodeList[0].XPos - shiftedCoordinates[0];
+            _yShift = _crossNodeList[0].YPos - shiftedCoordinates[1];
             
+            if(_crossNodeList[0].SensorNetworkID == 4)
+            {
+
+                _settigns.setAnything("XShift 1-4", _xShift.ToString());
+                _settigns.setAnything("YShift 1-4", _yShift.ToString());
+                _settigns.setAnything("ShiftAngle 1-4", _rotationAngle.ToString());
+            }
         }
         /// <summary>
         /// Calculating shift in coordinates
@@ -276,7 +281,6 @@ namespace PlaceHolder
             foreach (var node in _nodeList)
             {
                 UpdateNode(node);
-                
             }
         }
 

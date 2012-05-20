@@ -50,7 +50,7 @@
             this.URL.Name = "URL";
             this.URL.Size = new System.Drawing.Size(1992, 20);
             this.URL.TabIndex = 1;
-            this.URL.Text = "http://localhost/Compute/Combine/xml";
+            this.URL.Text = "http://localhost/1/SensorNetwork";
             // 
             // Visualize
             // 

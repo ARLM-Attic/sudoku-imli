@@ -41,7 +41,7 @@ namespace AlternateSensorNetwork
             }
             for (int i = 0; i < crossNetworkNodeCount;i++)
             {
-                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i*2, i*4, 0,-i*2 +15, -i*4 + 15, 0); //
+                Node crossNode = new Node(i + NodeCount, networkID, secondaryNetworkID, i*2, i*4, 0,-i*2 +15, -i*4-30, 0); //
                 _nodeList.Add(crossNode);
             }
 

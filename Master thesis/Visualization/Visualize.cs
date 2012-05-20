@@ -15,9 +15,16 @@ namespace Visualization
 {
     public partial class Visualize : Form
     {
-        public int Magnify = 2; //Magnifing results
-        public int Xoffset = 800;
-        public int Yoffset = 500;
+        public int Magnify = 6; //Magnifing results
+        public int Xoffset = 500;//800;
+        public int Yoffset = 300;//500;
+        public string IDs;
+        public string X;
+        public string Y;
+        public string xSec;
+        public string ySec;
+        public string networkID;
+        public string gps;
         public int Additive = 1;
         public static System.Drawing.Graphics graphics;
 
@@ -46,6 +53,18 @@ namespace Visualization
 
                 else DrawPoint(point);
             }
+
+            System.IO.StreamWriter file = new System.IO.StreamWriter("c:\\test.txt", true);
+
+            file.WriteLine(IDs);
+            file.WriteLine(networkID);
+            file.WriteLine(X);
+            file.WriteLine(Y);
+            file.WriteLine(xSec);
+            file.WriteLine(ySec);
+            file.WriteLine(gps);
+            file.Close();
+
             if(corners1.Count >0)
             DrawSquare(corners1);
             
@@ -64,6 +83,14 @@ namespace Visualization
         public void DrawPoint(Point p)
         {
             int x, y;
+            IDs += p.ID + ";";
+            X += p.X + ";";
+            Y += p.Y + ";";
+            xSec += p.Xsec+";";
+            ySec += p.Ysec + ";";
+            networkID += p.NetworkID + ";";
+            gps += p.gps + ";";
+
             if (p.NetworkID == 1)
             {
                 x = (int)Math.Round(p.X);
@@ -111,10 +138,11 @@ namespace Visualization
             }
 
 
-            Font drawFont = new Font("Arial", Magnify+2);
+            Font drawFont = new Font("Arial", Magnify+5);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
             string temp = Math.Round(p.X,0) + ";"+Math.Round(p.Y,0);
             graphics.DrawString(temp, drawFont, drawBrush, x + 10, y - 2);
+            graphics.DrawString("X      Y", drawFont, drawBrush, 100, 100);
 
         }
 
@@ -240,8 +268,9 @@ namespace Visualization
                     Double.TryParse(XPosSecondaryList[i].InnerText, NumberStyles.Any, CultureInfo.InvariantCulture, out XPosSecondary);
                     Double.TryParse(YPosSecondaryList[i].InnerText, NumberStyles.Any, CultureInfo.InvariantCulture, out YPosSecondary);
                     Double.TryParse(ZPosSecondaryList[i].InnerText, NumberStyles.Any, CultureInfo.InvariantCulture, out ZPosSecondary);
+                    gpsPosition = gpsPosList[i].InnerText;
 
-                    Point newNode = new Point(ID, networkID, networkIDSecondary, XPos, YPos, XPosSecondary, YPosSecondary);
+                    Point newNode = new Point(ID, networkID, networkIDSecondary, XPos, YPos, XPosSecondary, YPosSecondary,gpsPosition);
                     _nodeList.Add(newNode);
                 }
             }
@@ -267,8 +296,9 @@ namespace Visualization
         public int ID;
         public int NetworkID;
         public int NetworkIDsec;
+        public string gps;
 
-        public Point(int id, int networkId, int networkIdSec, double Xpos, double Ypos, double XposSecondary, double YposSecondary)
+        public Point(int id, int networkId, int networkIdSec, double Xpos, double Ypos, double XposSecondary, double YposSecondary, string gpsPosition)
         {
             ID = id;
             NetworkID = networkId;
@@ -277,6 +307,7 @@ namespace Visualization
             Y = Ypos;
             Xsec = XposSecondary;
             Ysec = YposSecondary;
+            gps = gpsPosition;
            
         }
     }
