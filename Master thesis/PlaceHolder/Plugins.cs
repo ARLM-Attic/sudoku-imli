@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using PlaceHolder;
 
-namespace PlaceHolder
+namespace Agregation
 {
     //interfaces that combines both modifing and creating new nodes
     public interface IReturnNodes
@@ -69,16 +69,12 @@ namespace PlaceHolder
                 int i = 0;
                 foreach (var method in getMethods)
                 {
-                   // if (pluginIDs[i] == method.Metadata.MethodID)
                         nodeListCollection = method.Value.GetNodes(nodeListCollection);
-                   // i++;
                 }
 
                 foreach (var method in modifyMethods)
                 {
-                    // if (pluginIDs[i] == method.Metadata.MethodID)
                     nodeListCollection = method.Value.ModifyNodes(nodeListCollection);
-                    // i++;
                 }
 
             }
@@ -95,7 +91,7 @@ namespace PlaceHolder
     }
 
     /// <summary>
-    /// Export for Node collections
+    /// Export for single node instance
     /// </summary>
     [Export(typeof(IReturnNode))]
     public class simpleInput : IReturnNode
@@ -133,6 +129,9 @@ namespace PlaceHolder
         }
     }
 
+    /// <summary>
+    /// Class used to access imported methods
+    /// </summary>
     public class ModularIO
     {
         private Settings settings = new Settings();

@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.ComponentModel.Composition;
 using System.Xml;
+using Agregation;
 using PlaceHolder;
 
 namespace InputPlugin

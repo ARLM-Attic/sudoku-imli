@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 
-namespace PlaceHolder
+namespace Agregation
 {
+    /// <summary>
+    /// Class used to create logs in selected path
+    /// </summary>
     public class Log
     {
         public Log(string log,string path)

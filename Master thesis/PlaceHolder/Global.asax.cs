@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
 
-namespace PlaceHolder
+namespace Agregation
 {
     public class Global : HttpApplication
     {
@@ -15,7 +15,7 @@ namespace PlaceHolder
         private void RegisterRoutes()
         {
             // Edit the base address of Service1 by replacing the "Service1" string below
-            RouteTable.Routes.Add(new ServiceRoute("Combine", new WebServiceHostFactory(), typeof(Combine)));
+            RouteTable.Routes.Add(new ServiceRoute("Agregate", new WebServiceHostFactory(), typeof(Agregate)));
         }
     }
 }

@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorNetwork", "Sensor net
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlternateSensorNetwork", "Sensor network 1\AlternateSensorNetwork.csproj", "{4EFE351E-31E4-46D4-B054-E1FBBBD4221B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceHolder", "PlaceHolder\PlaceHolder.csproj", "{006AE0F8-93AE-4137-9949-1355E79F4B08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agregation Web Service", "PlaceHolder\Agregation Web Service.csproj", "{006AE0F8-93AE-4137-9949-1355E79F4B08}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master Thesis Tests", "Master Thesis Tests\Master Thesis Tests.csproj", "{08768A43-A591-4135-9090-8367EB3C06D0}"
 EndProject
@@ -31,21 +31,21 @@ Global
 		SccProjectUniqueName1 = Sensor\u0020network\u00202\\SensorNetwork.csproj
 		SccProjectName1 = Sensor\u0020network\u00202
 		SccLocalPath1 = Sensor\u0020network\u00202
-		SccProjectUniqueName2 = PlaceHolder\\PlaceHolder.csproj
-		SccProjectName2 = PlaceHolder
-		SccLocalPath2 = PlaceHolder
-		SccProjectUniqueName3 = InputPlugin\\InputPlugin.csproj
-		SccProjectName3 = InputPlugin
-		SccLocalPath3 = InputPlugin
-		SccProjectUniqueName4 = Output\u0020Plugin\\Output\u0020Plugin.csproj
-		SccProjectName4 = Output\u0020Plugin
-		SccLocalPath4 = Output\u0020Plugin
-		SccProjectUniqueName5 = Visualization\\Visualization.csproj
-		SccProjectName5 = Visualization
-		SccLocalPath5 = Visualization
-		SccProjectUniqueName6 = Sensor\u0020network\u00201\\AlternateSensorNetwork.csproj
-		SccProjectName6 = Sensor\u0020network\u00201
-		SccLocalPath6 = Sensor\u0020network\u00201
+		SccProjectUniqueName2 = InputPlugin\\InputPlugin.csproj
+		SccProjectName2 = InputPlugin
+		SccLocalPath2 = InputPlugin
+		SccProjectUniqueName3 = Output\u0020Plugin\\Output\u0020Plugin.csproj
+		SccProjectName3 = Output\u0020Plugin
+		SccLocalPath3 = Output\u0020Plugin
+		SccProjectUniqueName4 = Visualization\\Visualization.csproj
+		SccProjectName4 = Visualization
+		SccLocalPath4 = Visualization
+		SccProjectUniqueName5 = Sensor\u0020network\u00201\\AlternateSensorNetwork.csproj
+		SccProjectName5 = Sensor\u0020network\u00201
+		SccLocalPath5 = Sensor\u0020network\u00201
+		SccProjectUniqueName6 = PlaceHolder\\Agregation\u0020Web\u0020Service.csproj
+		SccProjectName6 = PlaceHolder
+		SccLocalPath6 = PlaceHolder
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Master thesis.vsmdi

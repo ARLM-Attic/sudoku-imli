@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PlaceHolder
 {
     /// <summary>
-    /// A node class simulating movement of node inside sensor network
+    /// A node class used to store node information
     /// </summary>
     [DataContract]
     public class Node
@@ -46,7 +46,6 @@ namespace PlaceHolder
             YPosSecondary = node.YPosSecondary;
             ZPosSecondary = node.ZPosSecondary;
             GlobalPositionValue = node.GlobalPositionValue;
-            //this.node = node;
         }
 
 

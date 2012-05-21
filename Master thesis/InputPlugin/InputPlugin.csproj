@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlaceHolder\PlaceHolder.csproj">
+    <ProjectReference Include="..\PlaceHolder\Agregation Web Service.csproj">
       <Project>{006AE0F8-93AE-4137-9949-1355E79F4B08}</Project>
-      <Name>PlaceHolder</Name>
+      <Name>Agregation Web Service</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
     </ProjectReference>
