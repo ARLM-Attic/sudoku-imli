@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Text;
 using System.Collections.Generic;
@@ -15,16 +16,16 @@ namespace AdressBookTest
         public void TestMethod1()
         {
             AddressBook.DataLayer data = new AddressBook.DataLayer();
-           // data.InsertPerson("michal","Imlauf",12,13);
-           // data.InsertAddres("A","B",53701,1);
+            data.InsertPerson("michal","Imlauf",12,13);
+            data.InsertAddres("A","B",53701,29);
             
             
-            data.UpdateAdress(22,"C","E",000);
-            data.UpdatePerson(28,"A","C",17,18);
-            List<Person> persons = new List<Person>();
+           // data.UpdateAdress(22,"C","E",000);
+            //data.UpdatePerson(28,"A","C",17,18);
+            BindingList<Person> persons = new BindingList<Person>();
 
             persons = data.SelectAllPersons(persons);
-            persons[0] = data.SelectAdresses(persons[0]);
+           persons[0] = data.SelectAdresses(persons[0]);
            // data.DeleteAdress(1);
            // data.DeletePerson(1);
         }

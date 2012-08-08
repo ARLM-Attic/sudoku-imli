@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace AddressBook
 {
     public class DataLayer
     {
-        private static string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\AdressBook.mdf;Integrated Security=True;User Instance=True;Initial Catalog=InstanceDB";
+        private static string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\AdressBook.mdf;Integrated Security=True;User Instance=True";
 
         public void InsertPerson(string name, string surname, int ic, int dic)
         {
@@ -188,7 +189,7 @@ namespace AddressBook
         }
 
 
-        public List<Person> SelectAllPersons(List<Person> personsList)
+        public BindingList<Person> SelectAllPersons(BindingList<Person> personsList)
         {
 
             string query = "Select * FROM Persons";
@@ -233,7 +234,7 @@ namespace AddressBook
             {
                 connect.Open();
                 SqlCommand cmd = new SqlCommand(query, connect);
-                cmd.Parameters.AddWithValue("@PersonID", tempPerson.ID);
+                cmd.Parameters.AddWithValue("@PersonID", tempPerson.PersonID);
                 cmd.CommandType = CommandType.Text;
 
                 reader = cmd.ExecuteReader();
