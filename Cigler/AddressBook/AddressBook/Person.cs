@@ -14,13 +14,15 @@ namespace AddressBook
         private int _ic;
         private int _dic;
         private bool _isicvalid;
+        
 
         public BindingList<Adress> Adresses = new BindingList<Adress>();
-
+        public ICO ICInfo;
+        
         public int PersonID 
         {
             get { return _personid; }
-            private set { _personid = value; }
+            set { _personid = value; }
          }
 
         public string Name
@@ -77,14 +79,21 @@ namespace AddressBook
         
         
 
-        public Person(int personid, string name, string surname, int ic, int dic)
+        public Person(int personid,string name, string surname, int ic, int dic)
         {
             PersonID = personid;
             Name = name;
             Surname = surname;
             IC = ic;
             DIC = dic;
+        }
 
+        public Person(string name, string surname, int ic, int dic)
+        {
+            Name = name;
+            Surname = surname;
+            IC = ic;
+            DIC = dic;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

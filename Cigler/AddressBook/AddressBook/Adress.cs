@@ -13,7 +13,7 @@ namespace AddressBook
         public int AdressID
         {
             get { return _adressid; }
-            private set
+            set
             {
                 _adressid = value;
             }
@@ -56,6 +56,14 @@ namespace AddressBook
         public Adress(int adressid, string street, string city, int psc, int personid)
         {
             AdressID = adressid;
+            Street = street;
+            City = city;
+            PSC = psc;
+            PersonID = personid;
+        }
+
+        public Adress( string street, string city, int psc, int personid)
+        {
             Street = street;
             City = city;
             PSC = psc;

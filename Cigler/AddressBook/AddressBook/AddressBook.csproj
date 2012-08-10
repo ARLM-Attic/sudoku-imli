@@ -77,6 +77,7 @@
       <DependentUpon>AdressBookDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="ICO.cs" />
     <Compile Include="Presentation.cs">
       <SubType>Form</SubType>
     </Compile>

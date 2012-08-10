@@ -28,66 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.adressBookDataSet = new AddressBook.AdressBookDataSet();
-            this.adressBookDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NameList = new System.Windows.Forms.DataGridView();
             this.AdressList = new System.Windows.Forms.DataGridView();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.InformationPage = new System.Windows.Forms.TabPage();
-            this.AddPage = new System.Windows.Forms.TabPage();
-            this.InformationNameLabel = new System.Windows.Forms.Label();
-            this.InformationName = new System.Windows.Forms.Label();
-            this.InformationSurname = new System.Windows.Forms.Label();
-            this.InformationSurnameLabel = new System.Windows.Forms.Label();
+            this.DeleteAdressButton = new System.Windows.Forms.Button();
+            this.DeletePersonButton = new System.Windows.Forms.Button();
+            this.InformationIcDetailLabel = new System.Windows.Forms.Label();
+            this.ContactDetailsLabel = new System.Windows.Forms.Label();
             this.ContactsDICLabel = new System.Windows.Forms.Label();
             this.ContactsDIC = new System.Windows.Forms.Label();
             this.InformationIC = new System.Windows.Forms.Label();
             this.InformationICLabel = new System.Windows.Forms.Label();
-            this.ContactDetailsLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.InformationIcDetailLabel = new System.Windows.Forms.Label();
-            this.EditPage = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.AddInformationLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.AddNameLabel = new System.Windows.Forms.Label();
-            this.AddSurnameLabel = new System.Windows.Forms.Label();
-            this.AddIcLabel = new System.Windows.Forms.Label();
-            this.AddDICLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.AddPeronButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.InformationSurnameLabel = new System.Windows.Forms.Label();
+            this.InformationSurname = new System.Windows.Forms.Label();
+            this.InformationName = new System.Windows.Forms.Label();
+            this.InformationNameLabel = new System.Windows.Forms.Label();
+            this.AddPage = new System.Windows.Forms.TabPage();
+            this.AddAdressButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.adressBookDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adressBookDataSetBindingSource)).BeginInit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.AddPersonButton = new System.Windows.Forms.Button();
+            this.AddPSCTextBox = new System.Windows.Forms.TextBox();
+            this.AddCityTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.AddDICLabel = new System.Windows.Forms.Label();
+            this.AddIcLabel = new System.Windows.Forms.Label();
+            this.AddSurnameLabel = new System.Windows.Forms.Label();
+            this.AddNameLabel = new System.Windows.Forms.Label();
+            this.AddStreetTextBox = new System.Windows.Forms.TextBox();
+            this.AddDicTextBox = new System.Windows.Forms.TextBox();
+            this.AddIcTextBox = new System.Windows.Forms.TextBox();
+            this.AddSurnameTextBox = new System.Windows.Forms.TextBox();
+            this.AddNameTextBox = new System.Windows.Forms.TextBox();
+            this.AddInformationLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EditPage = new System.Windows.Forms.TabPage();
+            this.EditAdressButton = new System.Windows.Forms.Button();
+            this.EditPSCLabel = new System.Windows.Forms.Label();
+            this.EditCityLabel = new System.Windows.Forms.Label();
+            this.EditStreetLabel = new System.Windows.Forms.Label();
+            this.EditPersonButton = new System.Windows.Forms.Button();
+            this.EditPSCTextBox = new System.Windows.Forms.TextBox();
+            this.EditCityTextBox = new System.Windows.Forms.TextBox();
+            this.EditAdressLabel = new System.Windows.Forms.Label();
+            this.EditDICLabel = new System.Windows.Forms.Label();
+            this.EditIcLabel = new System.Windows.Forms.Label();
+            this.EditSurnameLabel = new System.Windows.Forms.Label();
+            this.EditNameLabel = new System.Windows.Forms.Label();
+            this.EditStreetTextBox = new System.Windows.Forms.TextBox();
+            this.EditDICTextBox = new System.Windows.Forms.TextBox();
+            this.EditICTextBox = new System.Windows.Forms.TextBox();
+            this.EditSurnameTextBox = new System.Windows.Forms.TextBox();
+            this.EditNameTextBox = new System.Windows.Forms.TextBox();
+            this.EditPersonLabel = new System.Windows.Forms.Label();
+            this.InformationDic = new System.Windows.Forms.Label();
+            this.InformationDICLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdressList)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -95,16 +95,6 @@
             this.AddPage.SuspendLayout();
             this.EditPage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // adressBookDataSet
-            // 
-            this.adressBookDataSet.DataSetName = "AdressBookDataSet";
-            this.adressBookDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // adressBookDataSetBindingSource
-            // 
-            this.adressBookDataSetBindingSource.DataSource = this.adressBookDataSet;
-            this.adressBookDataSetBindingSource.Position = 0;
             // 
             // NameList
             // 
@@ -116,6 +106,7 @@
             this.NameList.Size = new System.Drawing.Size(417, 342);
             this.NameList.TabIndex = 1;
             this.NameList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NameList_CellContentClick);
+            this.NameList.SelectionChanged += new System.EventHandler(this.NameList_SelectionChanged);
             // 
             // AdressList
             // 
@@ -132,7 +123,6 @@
             this.Tabs.Controls.Add(this.InformationPage);
             this.Tabs.Controls.Add(this.AddPage);
             this.Tabs.Controls.Add(this.EditPage);
-            this.Tabs.Controls.Add(this.tabPage3);
             this.Tabs.Location = new System.Drawing.Point(444, 36);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -142,6 +132,10 @@
             // InformationPage
             // 
             this.InformationPage.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.InformationPage.Controls.Add(this.InformationDic);
+            this.InformationPage.Controls.Add(this.InformationDICLabel);
+            this.InformationPage.Controls.Add(this.DeleteAdressButton);
+            this.InformationPage.Controls.Add(this.DeletePersonButton);
             this.InformationPage.Controls.Add(this.InformationIcDetailLabel);
             this.InformationPage.Controls.Add(this.ContactDetailsLabel);
             this.InformationPage.Controls.Add(this.ContactsDICLabel);
@@ -159,72 +153,43 @@
             this.InformationPage.TabIndex = 0;
             this.InformationPage.Text = "Informace";
             // 
-            // AddPage
+            // DeleteAdressButton
             // 
-            this.AddPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.AddPage.Controls.Add(this.label7);
-            this.AddPage.Controls.Add(this.label6);
-            this.AddPage.Controls.Add(this.label5);
-            this.AddPage.Controls.Add(this.AddPeronButton);
-            this.AddPage.Controls.Add(this.textBox7);
-            this.AddPage.Controls.Add(this.textBox6);
-            this.AddPage.Controls.Add(this.label9);
-            this.AddPage.Controls.Add(this.AddDICLabel);
-            this.AddPage.Controls.Add(this.AddIcLabel);
-            this.AddPage.Controls.Add(this.AddSurnameLabel);
-            this.AddPage.Controls.Add(this.AddNameLabel);
-            this.AddPage.Controls.Add(this.textBox5);
-            this.AddPage.Controls.Add(this.textBox4);
-            this.AddPage.Controls.Add(this.textBox3);
-            this.AddPage.Controls.Add(this.textBox2);
-            this.AddPage.Controls.Add(this.textBox1);
-            this.AddPage.Controls.Add(this.AddInformationLabel);
-            this.AddPage.Controls.Add(this.label4);
-            this.AddPage.Controls.Add(this.label3);
-            this.AddPage.Controls.Add(this.label2);
-            this.AddPage.Controls.Add(this.label1);
-            this.AddPage.Location = new System.Drawing.Point(4, 22);
-            this.AddPage.Name = "AddPage";
-            this.AddPage.Padding = new System.Windows.Forms.Padding(3);
-            this.AddPage.Size = new System.Drawing.Size(311, 568);
-            this.AddPage.TabIndex = 1;
-            this.AddPage.Text = "Přidat záznam";
+            this.DeleteAdressButton.Location = new System.Drawing.Point(15, 458);
+            this.DeleteAdressButton.Name = "DeleteAdressButton";
+            this.DeleteAdressButton.Size = new System.Drawing.Size(103, 23);
+            this.DeleteAdressButton.TabIndex = 40;
+            this.DeleteAdressButton.Text = "Smazat Adresu";
+            this.DeleteAdressButton.UseVisualStyleBackColor = true;
+            this.DeleteAdressButton.Click += new System.EventHandler(this.DeleteAdressButton_Click);
             // 
-            // InformationNameLabel
+            // DeletePersonButton
             // 
-            this.InformationNameLabel.AutoSize = true;
-            this.InformationNameLabel.Location = new System.Drawing.Point(80, 40);
-            this.InformationNameLabel.Name = "InformationNameLabel";
-            this.InformationNameLabel.Size = new System.Drawing.Size(38, 13);
-            this.InformationNameLabel.TabIndex = 3;
-            this.InformationNameLabel.Text = "Jméno";
+            this.DeletePersonButton.Location = new System.Drawing.Point(176, 256);
+            this.DeletePersonButton.Name = "DeletePersonButton";
+            this.DeletePersonButton.Size = new System.Drawing.Size(93, 23);
+            this.DeletePersonButton.TabIndex = 39;
+            this.DeletePersonButton.Text = "Smazat Kontakt";
+            this.DeletePersonButton.UseVisualStyleBackColor = true;
+            this.DeletePersonButton.Click += new System.EventHandler(this.DeletePersonButton_Click);
             // 
-            // InformationName
+            // InformationIcDetailLabel
             // 
-            this.InformationName.AutoSize = true;
-            this.InformationName.Location = new System.Drawing.Point(80, 66);
-            this.InformationName.Name = "InformationName";
-            this.InformationName.Size = new System.Drawing.Size(35, 13);
-            this.InformationName.TabIndex = 4;
-            this.InformationName.Text = "label2";
+            this.InformationIcDetailLabel.AutoSize = true;
+            this.InformationIcDetailLabel.Location = new System.Drawing.Point(38, 266);
+            this.InformationIcDetailLabel.Name = "InformationIcDetailLabel";
+            this.InformationIcDetailLabel.Size = new System.Drawing.Size(52, 13);
+            this.InformationIcDetailLabel.TabIndex = 12;
+            this.InformationIcDetailLabel.Text = "Detaily IČ";
             // 
-            // InformationSurname
+            // ContactDetailsLabel
             // 
-            this.InformationSurname.AutoSize = true;
-            this.InformationSurname.Location = new System.Drawing.Point(140, 66);
-            this.InformationSurname.Name = "InformationSurname";
-            this.InformationSurname.Size = new System.Drawing.Size(35, 13);
-            this.InformationSurname.TabIndex = 5;
-            this.InformationSurname.Text = "label3";
-            // 
-            // InformationSurnameLabel
-            // 
-            this.InformationSurnameLabel.AutoSize = true;
-            this.InformationSurnameLabel.Location = new System.Drawing.Point(140, 40);
-            this.InformationSurnameLabel.Name = "InformationSurnameLabel";
-            this.InformationSurnameLabel.Size = new System.Drawing.Size(48, 13);
-            this.InformationSurnameLabel.TabIndex = 6;
-            this.InformationSurnameLabel.Text = "Příjmení";
+            this.ContactDetailsLabel.AutoSize = true;
+            this.ContactDetailsLabel.Location = new System.Drawing.Point(38, 20);
+            this.ContactDetailsLabel.Name = "ContactDetailsLabel";
+            this.ContactDetailsLabel.Size = new System.Drawing.Size(39, 13);
+            this.ContactDetailsLabel.TabIndex = 11;
+            this.ContactDetailsLabel.Text = "Detaily";
             // 
             // ContactsDICLabel
             // 
@@ -262,226 +227,83 @@
             this.InformationICLabel.TabIndex = 7;
             this.InformationICLabel.Text = "IČ";
             // 
-            // ContactDetailsLabel
+            // InformationSurnameLabel
             // 
-            this.ContactDetailsLabel.AutoSize = true;
-            this.ContactDetailsLabel.Location = new System.Drawing.Point(38, 20);
-            this.ContactDetailsLabel.Name = "ContactDetailsLabel";
-            this.ContactDetailsLabel.Size = new System.Drawing.Size(39, 13);
-            this.ContactDetailsLabel.TabIndex = 11;
-            this.ContactDetailsLabel.Text = "Detaily";
+            this.InformationSurnameLabel.AutoSize = true;
+            this.InformationSurnameLabel.Location = new System.Drawing.Point(140, 40);
+            this.InformationSurnameLabel.Name = "InformationSurnameLabel";
+            this.InformationSurnameLabel.Size = new System.Drawing.Size(48, 13);
+            this.InformationSurnameLabel.TabIndex = 6;
+            this.InformationSurnameLabel.Text = "Příjmení";
             // 
-            // label1
+            // InformationSurname
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(496, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.InformationSurname.AutoSize = true;
+            this.InformationSurname.Location = new System.Drawing.Point(140, 66);
+            this.InformationSurname.Name = "InformationSurname";
+            this.InformationSurname.Size = new System.Drawing.Size(35, 13);
+            this.InformationSurname.TabIndex = 5;
+            this.InformationSurname.Text = "label3";
             // 
-            // label2
+            // InformationName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(572, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
+            this.InformationName.AutoSize = true;
+            this.InformationName.Location = new System.Drawing.Point(80, 66);
+            this.InformationName.Name = "InformationName";
+            this.InformationName.Size = new System.Drawing.Size(35, 13);
+            this.InformationName.TabIndex = 4;
+            this.InformationName.Text = "label2";
             // 
-            // label3
+            // InformationNameLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(640, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "label3";
+            this.InformationNameLabel.AutoSize = true;
+            this.InformationNameLabel.Location = new System.Drawing.Point(80, 40);
+            this.InformationNameLabel.Name = "InformationNameLabel";
+            this.InformationNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.InformationNameLabel.TabIndex = 3;
+            this.InformationNameLabel.Text = "Jméno";
             // 
-            // label4
+            // AddPage
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(720, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "label4";
+            this.AddPage.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.AddPage.Controls.Add(this.AddAdressButton);
+            this.AddPage.Controls.Add(this.label7);
+            this.AddPage.Controls.Add(this.label6);
+            this.AddPage.Controls.Add(this.label5);
+            this.AddPage.Controls.Add(this.AddPersonButton);
+            this.AddPage.Controls.Add(this.AddPSCTextBox);
+            this.AddPage.Controls.Add(this.AddCityTextBox);
+            this.AddPage.Controls.Add(this.label9);
+            this.AddPage.Controls.Add(this.AddDICLabel);
+            this.AddPage.Controls.Add(this.AddIcLabel);
+            this.AddPage.Controls.Add(this.AddSurnameLabel);
+            this.AddPage.Controls.Add(this.AddNameLabel);
+            this.AddPage.Controls.Add(this.AddStreetTextBox);
+            this.AddPage.Controls.Add(this.AddDicTextBox);
+            this.AddPage.Controls.Add(this.AddIcTextBox);
+            this.AddPage.Controls.Add(this.AddSurnameTextBox);
+            this.AddPage.Controls.Add(this.AddNameTextBox);
+            this.AddPage.Controls.Add(this.AddInformationLabel);
+            this.AddPage.Controls.Add(this.label4);
+            this.AddPage.Controls.Add(this.label3);
+            this.AddPage.Controls.Add(this.label2);
+            this.AddPage.Controls.Add(this.label1);
+            this.AddPage.Location = new System.Drawing.Point(4, 22);
+            this.AddPage.Name = "AddPage";
+            this.AddPage.Padding = new System.Windows.Forms.Padding(3);
+            this.AddPage.Size = new System.Drawing.Size(311, 568);
+            this.AddPage.TabIndex = 1;
+            this.AddPage.Text = "Přidat záznam";
             // 
-            // InformationIcDetailLabel
+            // AddAdressButton
             // 
-            this.InformationIcDetailLabel.AutoSize = true;
-            this.InformationIcDetailLabel.Location = new System.Drawing.Point(38, 266);
-            this.InformationIcDetailLabel.Name = "InformationIcDetailLabel";
-            this.InformationIcDetailLabel.Size = new System.Drawing.Size(52, 13);
-            this.InformationIcDetailLabel.TabIndex = 12;
-            this.InformationIcDetailLabel.Text = "Detaily IČ";
-            // 
-            // EditPage
-            // 
-            this.EditPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.EditPage.Controls.Add(this.label8);
-            this.EditPage.Controls.Add(this.label10);
-            this.EditPage.Controls.Add(this.label11);
-            this.EditPage.Controls.Add(this.button1);
-            this.EditPage.Controls.Add(this.textBox8);
-            this.EditPage.Controls.Add(this.textBox9);
-            this.EditPage.Controls.Add(this.label12);
-            this.EditPage.Controls.Add(this.label13);
-            this.EditPage.Controls.Add(this.label14);
-            this.EditPage.Controls.Add(this.label15);
-            this.EditPage.Controls.Add(this.label16);
-            this.EditPage.Controls.Add(this.textBox10);
-            this.EditPage.Controls.Add(this.textBox11);
-            this.EditPage.Controls.Add(this.textBox12);
-            this.EditPage.Controls.Add(this.textBox13);
-            this.EditPage.Controls.Add(this.textBox14);
-            this.EditPage.Controls.Add(this.label17);
-            this.EditPage.Location = new System.Drawing.Point(4, 22);
-            this.EditPage.Name = "EditPage";
-            this.EditPage.Padding = new System.Windows.Forms.Padding(3);
-            this.EditPage.Size = new System.Drawing.Size(311, 568);
-            this.EditPage.TabIndex = 2;
-            this.EditPage.Text = "Editovat záznam";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(311, 568);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "Smazat Záznam";
-            // 
-            // AddInformationLabel
-            // 
-            this.AddInformationLabel.AutoSize = true;
-            this.AddInformationLabel.Location = new System.Drawing.Point(22, 31);
-            this.AddInformationLabel.Name = "AddInformationLabel";
-            this.AddInformationLabel.Size = new System.Drawing.Size(38, 13);
-            this.AddInformationLabel.TabIndex = 8;
-            this.AddInformationLabel.Text = "Osoba";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(25, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(131, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(25, 118);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(131, 118);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 12;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(25, 254);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 13;
-            // 
-            // AddNameLabel
-            // 
-            this.AddNameLabel.AutoSize = true;
-            this.AddNameLabel.Location = new System.Drawing.Point(22, 55);
-            this.AddNameLabel.Name = "AddNameLabel";
-            this.AddNameLabel.Size = new System.Drawing.Size(38, 13);
-            this.AddNameLabel.TabIndex = 14;
-            this.AddNameLabel.Text = "Jméno";
-            // 
-            // AddSurnameLabel
-            // 
-            this.AddSurnameLabel.AutoSize = true;
-            this.AddSurnameLabel.Location = new System.Drawing.Point(128, 55);
-            this.AddSurnameLabel.Name = "AddSurnameLabel";
-            this.AddSurnameLabel.Size = new System.Drawing.Size(48, 13);
-            this.AddSurnameLabel.TabIndex = 15;
-            this.AddSurnameLabel.Text = "Příjmení";
-            // 
-            // AddIcLabel
-            // 
-            this.AddIcLabel.AutoSize = true;
-            this.AddIcLabel.Location = new System.Drawing.Point(22, 102);
-            this.AddIcLabel.Name = "AddIcLabel";
-            this.AddIcLabel.Size = new System.Drawing.Size(17, 13);
-            this.AddIcLabel.TabIndex = 16;
-            this.AddIcLabel.Text = "IČ";
-            // 
-            // AddDICLabel
-            // 
-            this.AddDICLabel.AutoSize = true;
-            this.AddDICLabel.Location = new System.Drawing.Point(128, 102);
-            this.AddDICLabel.Name = "AddDICLabel";
-            this.AddDICLabel.Size = new System.Drawing.Size(25, 13);
-            this.AddDICLabel.TabIndex = 17;
-            this.AddDICLabel.Text = "DIČ";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 208);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Adresa";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(131, 254);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 19;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(25, 293);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 20;
-            // 
-            // AddPeronButton
-            // 
-            this.AddPeronButton.Location = new System.Drawing.Point(156, 159);
-            this.AddPeronButton.Name = "AddPeronButton";
-            this.AddPeronButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPeronButton.TabIndex = 21;
-            this.AddPeronButton.Text = "Přidat";
-            this.AddPeronButton.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 238);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Ulice";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(128, 238);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Město";
+            this.AddAdressButton.Location = new System.Drawing.Point(156, 323);
+            this.AddAdressButton.Name = "AddAdressButton";
+            this.AddAdressButton.Size = new System.Drawing.Size(75, 23);
+            this.AddAdressButton.TabIndex = 25;
+            this.AddAdressButton.Text = "Přidat";
+            this.AddAdressButton.UseVisualStyleBackColor = true;
+            this.AddAdressButton.Click += new System.EventHandler(this.AddAdressButton_Click);
             // 
             // label7
             // 
@@ -492,144 +314,368 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "PSČ";
             // 
-            // label8
+            // label6
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(18, 269);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 13);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "PSČ";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(128, 238);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Město";
             // 
-            // label10
+            // label5
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(124, 230);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 13);
-            this.label10.TabIndex = 40;
-            this.label10.Text = "Město";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 238);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Ulice";
             // 
-            // label11
+            // AddPersonButton
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 230);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
-            this.label11.TabIndex = 39;
-            this.label11.Text = "Ulice";
+            this.AddPersonButton.Location = new System.Drawing.Point(156, 159);
+            this.AddPersonButton.Name = "AddPersonButton";
+            this.AddPersonButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPersonButton.TabIndex = 21;
+            this.AddPersonButton.Text = "Přidat";
+            this.AddPersonButton.UseVisualStyleBackColor = true;
+            this.AddPersonButton.Click += new System.EventHandler(this.AddPersonButton_Click);
             // 
-            // button1
+            // AddPSCTextBox
             // 
-            this.button1.Location = new System.Drawing.Point(152, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Přidat";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddPSCTextBox.Location = new System.Drawing.Point(25, 293);
+            this.AddPSCTextBox.Name = "AddPSCTextBox";
+            this.AddPSCTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddPSCTextBox.TabIndex = 20;
             // 
-            // textBox8
+            // AddCityTextBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(21, 285);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 37;
+            this.AddCityTextBox.Location = new System.Drawing.Point(131, 254);
+            this.AddCityTextBox.Name = "AddCityTextBox";
+            this.AddCityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddCityTextBox.TabIndex = 19;
             // 
-            // textBox9
+            // label9
             // 
-            this.textBox9.Location = new System.Drawing.Point(127, 246);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 36;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 208);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Adresa";
             // 
-            // label12
+            // AddDICLabel
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 200);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 13);
-            this.label12.TabIndex = 35;
-            this.label12.Text = "Adresa";
+            this.AddDICLabel.AutoSize = true;
+            this.AddDICLabel.Location = new System.Drawing.Point(128, 102);
+            this.AddDICLabel.Name = "AddDICLabel";
+            this.AddDICLabel.Size = new System.Drawing.Size(25, 13);
+            this.AddDICLabel.TabIndex = 17;
+            this.AddDICLabel.Text = "DIČ";
             // 
-            // label13
+            // AddIcLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(124, 94);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 13);
-            this.label13.TabIndex = 34;
-            this.label13.Text = "DIČ";
+            this.AddIcLabel.AutoSize = true;
+            this.AddIcLabel.Location = new System.Drawing.Point(22, 102);
+            this.AddIcLabel.Name = "AddIcLabel";
+            this.AddIcLabel.Size = new System.Drawing.Size(17, 13);
+            this.AddIcLabel.TabIndex = 16;
+            this.AddIcLabel.Text = "IČ";
             // 
-            // label14
+            // AddSurnameLabel
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 94);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(17, 13);
-            this.label14.TabIndex = 33;
-            this.label14.Text = "IČ";
+            this.AddSurnameLabel.AutoSize = true;
+            this.AddSurnameLabel.Location = new System.Drawing.Point(128, 55);
+            this.AddSurnameLabel.Name = "AddSurnameLabel";
+            this.AddSurnameLabel.Size = new System.Drawing.Size(48, 13);
+            this.AddSurnameLabel.TabIndex = 15;
+            this.AddSurnameLabel.Text = "Příjmení";
             // 
-            // label15
+            // AddNameLabel
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(124, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 13);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Příjmení";
+            this.AddNameLabel.AutoSize = true;
+            this.AddNameLabel.Location = new System.Drawing.Point(22, 55);
+            this.AddNameLabel.Name = "AddNameLabel";
+            this.AddNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.AddNameLabel.TabIndex = 14;
+            this.AddNameLabel.Text = "Jméno";
             // 
-            // label16
+            // AddStreetTextBox
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(18, 47);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 13);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "Jméno";
+            this.AddStreetTextBox.Location = new System.Drawing.Point(25, 254);
+            this.AddStreetTextBox.Name = "AddStreetTextBox";
+            this.AddStreetTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddStreetTextBox.TabIndex = 13;
             // 
-            // textBox10
+            // AddDicTextBox
             // 
-            this.textBox10.Location = new System.Drawing.Point(21, 246);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 30;
+            this.AddDicTextBox.Location = new System.Drawing.Point(131, 118);
+            this.AddDicTextBox.Name = "AddDicTextBox";
+            this.AddDicTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddDicTextBox.TabIndex = 12;
             // 
-            // textBox11
+            // AddIcTextBox
             // 
-            this.textBox11.Location = new System.Drawing.Point(127, 110);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 29;
+            this.AddIcTextBox.Location = new System.Drawing.Point(25, 118);
+            this.AddIcTextBox.Name = "AddIcTextBox";
+            this.AddIcTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddIcTextBox.TabIndex = 11;
             // 
-            // textBox12
+            // AddSurnameTextBox
             // 
-            this.textBox12.Location = new System.Drawing.Point(21, 110);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 28;
+            this.AddSurnameTextBox.Location = new System.Drawing.Point(131, 71);
+            this.AddSurnameTextBox.Name = "AddSurnameTextBox";
+            this.AddSurnameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddSurnameTextBox.TabIndex = 10;
             // 
-            // textBox13
+            // AddNameTextBox
             // 
-            this.textBox13.Location = new System.Drawing.Point(127, 63);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 27;
+            this.AddNameTextBox.Location = new System.Drawing.Point(25, 71);
+            this.AddNameTextBox.Name = "AddNameTextBox";
+            this.AddNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddNameTextBox.TabIndex = 9;
             // 
-            // textBox14
+            // AddInformationLabel
             // 
-            this.textBox14.Location = new System.Drawing.Point(21, 63);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 26;
+            this.AddInformationLabel.AutoSize = true;
+            this.AddInformationLabel.Location = new System.Drawing.Point(22, 31);
+            this.AddInformationLabel.Name = "AddInformationLabel";
+            this.AddInformationLabel.Size = new System.Drawing.Size(38, 13);
+            this.AddInformationLabel.TabIndex = 8;
+            this.AddInformationLabel.Text = "Osoba";
             // 
-            // label17
+            // label4
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(18, 23);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 13);
-            this.label17.TabIndex = 25;
-            this.label17.Text = "Osoba";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(720, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "label4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(640, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(572, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(496, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
+            // EditPage
+            // 
+            this.EditPage.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.EditPage.Controls.Add(this.EditAdressButton);
+            this.EditPage.Controls.Add(this.EditPSCLabel);
+            this.EditPage.Controls.Add(this.EditCityLabel);
+            this.EditPage.Controls.Add(this.EditStreetLabel);
+            this.EditPage.Controls.Add(this.EditPersonButton);
+            this.EditPage.Controls.Add(this.EditPSCTextBox);
+            this.EditPage.Controls.Add(this.EditCityTextBox);
+            this.EditPage.Controls.Add(this.EditAdressLabel);
+            this.EditPage.Controls.Add(this.EditDICLabel);
+            this.EditPage.Controls.Add(this.EditIcLabel);
+            this.EditPage.Controls.Add(this.EditSurnameLabel);
+            this.EditPage.Controls.Add(this.EditNameLabel);
+            this.EditPage.Controls.Add(this.EditStreetTextBox);
+            this.EditPage.Controls.Add(this.EditDICTextBox);
+            this.EditPage.Controls.Add(this.EditICTextBox);
+            this.EditPage.Controls.Add(this.EditSurnameTextBox);
+            this.EditPage.Controls.Add(this.EditNameTextBox);
+            this.EditPage.Controls.Add(this.EditPersonLabel);
+            this.EditPage.Location = new System.Drawing.Point(4, 22);
+            this.EditPage.Name = "EditPage";
+            this.EditPage.Padding = new System.Windows.Forms.Padding(3);
+            this.EditPage.Size = new System.Drawing.Size(311, 568);
+            this.EditPage.TabIndex = 2;
+            this.EditPage.Text = "Editovat záznam";
+            // 
+            // EditAdressButton
+            // 
+            this.EditAdressButton.Location = new System.Drawing.Point(152, 323);
+            this.EditAdressButton.Name = "EditAdressButton";
+            this.EditAdressButton.Size = new System.Drawing.Size(75, 23);
+            this.EditAdressButton.TabIndex = 42;
+            this.EditAdressButton.Text = "Upravit";
+            this.EditAdressButton.UseVisualStyleBackColor = true;
+            this.EditAdressButton.Click += new System.EventHandler(this.EditAdressButton_Click);
+            // 
+            // EditPSCLabel
+            // 
+            this.EditPSCLabel.AutoSize = true;
+            this.EditPSCLabel.Location = new System.Drawing.Point(18, 269);
+            this.EditPSCLabel.Name = "EditPSCLabel";
+            this.EditPSCLabel.Size = new System.Drawing.Size(28, 13);
+            this.EditPSCLabel.TabIndex = 41;
+            this.EditPSCLabel.Text = "PSČ";
+            // 
+            // EditCityLabel
+            // 
+            this.EditCityLabel.AutoSize = true;
+            this.EditCityLabel.Location = new System.Drawing.Point(124, 230);
+            this.EditCityLabel.Name = "EditCityLabel";
+            this.EditCityLabel.Size = new System.Drawing.Size(36, 13);
+            this.EditCityLabel.TabIndex = 40;
+            this.EditCityLabel.Text = "Město";
+            // 
+            // EditStreetLabel
+            // 
+            this.EditStreetLabel.AutoSize = true;
+            this.EditStreetLabel.Location = new System.Drawing.Point(18, 230);
+            this.EditStreetLabel.Name = "EditStreetLabel";
+            this.EditStreetLabel.Size = new System.Drawing.Size(31, 13);
+            this.EditStreetLabel.TabIndex = 39;
+            this.EditStreetLabel.Text = "Ulice";
+            // 
+            // EditPersonButton
+            // 
+            this.EditPersonButton.Location = new System.Drawing.Point(152, 151);
+            this.EditPersonButton.Name = "EditPersonButton";
+            this.EditPersonButton.Size = new System.Drawing.Size(75, 23);
+            this.EditPersonButton.TabIndex = 38;
+            this.EditPersonButton.Text = "Upravit";
+            this.EditPersonButton.UseVisualStyleBackColor = true;
+            this.EditPersonButton.Click += new System.EventHandler(this.EditPersonButton_Click);
+            // 
+            // EditPSCTextBox
+            // 
+            this.EditPSCTextBox.Location = new System.Drawing.Point(21, 285);
+            this.EditPSCTextBox.Name = "EditPSCTextBox";
+            this.EditPSCTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditPSCTextBox.TabIndex = 37;
+            // 
+            // EditCityTextBox
+            // 
+            this.EditCityTextBox.Location = new System.Drawing.Point(127, 246);
+            this.EditCityTextBox.Name = "EditCityTextBox";
+            this.EditCityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditCityTextBox.TabIndex = 36;
+            // 
+            // EditAdressLabel
+            // 
+            this.EditAdressLabel.AutoSize = true;
+            this.EditAdressLabel.Location = new System.Drawing.Point(18, 200);
+            this.EditAdressLabel.Name = "EditAdressLabel";
+            this.EditAdressLabel.Size = new System.Drawing.Size(40, 13);
+            this.EditAdressLabel.TabIndex = 35;
+            this.EditAdressLabel.Text = "Adresa";
+            // 
+            // EditDICLabel
+            // 
+            this.EditDICLabel.AutoSize = true;
+            this.EditDICLabel.Location = new System.Drawing.Point(124, 94);
+            this.EditDICLabel.Name = "EditDICLabel";
+            this.EditDICLabel.Size = new System.Drawing.Size(25, 13);
+            this.EditDICLabel.TabIndex = 34;
+            this.EditDICLabel.Text = "DIČ";
+            // 
+            // EditIcLabel
+            // 
+            this.EditIcLabel.AutoSize = true;
+            this.EditIcLabel.Location = new System.Drawing.Point(18, 94);
+            this.EditIcLabel.Name = "EditIcLabel";
+            this.EditIcLabel.Size = new System.Drawing.Size(17, 13);
+            this.EditIcLabel.TabIndex = 33;
+            this.EditIcLabel.Text = "IČ";
+            // 
+            // EditSurnameLabel
+            // 
+            this.EditSurnameLabel.AutoSize = true;
+            this.EditSurnameLabel.Location = new System.Drawing.Point(124, 47);
+            this.EditSurnameLabel.Name = "EditSurnameLabel";
+            this.EditSurnameLabel.Size = new System.Drawing.Size(48, 13);
+            this.EditSurnameLabel.TabIndex = 32;
+            this.EditSurnameLabel.Text = "Příjmení";
+            // 
+            // EditNameLabel
+            // 
+            this.EditNameLabel.AutoSize = true;
+            this.EditNameLabel.Location = new System.Drawing.Point(18, 47);
+            this.EditNameLabel.Name = "EditNameLabel";
+            this.EditNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.EditNameLabel.TabIndex = 31;
+            this.EditNameLabel.Text = "Jméno";
+            // 
+            // EditStreetTextBox
+            // 
+            this.EditStreetTextBox.Location = new System.Drawing.Point(21, 246);
+            this.EditStreetTextBox.Name = "EditStreetTextBox";
+            this.EditStreetTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditStreetTextBox.TabIndex = 30;
+            // 
+            // EditDICTextBox
+            // 
+            this.EditDICTextBox.Location = new System.Drawing.Point(127, 110);
+            this.EditDICTextBox.Name = "EditDICTextBox";
+            this.EditDICTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditDICTextBox.TabIndex = 29;
+            // 
+            // EditICTextBox
+            // 
+            this.EditICTextBox.Location = new System.Drawing.Point(21, 110);
+            this.EditICTextBox.Name = "EditICTextBox";
+            this.EditICTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditICTextBox.TabIndex = 28;
+            // 
+            // EditSurnameTextBox
+            // 
+            this.EditSurnameTextBox.Location = new System.Drawing.Point(127, 63);
+            this.EditSurnameTextBox.Name = "EditSurnameTextBox";
+            this.EditSurnameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditSurnameTextBox.TabIndex = 27;
+            // 
+            // EditNameTextBox
+            // 
+            this.EditNameTextBox.Location = new System.Drawing.Point(21, 63);
+            this.EditNameTextBox.Name = "EditNameTextBox";
+            this.EditNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.EditNameTextBox.TabIndex = 26;
+            // 
+            // EditPersonLabel
+            // 
+            this.EditPersonLabel.AutoSize = true;
+            this.EditPersonLabel.Location = new System.Drawing.Point(18, 23);
+            this.EditPersonLabel.Name = "EditPersonLabel";
+            this.EditPersonLabel.Size = new System.Drawing.Size(38, 13);
+            this.EditPersonLabel.TabIndex = 25;
+            this.EditPersonLabel.Text = "Osoba";
+            // 
+            // InformationDic
+            // 
+            this.InformationDic.AutoSize = true;
+            this.InformationDic.Location = new System.Drawing.Point(252, 66);
+            this.InformationDic.Name = "InformationDic";
+            this.InformationDic.Size = new System.Drawing.Size(35, 13);
+            this.InformationDic.TabIndex = 42;
+            this.InformationDic.Text = "label2";
+            // 
+            // InformationDICLabel
+            // 
+            this.InformationDICLabel.AutoSize = true;
+            this.InformationDICLabel.Location = new System.Drawing.Point(252, 40);
+            this.InformationDICLabel.Name = "InformationDICLabel";
+            this.InformationDICLabel.Size = new System.Drawing.Size(25, 13);
+            this.InformationDICLabel.TabIndex = 41;
+            this.InformationDICLabel.Text = "DIČ";
             // 
             // Presentation
             // 
@@ -642,8 +688,6 @@
             this.Controls.Add(this.AdressList);
             this.Name = "Presentation";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.adressBookDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adressBookDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdressList)).EndInit();
             this.Tabs.ResumeLayout(false);
@@ -659,8 +703,6 @@
 
         #endregion
 
-        private AdressBookDataSet adressBookDataSet;
-        private System.Windows.Forms.BindingSource adressBookDataSetBindingSource;
         private System.Windows.Forms.DataGridView NameList;
         private System.Windows.Forms.DataGridView AdressList;
         private System.Windows.Forms.TabControl Tabs;
@@ -681,41 +723,46 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage EditPage;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label AddDICLabel;
         private System.Windows.Forms.Label AddIcLabel;
         private System.Windows.Forms.Label AddSurnameLabel;
         private System.Windows.Forms.Label AddNameLabel;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox AddStreetTextBox;
+        private System.Windows.Forms.TextBox AddDicTextBox;
+        private System.Windows.Forms.TextBox AddIcTextBox;
+        private System.Windows.Forms.TextBox AddSurnameTextBox;
+        private System.Windows.Forms.TextBox AddNameTextBox;
         private System.Windows.Forms.Label AddInformationLabel;
-        private System.Windows.Forms.Button AddPeronButton;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button AddPersonButton;
+        private System.Windows.Forms.TextBox AddPSCTextBox;
+        private System.Windows.Forms.TextBox AddCityTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label EditPSCLabel;
+        private System.Windows.Forms.Label EditCityLabel;
+        private System.Windows.Forms.Label EditStreetLabel;
+        private System.Windows.Forms.Button EditPersonButton;
+        private System.Windows.Forms.TextBox EditPSCTextBox;
+        private System.Windows.Forms.TextBox EditCityTextBox;
+        private System.Windows.Forms.Label EditAdressLabel;
+        private System.Windows.Forms.Label EditDICLabel;
+        private System.Windows.Forms.Label EditIcLabel;
+        private System.Windows.Forms.Label EditSurnameLabel;
+        private System.Windows.Forms.Label EditNameLabel;
+        private System.Windows.Forms.TextBox EditStreetTextBox;
+        private System.Windows.Forms.TextBox EditDICTextBox;
+        private System.Windows.Forms.TextBox EditICTextBox;
+        private System.Windows.Forms.TextBox EditSurnameTextBox;
+        private System.Windows.Forms.TextBox EditNameTextBox;
+        private System.Windows.Forms.Label EditPersonLabel;
+        private System.Windows.Forms.Button AddAdressButton;
+        private System.Windows.Forms.Button EditAdressButton;
+        private System.Windows.Forms.Button DeleteAdressButton;
+        private System.Windows.Forms.Button DeletePersonButton;
+        private System.Windows.Forms.Label InformationDic;
+        private System.Windows.Forms.Label InformationDICLabel;
     }
 }
 
