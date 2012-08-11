@@ -15,7 +15,7 @@ namespace AdressBookTest
         {
             AddressBook.ObjectLayer obLayer = new ObjectLayer();
             Person person = new Person(0, "A", "B", 27074358, 27074358);
-            obLayer.CheckIC(person);
+            obLayer.CheckIC(person.IC);
         }
     }
 }

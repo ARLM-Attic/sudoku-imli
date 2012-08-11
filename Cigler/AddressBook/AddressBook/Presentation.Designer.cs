@@ -32,6 +32,8 @@
             this.AdressList = new System.Windows.Forms.DataGridView();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.InformationPage = new System.Windows.Forms.TabPage();
+            this.InformationDic = new System.Windows.Forms.Label();
+            this.InformationDICLabel = new System.Windows.Forms.Label();
             this.DeleteAdressButton = new System.Windows.Forms.Button();
             this.DeletePersonButton = new System.Windows.Forms.Button();
             this.InformationIcDetailLabel = new System.Windows.Forms.Label();
@@ -86,8 +88,12 @@
             this.EditSurnameTextBox = new System.Windows.Forms.TextBox();
             this.EditNameTextBox = new System.Windows.Forms.TextBox();
             this.EditPersonLabel = new System.Windows.Forms.Label();
-            this.InformationDic = new System.Windows.Forms.Label();
-            this.InformationDICLabel = new System.Windows.Forms.Label();
+            this.InformationDateValid = new System.Windows.Forms.Label();
+            this.InformationDateValidLabel = new System.Windows.Forms.Label();
+            this.InformationDateCreatedLabel = new System.Windows.Forms.Label();
+            this.InformationDateCreated = new System.Windows.Forms.Label();
+            this.InformationCompany = new System.Windows.Forms.Label();
+            this.InformationCompanyLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdressList)).BeginInit();
             this.Tabs.SuspendLayout();
@@ -132,6 +138,12 @@
             // InformationPage
             // 
             this.InformationPage.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.InformationPage.Controls.Add(this.InformationDateValid);
+            this.InformationPage.Controls.Add(this.InformationDateValidLabel);
+            this.InformationPage.Controls.Add(this.InformationDateCreatedLabel);
+            this.InformationPage.Controls.Add(this.InformationDateCreated);
+            this.InformationPage.Controls.Add(this.InformationCompany);
+            this.InformationPage.Controls.Add(this.InformationCompanyLabel);
             this.InformationPage.Controls.Add(this.InformationDic);
             this.InformationPage.Controls.Add(this.InformationDICLabel);
             this.InformationPage.Controls.Add(this.DeleteAdressButton);
@@ -152,6 +164,24 @@
             this.InformationPage.Size = new System.Drawing.Size(311, 568);
             this.InformationPage.TabIndex = 0;
             this.InformationPage.Text = "Informace";
+            // 
+            // InformationDic
+            // 
+            this.InformationDic.AutoSize = true;
+            this.InformationDic.Location = new System.Drawing.Point(252, 66);
+            this.InformationDic.Name = "InformationDic";
+            this.InformationDic.Size = new System.Drawing.Size(35, 13);
+            this.InformationDic.TabIndex = 42;
+            this.InformationDic.Text = "label2";
+            // 
+            // InformationDICLabel
+            // 
+            this.InformationDICLabel.AutoSize = true;
+            this.InformationDICLabel.Location = new System.Drawing.Point(252, 40);
+            this.InformationDICLabel.Name = "InformationDICLabel";
+            this.InformationDICLabel.Size = new System.Drawing.Size(25, 13);
+            this.InformationDICLabel.TabIndex = 41;
+            this.InformationDICLabel.Text = "DIČ";
             // 
             // DeleteAdressButton
             // 
@@ -659,23 +689,59 @@
             this.EditPersonLabel.TabIndex = 25;
             this.EditPersonLabel.Text = "Osoba";
             // 
-            // InformationDic
+            // InformationDateValid
             // 
-            this.InformationDic.AutoSize = true;
-            this.InformationDic.Location = new System.Drawing.Point(252, 66);
-            this.InformationDic.Name = "InformationDic";
-            this.InformationDic.Size = new System.Drawing.Size(35, 13);
-            this.InformationDic.TabIndex = 42;
-            this.InformationDic.Text = "label2";
+            this.InformationDateValid.AutoSize = true;
+            this.InformationDateValid.Location = new System.Drawing.Point(173, 333);
+            this.InformationDateValid.Name = "InformationDateValid";
+            this.InformationDateValid.Size = new System.Drawing.Size(35, 13);
+            this.InformationDateValid.TabIndex = 48;
+            this.InformationDateValid.Text = "label2";
             // 
-            // InformationDICLabel
+            // InformationDateValidLabel
             // 
-            this.InformationDICLabel.AutoSize = true;
-            this.InformationDICLabel.Location = new System.Drawing.Point(252, 40);
-            this.InformationDICLabel.Name = "InformationDICLabel";
-            this.InformationDICLabel.Size = new System.Drawing.Size(25, 13);
-            this.InformationDICLabel.TabIndex = 41;
-            this.InformationDICLabel.Text = "DIČ";
+            this.InformationDateValidLabel.AutoSize = true;
+            this.InformationDateValidLabel.Location = new System.Drawing.Point(173, 307);
+            this.InformationDateValidLabel.Name = "InformationDateValidLabel";
+            this.InformationDateValidLabel.Size = new System.Drawing.Size(80, 13);
+            this.InformationDateValidLabel.TabIndex = 47;
+            this.InformationDateValidLabel.Text = "Datum platnosti";
+            // 
+            // InformationDateCreatedLabel
+            // 
+            this.InformationDateCreatedLabel.AutoSize = true;
+            this.InformationDateCreatedLabel.Location = new System.Drawing.Point(102, 307);
+            this.InformationDateCreatedLabel.Name = "InformationDateCreatedLabel";
+            this.InformationDateCreatedLabel.Size = new System.Drawing.Size(81, 13);
+            this.InformationDateCreatedLabel.TabIndex = 46;
+            this.InformationDateCreatedLabel.Text = "Datum založení";
+            // 
+            // InformationDateCreated
+            // 
+            this.InformationDateCreated.AutoSize = true;
+            this.InformationDateCreated.Location = new System.Drawing.Point(102, 333);
+            this.InformationDateCreated.Name = "InformationDateCreated";
+            this.InformationDateCreated.Size = new System.Drawing.Size(35, 13);
+            this.InformationDateCreated.TabIndex = 45;
+            this.InformationDateCreated.Text = "label3";
+            // 
+            // InformationCompany
+            // 
+            this.InformationCompany.AutoSize = true;
+            this.InformationCompany.Location = new System.Drawing.Point(42, 333);
+            this.InformationCompany.Name = "InformationCompany";
+            this.InformationCompany.Size = new System.Drawing.Size(35, 13);
+            this.InformationCompany.TabIndex = 44;
+            this.InformationCompany.Text = "label2";
+            // 
+            // InformationCompanyLabel
+            // 
+            this.InformationCompanyLabel.AutoSize = true;
+            this.InformationCompanyLabel.Location = new System.Drawing.Point(42, 307);
+            this.InformationCompanyLabel.Name = "InformationCompanyLabel";
+            this.InformationCompanyLabel.Size = new System.Drawing.Size(60, 13);
+            this.InformationCompanyLabel.TabIndex = 43;
+            this.InformationCompanyLabel.Text = "Společnost";
             // 
             // Presentation
             // 
@@ -763,6 +829,12 @@
         private System.Windows.Forms.Button DeletePersonButton;
         private System.Windows.Forms.Label InformationDic;
         private System.Windows.Forms.Label InformationDICLabel;
+        private System.Windows.Forms.Label InformationDateValid;
+        private System.Windows.Forms.Label InformationDateValidLabel;
+        private System.Windows.Forms.Label InformationDateCreatedLabel;
+        private System.Windows.Forms.Label InformationDateCreated;
+        private System.Windows.Forms.Label InformationCompany;
+        private System.Windows.Forms.Label InformationCompanyLabel;
     }
 }
 

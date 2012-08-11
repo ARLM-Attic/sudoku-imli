@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -23,6 +24,7 @@ namespace AddressBook
 
         public ObjectLayer()
         {
+           
             _persons = data.SelectAllPersons(_persons);
             foreach (var person in _persons)
             {
@@ -51,6 +53,7 @@ namespace AddressBook
                 int icId = data.InsertIco(tempPerson.ICInfo.CompanyName, tempPerson.ICInfo.DateCreated,
                                           tempPerson.ICInfo.DateValid,tempPerson.PersonID);
                 if (id == 0) Log("Unable to Insert Person into database");
+                if(icId == 0 )Log("Unable to Insert IC into database");
                 else
                 {
                     tempPerson.PersonID = id;
@@ -278,6 +281,11 @@ namespace AddressBook
                     }
                 }
                 ICO tempIco = new ICO(dateCreated,dateValid,companyName);
+                tempPerson.ICInfo = tempIco;
+            }
+            else
+            {
+                ICO tempIco = new ICO("","","");
                 tempPerson.ICInfo = tempIco;
             }
 

@@ -6,13 +6,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace AddressBook
 {
     public class DataLayer
     {
-        private static string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\AdressBook.mdf;Integrated Security=True;User Instance=True";
+        private static string dbPath = Application.StartupPath + "\\AdressBook.MDF";
+       // private static string connectionString = @"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\AdressBook.mdf;Integrated Security=True;User Instance=True";
 
+        public string connectionString = @"Server=.\SQLExpress;AttachDbFilename="+dbPath+";Trusted_Connection=Yes;User Instance=True;";
+        
         public int InsertPerson(string name, string surname, int ic, int dic)
         {
             string query = "INSERT INTO Persons (Name, Surname ,IC, DIC) Values (@name, @surname,@ic,@dic); SELECT CAST(scope_identity() AS int)";
@@ -197,7 +201,10 @@ namespace AddressBook
         public void DeletePerson(int PersonsID)
         {
 
-            string query = "DELETE FROM Persons WHERE PersonID = @PersonID; DELETE FROM Adresses WHERE PersonID =@PersonID";
+            string query =
+                "DELETE FROM Persons WHERE PersonID = @PersonID;" +
+                " DELETE FROM Adresses WHERE PersonID =@PersonID;" +
+                "DETELE FROM IcInfo WHERE PersonID =@PersonID;";
 
             SqlConnection connect = new SqlConnection(connectionString);
 

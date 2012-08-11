@@ -2,6 +2,11 @@
 
 namespace AddressBook
 {
+    /// <summary>
+    /// Class used to store Adress Information, It implements InotifyPropertyChange
+    /// Interface, meaning that every time a propery is changed a datagridview(a client)
+    ///  is notified about change
+    /// </summary>
     public class Adress : INotifyPropertyChanged
     {
         private int _adressid;
@@ -52,7 +57,9 @@ namespace AddressBook
             private set { _personid = value; }
         }
 
-
+        /// <summary>
+        /// Constructor used in cases when we are loading information from Database and adress already has ID
+        /// </summary>
         public Adress(int adressid, string street, string city, int psc, int personid)
         {
             AdressID = adressid;
@@ -62,6 +69,14 @@ namespace AddressBook
             PersonID = personid;
         }
 
+        /// <summary>
+        /// Constructor used in cases when we are adding new adress to person, and we do not know yet what ID it is going to have
+        /// ID is returned after inserting into database.
+        /// </summary>
+        /// <param name="street"></param>
+        /// <param name="city"></param>
+        /// <param name="psc"></param>
+        /// <param name="personid"></param>
         public Adress( string street, string city, int psc, int personid)
         {
             Street = street;

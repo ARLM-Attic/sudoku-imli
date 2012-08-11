@@ -32,26 +32,32 @@ namespace AddressBook
             
             NameList.AutoGenerateColumns = false;
 
-            DataGridViewTextBoxColumn ID = new DataGridViewTextBoxColumn();
-            ID.DataPropertyName = "PersonID";
-            ID.HeaderText = "PersonID";
-     
+            DataGridViewTextBoxColumn ID = new DataGridViewTextBoxColumn
+                                               {
+                                                   DataPropertyName = "PersonID",
+                                                   HeaderText = "PersonID"
+                                               };
 
-            DataGridViewTextBoxColumn Name = new DataGridViewTextBoxColumn();
-            Name.DataPropertyName = "Name";
-            Name.HeaderText = "Jmeno";
 
-            DataGridViewTextBoxColumn Surname = new DataGridViewTextBoxColumn();
-            Surname.DataPropertyName = "Surname";
-            Surname.HeaderText = "Příjmení";
+            DataGridViewTextBoxColumn Name = new DataGridViewTextBoxColumn
+                                                 {
+                                                     DataPropertyName = "Name",
+                                                     HeaderText = "Jmeno"
+                                                 };
 
-            DataGridViewTextBoxColumn IC = new DataGridViewTextBoxColumn();
-            IC.DataPropertyName = "IC";
-            IC.HeaderText = "IČO";
+            DataGridViewTextBoxColumn Surname = new DataGridViewTextBoxColumn
+                                                    {
+                                                        DataPropertyName = "Surname",
+                                                        HeaderText = "Příjmení"
+                                                    };
 
-            DataGridViewTextBoxColumn DIC = new DataGridViewTextBoxColumn();
-            DIC.DataPropertyName = "DIC";
-            DIC.HeaderText = "DIČ";
+            DataGridViewTextBoxColumn IC = new DataGridViewTextBoxColumn {DataPropertyName = "IC", HeaderText = "IČO"};
+
+            DataGridViewTextBoxColumn DIC = new DataGridViewTextBoxColumn
+                                                {
+                                                    DataPropertyName = "DIC",
+                                                    HeaderText = "DIČ"
+                                                };
 
             NameList.Columns.Add(ID);
             NameList.Columns.Add(Name);
@@ -63,7 +69,7 @@ namespace AddressBook
             NameList.DataSource = objects.Persons;
             try
             {
-                NameList.Columns["PersonID"].Visible = false;
+                NameList.Columns[0].Visible = false; // 0 - PersonID
             }
             catch(Exception exp)
             {
@@ -158,6 +164,10 @@ namespace AddressBook
             {
                 string ID = NameList.SelectedRows[0].Cells[0].Value.ToString();
                 objects.DeletePerson(ID);
+
+                InformationCompany.Text = "";
+                InformationDateValid.Text = "";
+                InformationDateCreated.Text = "";
             }
         }
 
@@ -166,7 +176,7 @@ namespace AddressBook
             if (AdressList.SelectedRows.Count == 1)
             {
                 string adressID = AdressList.SelectedRows[0].Cells[0].Value.ToString();
-                string personID = AdressList.SelectedRows[0].Cells[0].Value.ToString();
+                string personID = NameList.SelectedRows[0].Cells[0].Value.ToString();
                 objects.DeleteAdress(adressID, personID);
             }
         }
@@ -239,6 +249,13 @@ namespace AddressBook
                 EditSurnameTextBox.Text = tempPerson.Surname;
                 EditICTextBox.Text = tempPerson.IC.ToString();
                 EditDICTextBox.Text = tempPerson.DIC.ToString();
+
+                if (tempPerson.ICInfo != null)
+                {
+                    InformationCompany.Text = tempPerson.ICInfo.CompanyName;
+                    InformationDateCreated.Text = tempPerson.ICInfo.DateCreated;
+                    InformationDateValid.Text = tempPerson.ICInfo.DateValid;
+                }
             }
 
         }
