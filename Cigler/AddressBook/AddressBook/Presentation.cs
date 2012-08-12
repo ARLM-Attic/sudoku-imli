@@ -144,6 +144,8 @@ namespace AddressBook
             string surname = EditSurnameTextBox.Text;
             string ic = EditICTextBox.Text;
             string dic = EditDICTextBox.Text;
+            
+           
 
             if (NameList.SelectedRows.Count == 1)
             {
@@ -155,6 +157,7 @@ namespace AddressBook
                 {
                     MessageBox.Show(result);
                 }
+                NameList_SelectionChanged(null, null);
             }
         }
 
@@ -207,9 +210,9 @@ namespace AddressBook
 
         private void EditAdressButton_Click(object sender, EventArgs e)
         {
-            string street = AddStreetTextBox.Text;
-            string city = AddCityTextBox.Text;
-            string psc = AddPSCTextBox.Text;
+            string street = EditStreetTextBox.Text;
+            string city = EditCityTextBox.Text;
+            string psc = EditPSCTextBox.Text;
 
             if (NameList.SelectedRows.Count == 1)
             {

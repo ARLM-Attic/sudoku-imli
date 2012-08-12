@@ -11,17 +11,25 @@ using System.Xml.Linq;
 
 namespace AddressBook
 {
+    /// <summary>
+    /// Class which keeps information about Persons and their adresses, its responsible for adding/deleting/updating persons and 
+    /// theirs adresses/ic informations. All input validation is handled here, also all exceptions from database layer are handled here
+    /// </summary>
     public class ObjectLayer
     {
-        private BindingList<Person> _persons = new BindingList<Person>();
-        DataLayer data = new DataLayer();
+        private BindingList<Person> _persons = new BindingList<Person>(); //private list of persons, Binding list is used because all changes to list are
+                                                                          //visible to datagridview of presentation layer immidately.
+        DataLayer data = new DataLayer(); //object of datalayer, used to inserting/deleting/updating persons/adresses/ic informations
 
-        public BindingList<Person> Persons
+        public BindingList<Person> Persons //public property used to access Person list
         {
             get { return _persons; }
         }
 
-
+        /// <summary>
+        /// Constructor for this class, calls datalayer object to load all information about persons into _persons list,
+        /// then proceeded and loads all informations 
+        /// </summary>
         public ObjectLayer()
         {
            
@@ -81,6 +89,7 @@ namespace AddressBook
             Int32.TryParse(dic, out tempDic);
             Int32.TryParse(ID, out PersonID);
 
+            
 
             try
             {
@@ -90,6 +99,7 @@ namespace AddressBook
                 tempPerson.Surname = surname;
                 tempPerson.IC = tempIc;
                 tempPerson.DIC = tempDic;
+                if(tempIc != 0)tempPerson = loadIcInfo(tempPerson);
             }
             catch (Exception except)
             {
@@ -163,6 +173,7 @@ namespace AddressBook
                 tempAdress.Street = street;
                 tempAdress.City = city;
                 tempAdress.PSC = tempPsc;
+                
             }
             catch (Exception exp)
             {

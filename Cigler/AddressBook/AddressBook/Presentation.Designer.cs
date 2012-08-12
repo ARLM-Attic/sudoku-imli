@@ -32,6 +32,12 @@
             this.AdressList = new System.Windows.Forms.DataGridView();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.InformationPage = new System.Windows.Forms.TabPage();
+            this.InformationDateValid = new System.Windows.Forms.Label();
+            this.InformationDateValidLabel = new System.Windows.Forms.Label();
+            this.InformationDateCreatedLabel = new System.Windows.Forms.Label();
+            this.InformationDateCreated = new System.Windows.Forms.Label();
+            this.InformationCompany = new System.Windows.Forms.Label();
+            this.InformationCompanyLabel = new System.Windows.Forms.Label();
             this.InformationDic = new System.Windows.Forms.Label();
             this.InformationDICLabel = new System.Windows.Forms.Label();
             this.DeleteAdressButton = new System.Windows.Forms.Button();
@@ -88,18 +94,16 @@
             this.EditSurnameTextBox = new System.Windows.Forms.TextBox();
             this.EditNameTextBox = new System.Windows.Forms.TextBox();
             this.EditPersonLabel = new System.Windows.Forms.Label();
-            this.InformationDateValid = new System.Windows.Forms.Label();
-            this.InformationDateValidLabel = new System.Windows.Forms.Label();
-            this.InformationDateCreatedLabel = new System.Windows.Forms.Label();
-            this.InformationDateCreated = new System.Windows.Forms.Label();
-            this.InformationCompany = new System.Windows.Forms.Label();
-            this.InformationCompanyLabel = new System.Windows.Forms.Label();
+            this.PersonInformationPanel = new System.Windows.Forms.Panel();
+            this.IcInfoPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.NameList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdressList)).BeginInit();
             this.Tabs.SuspendLayout();
             this.InformationPage.SuspendLayout();
             this.AddPage.SuspendLayout();
             this.EditPage.SuspendLayout();
+            this.PersonInformationPanel.SuspendLayout();
+            this.IcInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NameList
@@ -121,7 +125,7 @@
             this.AdressList.Name = "AdressList";
             this.AdressList.RowHeadersVisible = false;
             this.AdressList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AdressList.Size = new System.Drawing.Size(321, 123);
+            this.AdressList.Size = new System.Drawing.Size(417, 123);
             this.AdressList.TabIndex = 2;
             // 
             // Tabs
@@ -132,62 +136,112 @@
             this.Tabs.Location = new System.Drawing.Point(444, 36);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
-            this.Tabs.Size = new System.Drawing.Size(319, 594);
+            this.Tabs.Size = new System.Drawing.Size(340, 512);
             this.Tabs.TabIndex = 3;
             // 
             // InformationPage
             // 
-            this.InformationPage.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.InformationPage.Controls.Add(this.InformationDateValid);
-            this.InformationPage.Controls.Add(this.InformationDateValidLabel);
-            this.InformationPage.Controls.Add(this.InformationDateCreatedLabel);
-            this.InformationPage.Controls.Add(this.InformationDateCreated);
-            this.InformationPage.Controls.Add(this.InformationCompany);
-            this.InformationPage.Controls.Add(this.InformationCompanyLabel);
-            this.InformationPage.Controls.Add(this.InformationDic);
-            this.InformationPage.Controls.Add(this.InformationDICLabel);
+            this.InformationPage.BackColor = System.Drawing.Color.DarkCyan;
+            this.InformationPage.Controls.Add(this.IcInfoPanel);
+            this.InformationPage.Controls.Add(this.PersonInformationPanel);
             this.InformationPage.Controls.Add(this.DeleteAdressButton);
             this.InformationPage.Controls.Add(this.DeletePersonButton);
-            this.InformationPage.Controls.Add(this.InformationIcDetailLabel);
-            this.InformationPage.Controls.Add(this.ContactDetailsLabel);
             this.InformationPage.Controls.Add(this.ContactsDICLabel);
             this.InformationPage.Controls.Add(this.ContactsDIC);
-            this.InformationPage.Controls.Add(this.InformationIC);
-            this.InformationPage.Controls.Add(this.InformationICLabel);
-            this.InformationPage.Controls.Add(this.InformationSurnameLabel);
-            this.InformationPage.Controls.Add(this.InformationSurname);
-            this.InformationPage.Controls.Add(this.InformationName);
-            this.InformationPage.Controls.Add(this.InformationNameLabel);
+            this.InformationPage.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.InformationPage.Location = new System.Drawing.Point(4, 22);
             this.InformationPage.Name = "InformationPage";
             this.InformationPage.Padding = new System.Windows.Forms.Padding(3);
-            this.InformationPage.Size = new System.Drawing.Size(311, 568);
+            this.InformationPage.Size = new System.Drawing.Size(332, 486);
             this.InformationPage.TabIndex = 0;
             this.InformationPage.Text = "Informace";
+            // 
+            // InformationDateValid
+            // 
+            this.InformationDateValid.AutoSize = true;
+            this.InformationDateValid.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationDateValid.Location = new System.Drawing.Point(176, 90);
+            this.InformationDateValid.Name = "InformationDateValid";
+            this.InformationDateValid.Size = new System.Drawing.Size(94, 20);
+            this.InformationDateValid.TabIndex = 48;
+            this.InformationDateValid.Text = "placeholder";
+            // 
+            // InformationDateValidLabel
+            // 
+            this.InformationDateValidLabel.AutoSize = true;
+            this.InformationDateValidLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationDateValidLabel.Location = new System.Drawing.Point(24, 119);
+            this.InformationDateValidLabel.Name = "InformationDateValidLabel";
+            this.InformationDateValidLabel.Size = new System.Drawing.Size(133, 20);
+            this.InformationDateValidLabel.TabIndex = 47;
+            this.InformationDateValidLabel.Text = "Datum platnosti: ";
+            // 
+            // InformationDateCreatedLabel
+            // 
+            this.InformationDateCreatedLabel.AutoSize = true;
+            this.InformationDateCreatedLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationDateCreatedLabel.Location = new System.Drawing.Point(24, 90);
+            this.InformationDateCreatedLabel.Name = "InformationDateCreatedLabel";
+            this.InformationDateCreatedLabel.Size = new System.Drawing.Size(130, 20);
+            this.InformationDateCreatedLabel.TabIndex = 46;
+            this.InformationDateCreatedLabel.Text = "Datum založení :";
+            // 
+            // InformationDateCreated
+            // 
+            this.InformationDateCreated.AutoSize = true;
+            this.InformationDateCreated.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationDateCreated.Location = new System.Drawing.Point(176, 60);
+            this.InformationDateCreated.Name = "InformationDateCreated";
+            this.InformationDateCreated.Size = new System.Drawing.Size(94, 20);
+            this.InformationDateCreated.TabIndex = 45;
+            this.InformationDateCreated.Text = "placeholder";
+            // 
+            // InformationCompany
+            // 
+            this.InformationCompany.AutoSize = true;
+            this.InformationCompany.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationCompany.Location = new System.Drawing.Point(176, 119);
+            this.InformationCompany.Name = "InformationCompany";
+            this.InformationCompany.Size = new System.Drawing.Size(94, 20);
+            this.InformationCompany.TabIndex = 44;
+            this.InformationCompany.Text = "placeholder";
+            // 
+            // InformationCompanyLabel
+            // 
+            this.InformationCompanyLabel.AutoSize = true;
+            this.InformationCompanyLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationCompanyLabel.Location = new System.Drawing.Point(24, 60);
+            this.InformationCompanyLabel.Name = "InformationCompanyLabel";
+            this.InformationCompanyLabel.Size = new System.Drawing.Size(94, 20);
+            this.InformationCompanyLabel.TabIndex = 43;
+            this.InformationCompanyLabel.Text = "Společnost :";
             // 
             // InformationDic
             // 
             this.InformationDic.AutoSize = true;
-            this.InformationDic.Location = new System.Drawing.Point(252, 66);
+            this.InformationDic.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationDic.Location = new System.Drawing.Point(149, 118);
             this.InformationDic.Name = "InformationDic";
-            this.InformationDic.Size = new System.Drawing.Size(35, 13);
+            this.InformationDic.Size = new System.Drawing.Size(94, 20);
             this.InformationDic.TabIndex = 42;
-            this.InformationDic.Text = "label2";
+            this.InformationDic.Text = "placeholder";
             // 
             // InformationDICLabel
             // 
             this.InformationDICLabel.AutoSize = true;
-            this.InformationDICLabel.Location = new System.Drawing.Point(252, 40);
+            this.InformationDICLabel.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.InformationDICLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationDICLabel.Location = new System.Drawing.Point(54, 118);
             this.InformationDICLabel.Name = "InformationDICLabel";
-            this.InformationDICLabel.Size = new System.Drawing.Size(25, 13);
+            this.InformationDICLabel.Size = new System.Drawing.Size(45, 20);
             this.InformationDICLabel.TabIndex = 41;
-            this.InformationDICLabel.Text = "DIČ";
+            this.InformationDICLabel.Text = "DIČ :";
             // 
             // DeleteAdressButton
             // 
-            this.DeleteAdressButton.Location = new System.Drawing.Point(15, 458);
+            this.DeleteAdressButton.Location = new System.Drawing.Point(6, 449);
             this.DeleteAdressButton.Name = "DeleteAdressButton";
-            this.DeleteAdressButton.Size = new System.Drawing.Size(103, 23);
+            this.DeleteAdressButton.Size = new System.Drawing.Size(145, 31);
             this.DeleteAdressButton.TabIndex = 40;
             this.DeleteAdressButton.Text = "Smazat Adresu";
             this.DeleteAdressButton.UseVisualStyleBackColor = true;
@@ -195,29 +249,34 @@
             // 
             // DeletePersonButton
             // 
-            this.DeletePersonButton.Location = new System.Drawing.Point(176, 256);
+            this.DeletePersonButton.BackColor = System.Drawing.Color.Teal;
+            this.DeletePersonButton.Location = new System.Drawing.Point(16, 189);
             this.DeletePersonButton.Name = "DeletePersonButton";
-            this.DeletePersonButton.Size = new System.Drawing.Size(93, 23);
+            this.DeletePersonButton.Size = new System.Drawing.Size(147, 33);
             this.DeletePersonButton.TabIndex = 39;
             this.DeletePersonButton.Text = "Smazat Kontakt";
-            this.DeletePersonButton.UseVisualStyleBackColor = true;
+            this.DeletePersonButton.UseVisualStyleBackColor = false;
             this.DeletePersonButton.Click += new System.EventHandler(this.DeletePersonButton_Click);
             // 
             // InformationIcDetailLabel
             // 
             this.InformationIcDetailLabel.AutoSize = true;
-            this.InformationIcDetailLabel.Location = new System.Drawing.Point(38, 266);
+            this.InformationIcDetailLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.InformationIcDetailLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationIcDetailLabel.Location = new System.Drawing.Point(11, 13);
             this.InformationIcDetailLabel.Name = "InformationIcDetailLabel";
-            this.InformationIcDetailLabel.Size = new System.Drawing.Size(52, 13);
+            this.InformationIcDetailLabel.Size = new System.Drawing.Size(76, 21);
             this.InformationIcDetailLabel.TabIndex = 12;
-            this.InformationIcDetailLabel.Text = "Detaily IČ";
+            this.InformationIcDetailLabel.Text = "Detail IČ";
             // 
             // ContactDetailsLabel
             // 
             this.ContactDetailsLabel.AutoSize = true;
-            this.ContactDetailsLabel.Location = new System.Drawing.Point(38, 20);
+            this.ContactDetailsLabel.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ContactDetailsLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.ContactDetailsLabel.Location = new System.Drawing.Point(9, 9);
             this.ContactDetailsLabel.Name = "ContactDetailsLabel";
-            this.ContactDetailsLabel.Size = new System.Drawing.Size(39, 13);
+            this.ContactDetailsLabel.Size = new System.Drawing.Size(61, 21);
             this.ContactDetailsLabel.TabIndex = 11;
             this.ContactDetailsLabel.Text = "Detaily";
             // 
@@ -226,7 +285,7 @@
             this.ContactsDICLabel.AutoSize = true;
             this.ContactsDICLabel.Location = new System.Drawing.Point(733, 40);
             this.ContactsDICLabel.Name = "ContactsDICLabel";
-            this.ContactsDICLabel.Size = new System.Drawing.Size(48, 13);
+            this.ContactsDICLabel.Size = new System.Drawing.Size(70, 20);
             this.ContactsDICLabel.TabIndex = 10;
             this.ContactsDICLabel.Text = "Příjmení";
             // 
@@ -235,63 +294,72 @@
             this.ContactsDIC.AutoSize = true;
             this.ContactsDIC.Location = new System.Drawing.Point(733, 66);
             this.ContactsDIC.Name = "ContactsDIC";
-            this.ContactsDIC.Size = new System.Drawing.Size(35, 13);
+            this.ContactsDIC.Size = new System.Drawing.Size(52, 20);
             this.ContactsDIC.TabIndex = 9;
             this.ContactsDIC.Text = "label3";
             // 
             // InformationIC
             // 
             this.InformationIC.AutoSize = true;
-            this.InformationIC.Location = new System.Drawing.Point(211, 66);
+            this.InformationIC.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationIC.Location = new System.Drawing.Point(149, 95);
             this.InformationIC.Name = "InformationIC";
-            this.InformationIC.Size = new System.Drawing.Size(35, 13);
+            this.InformationIC.Size = new System.Drawing.Size(94, 20);
             this.InformationIC.TabIndex = 8;
-            this.InformationIC.Text = "label2";
+            this.InformationIC.Text = "placeholder";
             // 
             // InformationICLabel
             // 
             this.InformationICLabel.AutoSize = true;
-            this.InformationICLabel.Location = new System.Drawing.Point(211, 40);
+            this.InformationICLabel.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.InformationICLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationICLabel.Location = new System.Drawing.Point(54, 95);
             this.InformationICLabel.Name = "InformationICLabel";
-            this.InformationICLabel.Size = new System.Drawing.Size(17, 13);
+            this.InformationICLabel.Size = new System.Drawing.Size(33, 20);
             this.InformationICLabel.TabIndex = 7;
-            this.InformationICLabel.Text = "IČ";
+            this.InformationICLabel.Text = "IČ :";
             // 
             // InformationSurnameLabel
             // 
             this.InformationSurnameLabel.AutoSize = true;
-            this.InformationSurnameLabel.Location = new System.Drawing.Point(140, 40);
+            this.InformationSurnameLabel.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.InformationSurnameLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.InformationSurnameLabel.Location = new System.Drawing.Point(54, 71);
             this.InformationSurnameLabel.Name = "InformationSurnameLabel";
-            this.InformationSurnameLabel.Size = new System.Drawing.Size(48, 13);
+            this.InformationSurnameLabel.Size = new System.Drawing.Size(78, 20);
             this.InformationSurnameLabel.TabIndex = 6;
-            this.InformationSurnameLabel.Text = "Příjmení";
+            this.InformationSurnameLabel.Text = "Příjmení :";
             // 
             // InformationSurname
             // 
             this.InformationSurname.AutoSize = true;
-            this.InformationSurname.Location = new System.Drawing.Point(140, 66);
+            this.InformationSurname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationSurname.Location = new System.Drawing.Point(149, 71);
             this.InformationSurname.Name = "InformationSurname";
-            this.InformationSurname.Size = new System.Drawing.Size(35, 13);
+            this.InformationSurname.Size = new System.Drawing.Size(94, 20);
             this.InformationSurname.TabIndex = 5;
-            this.InformationSurname.Text = "label3";
+            this.InformationSurname.Text = "placeholder";
             // 
             // InformationName
             // 
             this.InformationName.AutoSize = true;
-            this.InformationName.Location = new System.Drawing.Point(80, 66);
+            this.InformationName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.InformationName.Location = new System.Drawing.Point(149, 42);
             this.InformationName.Name = "InformationName";
-            this.InformationName.Size = new System.Drawing.Size(35, 13);
+            this.InformationName.Size = new System.Drawing.Size(94, 20);
             this.InformationName.TabIndex = 4;
-            this.InformationName.Text = "label2";
+            this.InformationName.Text = "placeholder";
             // 
             // InformationNameLabel
             // 
             this.InformationNameLabel.AutoSize = true;
-            this.InformationNameLabel.Location = new System.Drawing.Point(80, 40);
+            this.InformationNameLabel.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.InformationNameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.InformationNameLabel.Location = new System.Drawing.Point(54, 42);
             this.InformationNameLabel.Name = "InformationNameLabel";
-            this.InformationNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.InformationNameLabel.Size = new System.Drawing.Size(62, 20);
             this.InformationNameLabel.TabIndex = 3;
-            this.InformationNameLabel.Text = "Jméno";
+            this.InformationNameLabel.Text = "Jméno :";
             // 
             // AddPage
             // 
@@ -689,71 +757,52 @@
             this.EditPersonLabel.TabIndex = 25;
             this.EditPersonLabel.Text = "Osoba";
             // 
-            // InformationDateValid
+            // PersonInformationPanel
             // 
-            this.InformationDateValid.AutoSize = true;
-            this.InformationDateValid.Location = new System.Drawing.Point(173, 333);
-            this.InformationDateValid.Name = "InformationDateValid";
-            this.InformationDateValid.Size = new System.Drawing.Size(35, 13);
-            this.InformationDateValid.TabIndex = 48;
-            this.InformationDateValid.Text = "label2";
+            this.PersonInformationPanel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.PersonInformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PersonInformationPanel.Controls.Add(this.InformationIC);
+            this.PersonInformationPanel.Controls.Add(this.InformationNameLabel);
+            this.PersonInformationPanel.Controls.Add(this.InformationName);
+            this.PersonInformationPanel.Controls.Add(this.InformationSurname);
+            this.PersonInformationPanel.Controls.Add(this.InformationSurnameLabel);
+            this.PersonInformationPanel.Controls.Add(this.InformationICLabel);
+            this.PersonInformationPanel.Controls.Add(this.ContactDetailsLabel);
+            this.PersonInformationPanel.Controls.Add(this.InformationDICLabel);
+            this.PersonInformationPanel.Controls.Add(this.InformationDic);
+            this.PersonInformationPanel.Location = new System.Drawing.Point(16, 15);
+            this.PersonInformationPanel.Name = "PersonInformationPanel";
+            this.PersonInformationPanel.Size = new System.Drawing.Size(296, 168);
+            this.PersonInformationPanel.TabIndex = 49;
             // 
-            // InformationDateValidLabel
+            // IcInfoPanel
             // 
-            this.InformationDateValidLabel.AutoSize = true;
-            this.InformationDateValidLabel.Location = new System.Drawing.Point(173, 307);
-            this.InformationDateValidLabel.Name = "InformationDateValidLabel";
-            this.InformationDateValidLabel.Size = new System.Drawing.Size(80, 13);
-            this.InformationDateValidLabel.TabIndex = 47;
-            this.InformationDateValidLabel.Text = "Datum platnosti";
-            // 
-            // InformationDateCreatedLabel
-            // 
-            this.InformationDateCreatedLabel.AutoSize = true;
-            this.InformationDateCreatedLabel.Location = new System.Drawing.Point(102, 307);
-            this.InformationDateCreatedLabel.Name = "InformationDateCreatedLabel";
-            this.InformationDateCreatedLabel.Size = new System.Drawing.Size(81, 13);
-            this.InformationDateCreatedLabel.TabIndex = 46;
-            this.InformationDateCreatedLabel.Text = "Datum založení";
-            // 
-            // InformationDateCreated
-            // 
-            this.InformationDateCreated.AutoSize = true;
-            this.InformationDateCreated.Location = new System.Drawing.Point(102, 333);
-            this.InformationDateCreated.Name = "InformationDateCreated";
-            this.InformationDateCreated.Size = new System.Drawing.Size(35, 13);
-            this.InformationDateCreated.TabIndex = 45;
-            this.InformationDateCreated.Text = "label3";
-            // 
-            // InformationCompany
-            // 
-            this.InformationCompany.AutoSize = true;
-            this.InformationCompany.Location = new System.Drawing.Point(42, 333);
-            this.InformationCompany.Name = "InformationCompany";
-            this.InformationCompany.Size = new System.Drawing.Size(35, 13);
-            this.InformationCompany.TabIndex = 44;
-            this.InformationCompany.Text = "label2";
-            // 
-            // InformationCompanyLabel
-            // 
-            this.InformationCompanyLabel.AutoSize = true;
-            this.InformationCompanyLabel.Location = new System.Drawing.Point(42, 307);
-            this.InformationCompanyLabel.Name = "InformationCompanyLabel";
-            this.InformationCompanyLabel.Size = new System.Drawing.Size(60, 13);
-            this.InformationCompanyLabel.TabIndex = 43;
-            this.InformationCompanyLabel.Text = "Společnost";
+            this.IcInfoPanel.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.IcInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.IcInfoPanel.Controls.Add(this.InformationDateValid);
+            this.IcInfoPanel.Controls.Add(this.InformationIcDetailLabel);
+            this.IcInfoPanel.Controls.Add(this.InformationCompanyLabel);
+            this.IcInfoPanel.Controls.Add(this.InformationDateValidLabel);
+            this.IcInfoPanel.Controls.Add(this.InformationCompany);
+            this.IcInfoPanel.Controls.Add(this.InformationDateCreatedLabel);
+            this.IcInfoPanel.Controls.Add(this.InformationDateCreated);
+            this.IcInfoPanel.Location = new System.Drawing.Point(16, 252);
+            this.IcInfoPanel.Name = "IcInfoPanel";
+            this.IcInfoPanel.Size = new System.Drawing.Size(296, 165);
+            this.IcInfoPanel.TabIndex = 50;
             // 
             // Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.OldLace;
-            this.ClientSize = new System.Drawing.Size(908, 675);
+            this.BackColor = System.Drawing.Color.Wheat;
+            this.ClientSize = new System.Drawing.Size(908, 573);
             this.Controls.Add(this.Tabs);
             this.Controls.Add(this.NameList);
             this.Controls.Add(this.AdressList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Presentation";
-            this.Text = "Form1";
+            this.Text = "Adresář";
             ((System.ComponentModel.ISupportInitialize)(this.NameList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdressList)).EndInit();
             this.Tabs.ResumeLayout(false);
@@ -763,6 +812,10 @@
             this.AddPage.PerformLayout();
             this.EditPage.ResumeLayout(false);
             this.EditPage.PerformLayout();
+            this.PersonInformationPanel.ResumeLayout(false);
+            this.PersonInformationPanel.PerformLayout();
+            this.IcInfoPanel.ResumeLayout(false);
+            this.IcInfoPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -835,6 +888,8 @@
         private System.Windows.Forms.Label InformationDateCreated;
         private System.Windows.Forms.Label InformationCompany;
         private System.Windows.Forms.Label InformationCompanyLabel;
+        private System.Windows.Forms.Panel IcInfoPanel;
+        private System.Windows.Forms.Panel PersonInformationPanel;
     }
 }
 

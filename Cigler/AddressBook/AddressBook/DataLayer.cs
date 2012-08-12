@@ -204,7 +204,7 @@ namespace AddressBook
             string query =
                 "DELETE FROM Persons WHERE PersonID = @PersonID;" +
                 " DELETE FROM Adresses WHERE PersonID =@PersonID;" +
-                "DETELE FROM IcInfo WHERE PersonID =@PersonID;";
+                "DELETE FROM IcInfo WHERE PersonID =@PersonID;";
 
             SqlConnection connect = new SqlConnection(connectionString);
 
