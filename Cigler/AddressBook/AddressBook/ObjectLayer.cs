@@ -36,32 +36,44 @@ namespace AddressBook
             _persons = data.SelectAllPersons(_persons);
             foreach (var person in _persons)
             {
-                data.SelectAdresses(person);
-                data.SelectIc(person);
+                data.SelectAdresses(person);//loading adresses from database
+                data.SelectIc(person); //loading icinfo from database
             }
         }
 
+        /// <summary>
+        /// Addding a person to list and passing persons info to database
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="surname"></param>
+        /// <param name="ic"></param>
+        /// <param name="dic"></param>
+        /// <returns></returns>
         public string AddPerson(string name, string surname, string ic, string dic)
         {
             int tempIc, tempDic;
-            string result = CheckPersonParameters(name, surname, ic, dic);
+            string result = CheckPersonParameters(name, surname, ic, dic); //checking if persons informations are valid
 
-            if (result != "") return result;
+            if (result != "") return result; //if they arent valid, return error message
 
-            Int32.TryParse(ic, out tempIc);
+            //parsing dic and ic
+            Int32.TryParse(ic, out tempIc); 
             Int32.TryParse(dic, out tempDic);
 
-
+            //creating new instance of person
             Person tempPerson = new Person(name, surname, tempIc, tempDic);
+
+            //loading information about ic
             tempPerson = loadIcInfo(tempPerson);
 
-            try
+            try //trying to insert person and icinfo into database
             {
                 int id = data.InsertPerson(tempPerson.Name, tempPerson.Surname, tempPerson.IC, tempPerson.DIC);
                 int icId = data.InsertIco(tempPerson.ICInfo.CompanyName, tempPerson.ICInfo.DateCreated,
                                           tempPerson.ICInfo.DateValid,tempPerson.PersonID);
-                if (id == 0) Log("Unable to Insert Person into database");
-                if(icId == 0 )Log("Unable to Insert IC into database");
+                if (id == 0) Log("Unable to Insert Person into database");//if Insertperson returns 0, it means 
+                                                                          //that person wasnt inserted so we log it
+                if(icId == 0 )Log("Unable to Insert IC into database");//same as above, but for IcInfo
                 else
                 {
                     tempPerson.PersonID = id;
