@@ -20,7 +20,7 @@ namespace AdressBookTest
             data.InsertAddres("A","B",53701,29);
             
             
-           // data.UpdateAdress(22,"C","E",000);
+           // data.UpdateAddress(22,"C","E",000);
             //data.UpdatePerson(28,"A","C",17,18);
             BindingList<Person> persons = new BindingList<Person>();
 

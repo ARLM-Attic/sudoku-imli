@@ -115,7 +115,7 @@
             this.NameList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.NameList.Size = new System.Drawing.Size(417, 342);
             this.NameList.TabIndex = 1;
-            this.NameList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NameList_CellContentClick);
+            
             this.NameList.SelectionChanged += new System.EventHandler(this.NameList_SelectionChanged);
             // 
             // AdressList

@@ -6,32 +6,36 @@ using System.Text;
 
 namespace AddressBook
 {
+    /// <summary>
+    /// Class used to store Performation Information, It implements InotifyPropertyChange
+    /// Interface, meaning that every time a propery is changed a datagridview(a client)
+    ///  is notified about change
+    /// </summary>
     public class Person : INotifyPropertyChanged
     {
+        #region Private fields
         private int _personid;
         private string _name;
         private string _surname;
         private int _ic;
         private int _dic;
         private bool _isicvalid;
-        
+        #endregion
 
-        public BindingList<Adress> Adresses = new BindingList<Adress>();
-        public ICO ICInfo;
-        
-        public int PersonID 
+        #region Properities
+        public int PersonID
         {
             get { return _personid; }
             set { _personid = value; }
-         }
+        }
 
         public string Name
         {
             get { return _name; }
-            set 
+            set
             {
-                _name = value; 
-                NotifyPropertyChanged("Name"); 
+                _name = value;
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -65,20 +69,20 @@ namespace AddressBook
                 NotifyPropertyChanged("DIC");
             }
         }
+        #endregion
 
-        public bool isIcValid
-        {
-            get { return _isicvalid; }
-            set
-            {
-                _isicvalid = value;
-                NotifyPropertyChanged("IsIcValid");
-            }
-        }
+        public BindingList<Adress> Adresses = new BindingList<Adress>(); //List of adresses
+        public ICO ICInfo;
 
-        
-        
 
+        /// <summary>
+        /// Constructor for Person class used when we are loading Informations from database
+        /// </summary>
+        /// <param name="personid">ID of Person in Database</param>
+        /// <param name="name">Person's name</param>
+        /// <param name="surname">Person's surname</param>
+        /// <param name="ic">identification number of company</param>
+        /// <param name="dic">identification number of company for tax purposes</param>
         public Person(int personid,string name, string surname, int ic, int dic)
         {
             PersonID = personid;
@@ -88,6 +92,13 @@ namespace AddressBook
             DIC = dic;
         }
 
+        /// <summary>
+        /// constructor for Person class used when adding new person to List/Database, meaning we do not have its ID yet
+        /// </summary>
+        /// <param name="name">Person's name</param>
+        /// <param name="surname">Person's surname</param>
+        /// <param name="ic">identification number of company</param>
+        /// <param name="dic">identification number of company for tax purposes</param>
         public Person(string name, string surname, int ic, int dic)
         {
             Name = name;
